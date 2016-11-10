@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp2;
+package tp2.Vue;
 
 /**
  *
- * @author 1566086
+ * @author 1535905
  */
-public class ClassTest {
+public class Monde {
     
 }
