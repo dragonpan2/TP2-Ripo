@@ -5,6 +5,8 @@
  */
 package tp2;
 
+import tp2.Vue.GameWindow;
+
 /**
  *
  * @author 1566086
@@ -18,6 +20,8 @@ public class TP2 {
         // TODO code application logic here
         System.out.println("Initial Build");
         System.out.println("allo");
+        
+        GameWindow gw = new GameWindow();
     }
     
 }
