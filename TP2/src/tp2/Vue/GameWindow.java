@@ -24,10 +24,10 @@ public class GameWindow extends JFrame {
     Monde monde;
     
     private JMenuBar menu=new JMenuBar();
-    private JMenu mnFichier=new JMenu();
-    private JMenu mnAide=new JMenu();
-    private JMenuItem mnItemNouvellePartie=new JMenuItem();
-    private JMenuItem mnItemQuitter=new JMenuItem();
+    private JMenu mnFichier=new JMenu("Fichier");
+    private JMenu mnAide=new JMenu("Aide");
+    private JMenuItem mnItemNouvellePartie=new JMenuItem("NouvellePartie");
+    private JMenuItem mnItemQuitter=new JMenuItem("Quitter");
     
     public GameWindow() throws IOException  {
         this.monde = new Monde();
@@ -39,9 +39,10 @@ public class GameWindow extends JFrame {
         menu.add(mnAide);
         setJMenuBar(menu);
         
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
         this.add(monde);
         this.pack();
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
         
     }
