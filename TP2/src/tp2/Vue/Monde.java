@@ -10,9 +10,12 @@ package tp2.Vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
@@ -37,8 +40,31 @@ public class Monde extends JPanel{
      private ImageIcon vaisseau2Top;
      private ImageIcon vaisseau2TopLeft;
      private ImageIcon vaisseau2TopRight;
+     private NouveauThread thread=new NouveauThread();
     
-    
+     
+    private static ArrayList<Character> touchesPesees = new ArrayList();
+
+    private static KeyListener kl = new KeyListener() {  // c le KeyListener qui réagit quand on fait quoi que ce soit avec le clavier
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {  // Ajoute le caractère que correspond a la touche a chaque fois qu'une touche est enfoncée
+            if (!(touchesPesees.contains(e.getKeyChar()))) {
+                touchesPesees.add(e.getKeyChar());
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) { // Retire la touche de la liste si elle est relachée
+            if (touchesPesees.contains(e.getKeyChar())) {
+                touchesPesees.remove((Character) e.getKeyChar());
+            }
+        }
+    };
     
     
     
@@ -65,8 +91,17 @@ public class Monde extends JPanel{
         setBackground(Color.black);
         
         
+        thread.start();
+        
+        
         
     }
+
+    public static ArrayList<Character> getTouchesPesees() {
+        return touchesPesees;
+    }
+    
+    
     
     
         

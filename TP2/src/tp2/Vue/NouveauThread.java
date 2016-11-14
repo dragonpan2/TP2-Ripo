@@ -9,6 +9,24 @@ package tp2.Vue;
  *
  * @author 1535905
  */
-class NouveauThread {
+class NouveauThread extends Thread{
+
+    public NouveauThread() {
+    }
     
+    @Override
+public void run() {
+    if(Monde.getTouchesPesees().contains('w')){
+        
+    }
+     if(Monde.getTouchesPesees().contains('s')){
+        
+    }
+      if(Monde.getTouchesPesees().contains('a')){
+        
+    }
+       if(Monde.getTouchesPesees().contains('d')){
+           
+    }
+}
 }
