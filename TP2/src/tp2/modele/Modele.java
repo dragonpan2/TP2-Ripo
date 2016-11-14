@@ -13,8 +13,18 @@ import java.util.Observable;
  */
 public class Modele extends Observable {
 
+    
+    Joueur joueur1 = new Joueur();
+    Joueur joueur2 = new Joueur();
+    
     public Modele() {
+        
+        
+        
+        
     }
+    
+    
 
     public void maj(){
         setChanged();
