@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp2.Vue;
+package tp2.modele;
 
-/**
- *
- * @author 1535905
- */
-public class Vue {
-    
+
+public class Joueur {
+   int nbVies=3;
+   int pointage;
+   int nbTirs;
+   int nbTirsTouche;
+    public Joueur() {
+        
+        
+        
+    }
+   
 }

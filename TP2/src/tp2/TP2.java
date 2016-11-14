@@ -5,6 +5,7 @@
  */
 package tp2;
 
+import java.io.IOException;
 import tp2.Vue.GameWindow;
 
 /**
@@ -16,11 +17,8 @@ public class TP2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        System.out.println("Initial Build");
-        System.out.println("allo");
-        
         GameWindow gw = new GameWindow();
     }
     
