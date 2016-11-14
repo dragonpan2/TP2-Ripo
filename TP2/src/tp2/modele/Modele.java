@@ -13,7 +13,12 @@ import java.util.Observable;
  */
 public class Modele extends Observable {
 
-    public void Modele() {
+    public Modele() {
+    }
+
+    public void maj(){
+        setChanged();
+        notifyObservers();
     }
     
     

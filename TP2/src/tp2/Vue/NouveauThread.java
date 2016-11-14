@@ -19,13 +19,13 @@ public void run() {
     if(Monde.getTouchesPesees().contains('w')){
         
     }
-     if(Monde.getTouchesPesees().contains('s')){
+    if(Monde.getTouchesPesees().contains('s')){
         
     }
-      if(Monde.getTouchesPesees().contains('a')){
+    if(Monde.getTouchesPesees().contains('a')){
         
     }
-       if(Monde.getTouchesPesees().contains('d')){
+    if(Monde.getTouchesPesees().contains('d')){
            
     }
 }
