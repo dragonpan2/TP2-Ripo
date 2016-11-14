@@ -19,8 +19,15 @@ public class Modele extends Observable {
     }
     
     public void avancer(){
-        
+        joueur1.setPositionX(joueur1.getPositionX()+10);
+        maj();
     }
+
+    public Joueur getJoueur1() {
+        return joueur1;
+    }
+    
+    
 
     public void maj(){
         setChanged();

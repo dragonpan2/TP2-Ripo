@@ -51,21 +51,21 @@ public class Monde extends JPanel{
      
     private static ArrayList<Character> touchesPesees = new ArrayList();
 
-    private static KeyListener kl = new KeyListener() {  // c le KeyListener qui réagit quand on fait quoi que ce soit avec le clavier
+    private static KeyListener kl = new KeyListener() {
 
         @Override
         public void keyTyped(KeyEvent e) {
         }
 
         @Override
-        public void keyPressed(KeyEvent e) {  // Ajoute le caractère que correspond a la touche a chaque fois qu'une touche est enfoncée
+        public void keyPressed(KeyEvent e) {  
             if (!(touchesPesees.contains(e.getKeyChar()))) {
                 touchesPesees.add(e.getKeyChar());
             }
         }
 
         @Override
-        public void keyReleased(KeyEvent e) { // Retire la touche de la liste si elle est relachée
+        public void keyReleased(KeyEvent e) { 
             if (touchesPesees.contains(e.getKeyChar())) {
                 touchesPesees.remove((Character) e.getKeyChar());
             }
@@ -78,7 +78,7 @@ public class Monde extends JPanel{
 
     public Monde(Modele modele) throws IOException{
         this.modele=modele;
-        NouveauThread thread=new NouveauThread(modele);
+        NouveauThread thread=new NouveauThread(modele,this,touchesPesees);
         vaisseau1Down = new ImageIcon(ImageIO.read(new File("vaisseau1down.gif")));
         vaisseau1DownLeft = new ImageIcon(ImageIO.read(new File("vaisseau1downleft.gif")));
         vaisseau1DownRight = new ImageIcon(ImageIO.read(new File("vaisseau1downright.gif")));
@@ -95,7 +95,7 @@ public class Monde extends JPanel{
         vaisseau2Top = new ImageIcon(ImageIO.read(new File("vaisseau2top.gif")));
         vaisseau2TopLeft = new ImageIcon(ImageIO.read(new File("vaisseau2topleft.gif")));
         vaisseau2TopRight = new ImageIcon(ImageIO.read(new File("vaisseau2topright.gif")));
-        setPreferredSize(new Dimension(1600,800));
+        setPreferredSize(new Dimension(800,400));
         setBackground(Color.black);
         
         
@@ -108,15 +108,19 @@ public class Monde extends JPanel{
     }
     
     public void initialiserVaisseau(){
+       
+       joueur1.setBounds(100, 100, 100, 100);
        joueur1.setIcon(vaisseau1Top);
        this.add(joueur1);
        
-       joueur1.setBounds(100, 100, 100, 100);
+       
+    }
+    
+    public void modifierJoueur(){
+        joueur1.setLocation(modele.getJoueur1().getPositionX(),modele.getJoueur1().getPositionY());
     }
 
-    public static ArrayList<Character> getTouchesPesees() {
-        return touchesPesees;
-    }
+   
     
     
     

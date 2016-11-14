@@ -73,7 +73,7 @@ public class GameWindow extends JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object o1) {
-    
+    monde.modifierJoueur();
     }
     
     

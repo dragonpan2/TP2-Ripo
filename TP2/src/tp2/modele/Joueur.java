@@ -11,11 +11,29 @@ public class Joueur {
    int pointage;
    int nbTirs;
    int nbTirsTouche;
-   int positionX;
-   int positionY;
+   int positionX=100;
+   int positionY=100;
     public Joueur() {
         
         
     }
+
+    public void setPositionX(int positionX) {
+        this.positionX = positionX;
+    }
+
+    public void setPositionY(int positionY) {
+        this.positionY = positionY;
+    }
+
+    public int getPositionX() {
+        return positionX;
+    }
+
+    public int getPositionY() {
+        return positionY;
+    }
+    
+    
    
 }

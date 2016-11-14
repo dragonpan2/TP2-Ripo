@@ -5,6 +5,7 @@
  */
 package tp2.Vue;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tp2.modele.Modele;
@@ -14,28 +15,33 @@ import tp2.modele.Modele;
  * @author 1535905
  */
 class NouveauThread extends Thread{
-Modele modele;
-    public NouveauThread(Modele modele) {
+    private Modele modele;
+    private Monde monde;
+    private ArrayList<Character>TouchesPesees=new ArrayList();
+    public NouveauThread(Modele modele,Monde monde,ArrayList<Character>TouchesPesees) {
         this.modele=modele;
+        this.monde=monde;
+        this.TouchesPesees=TouchesPesees;
     }
     
     @Override
 public void run() {
     while(true){
-    if(Monde.getTouchesPesees().contains('w')){
+        
+    if(TouchesPesees.contains('w')){
         modele.avancer();
     }
-    if(Monde.getTouchesPesees().contains('s')){
+    if(TouchesPesees.contains('s')){
         
     }
-    if(Monde.getTouchesPesees().contains('a')){
+    if(TouchesPesees.contains('a')){
         
     }
-    if(Monde.getTouchesPesees().contains('d')){
+    if(TouchesPesees.contains('d')){
            
     }
         try {
-            Thread.sleep(1000);
+            Thread.sleep(200);
             modele.maj();
         } catch (InterruptedException ex) {
             Logger.getLogger(NouveauThread.class.getName()).log(Level.SEVERE, null, ex);
