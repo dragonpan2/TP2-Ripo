@@ -12,9 +12,10 @@ import java.util.Observable;
  * @author 1535905
  */
 public class Modele extends Observable {
+    Joueur joueur1;
 
     public Modele() {
-        
+        joueur1=new Joueur();
     }
     
     public void avancer(){

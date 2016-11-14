@@ -5,6 +5,7 @@
  */
 package tp2.Controleur;
 
+import java.io.IOException;
 import tp2.Vue.GameWindow;
 import tp2.modele.Modele;
 
@@ -16,5 +17,9 @@ public class Controleur {
     
     
     private Modele modele = new Modele();
-    private GameWindow gameWindow = new GameWindow(this, modele);
+    private GameWindow gameWindow;
+
+    public Controleur() throws IOException {
+        this.gameWindow = new GameWindow(this, modele);
+    }
 }
