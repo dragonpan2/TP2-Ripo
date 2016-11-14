@@ -38,16 +38,16 @@ public class GameWindow extends JFrame implements Observer{
     private JMenuItem mnItemNouvellePartie=new JMenuItem("NouvellePartie");
     private JMenuItem mnItemQuitter=new JMenuItem("Quitter");
     
-    public GameWindow(Controleur controleur, Observable observable)  {
+    public GameWindow(Controleur controleur, Observable observable) throws IOException  {
+        
         this.modele = (Modele) observable;
+        modele.addObserver(this);
+        this.monde = new Monde(modele);
         this.controleur = controleur;
+       
         
         
-        try {
-            this.monde = new Monde(modele);
-        } catch (IOException ex) {
-            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
        
         menus();

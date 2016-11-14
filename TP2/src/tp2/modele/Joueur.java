@@ -11,9 +11,10 @@ public class Joueur {
    int pointage;
    int nbTirs;
    int nbTirsTouche;
+   int positionX;
+   int positionY;
     public Joueur() {
         
-        //allo
         
     }
    
