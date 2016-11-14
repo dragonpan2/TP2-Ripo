@@ -8,6 +8,7 @@ package tp2;
 import java.io.IOException;
 import tp2.Controleur.Controleur;
 import tp2.Vue.GameWindow;
+import tp2.modele.Modele;
 
 /**
  *
@@ -21,6 +22,7 @@ public class TP2 {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
       //  GameWindow gw = new GameWindow();
+      
         Controleur controleur = new Controleur();
     }
     

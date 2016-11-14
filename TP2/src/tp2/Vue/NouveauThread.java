@@ -23,7 +23,7 @@ Modele modele;
 public void run() {
     while(true){
     if(Monde.getTouchesPesees().contains('w')){
-        
+        modele.avancer();
     }
     if(Monde.getTouchesPesees().contains('s')){
         
@@ -36,7 +36,7 @@ public void run() {
     }
         try {
             Thread.sleep(1000);
-            Modele.maj();
+            modele.maj();
         } catch (InterruptedException ex) {
             Logger.getLogger(NouveauThread.class.getName()).log(Level.SEVERE, null, ex);
         }

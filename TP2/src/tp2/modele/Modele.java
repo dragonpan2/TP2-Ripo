@@ -14,6 +14,11 @@ import java.util.Observable;
 public class Modele extends Observable {
 
     public Modele() {
+        
+    }
+    
+    public void avancer(){
+        
     }
 
     public void maj(){

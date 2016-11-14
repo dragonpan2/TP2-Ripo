@@ -23,9 +23,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import tp2.modele.Modele;
 
 public class Monde extends JPanel{
-    
+    private Modele modele;
     
      private ImageIcon vaisseau1Down;
      private ImageIcon vaisseau1DownLeft;
@@ -76,6 +77,7 @@ public class Monde extends JPanel{
     
 
     public Monde(Modele modele) throws IOException{
+        this.modele=modele;
         NouveauThread thread=new NouveauThread(modele);
         vaisseau1Down = new ImageIcon(ImageIO.read(new File("vaisseau1down.gif")));
         vaisseau1DownLeft = new ImageIcon(ImageIO.read(new File("vaisseau1downleft.gif")));
