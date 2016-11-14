@@ -59,6 +59,7 @@ public class Monde extends JPanel{
 
         @Override
         public void keyPressed(KeyEvent e) {  
+            System.out.println("allo");
             if (!(touchesPesees.contains(e.getKeyChar()))) {
                 touchesPesees.add(e.getKeyChar());
             }
@@ -78,7 +79,7 @@ public class Monde extends JPanel{
 
     public Monde(Modele modele) throws IOException{
         this.modele=modele;
-        NouveauThread thread=new NouveauThread(modele,this,touchesPesees);
+        NouveauThread thread=new NouveauThread(modele,this);
         vaisseau1Down = new ImageIcon(ImageIO.read(new File("vaisseau1down.gif")));
         vaisseau1DownLeft = new ImageIcon(ImageIO.read(new File("vaisseau1downleft.gif")));
         vaisseau1DownRight = new ImageIcon(ImageIO.read(new File("vaisseau1downright.gif")));
@@ -106,6 +107,12 @@ public class Monde extends JPanel{
         
         
     }
+
+    public static ArrayList<Character> getTouchesPesees() {
+        return touchesPesees;
+    }
+    
+    
     
     public void initialiserVaisseau(){
        
