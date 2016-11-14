@@ -44,7 +44,7 @@ public class GameWindow extends JFrame implements Observer{
         
         
         try {
-            this.monde = new Monde();
+            this.monde = new Monde(modele);
         } catch (IOException ex) {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }

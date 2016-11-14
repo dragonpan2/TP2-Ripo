@@ -25,6 +25,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class Monde extends JPanel{
+    
+    
      private ImageIcon vaisseau1Down;
      private ImageIcon vaisseau1DownLeft;
      private ImageIcon vaisseau1DownRight;
@@ -41,7 +43,7 @@ public class Monde extends JPanel{
      private ImageIcon vaisseau2Top;
      private ImageIcon vaisseau2TopLeft;
      private ImageIcon vaisseau2TopRight;
-     private NouveauThread thread=new NouveauThread();
+     
      
      private JLabel joueur1=new JLabel();
     
@@ -73,7 +75,8 @@ public class Monde extends JPanel{
     
     
 
-    public Monde() throws IOException{
+    public Monde(Modele modele) throws IOException{
+        NouveauThread thread=new NouveauThread(modele);
         vaisseau1Down = new ImageIcon(ImageIO.read(new File("vaisseau1down.gif")));
         vaisseau1DownLeft = new ImageIcon(ImageIO.read(new File("vaisseau1downleft.gif")));
         vaisseau1DownRight = new ImageIcon(ImageIO.read(new File("vaisseau1downright.gif")));

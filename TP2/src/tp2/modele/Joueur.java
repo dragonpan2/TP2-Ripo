@@ -13,7 +13,7 @@ public class Joueur {
    int nbTirsTouche;
     public Joueur() {
         
-        
+        //allo
         
     }
    
