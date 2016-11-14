@@ -10,10 +10,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import tp2.Controleur.Controleur;
+import tp2.modele.Modele;
 
 /**
  *
@@ -21,6 +26,9 @@ import javax.swing.JMenuItem;
  */
 public class GameWindow extends JFrame {
 
+    private Controleur controleur;
+    private Modele modele;
+    
     Monde monde;
     
     private JMenuBar menu=new JMenuBar();
@@ -29,8 +37,16 @@ public class GameWindow extends JFrame {
     private JMenuItem mnItemNouvellePartie=new JMenuItem();
     private JMenuItem mnItemQuitter=new JMenuItem();
     
-    public GameWindow() throws IOException  {
-        this.monde = new Monde();
+    public GameWindow(Controleur controleur, Observable observable)  {
+        this.modele = (Modele) observable;
+        this.controleur = controleur;
+        
+        
+        try {
+            this.monde = new Monde();
+        } catch (IOException ex) {
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         mnFichier.add(mnItemNouvellePartie);
         mnFichier.addSeparator();

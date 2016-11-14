@@ -5,10 +5,16 @@
  */
 package tp2.Controleur;
 
+import tp2.Vue.GameWindow;
+import tp2.modele.Modele;
+
 /**
  *
  * @author 1535905
  */
 public class Controleur {
     
+    
+    private Modele modele = new Modele();
+    private GameWindow gameWindow = new GameWindow(this, modele);
 }
