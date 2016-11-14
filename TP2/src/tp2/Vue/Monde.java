@@ -59,7 +59,6 @@ public class Monde extends JPanel{
 
         @Override
         public void keyPressed(KeyEvent e) {  
-            System.out.println("allo");
             if (!(touchesPesees.contains(e.getKeyChar()))) {
                 touchesPesees.add(e.getKeyChar());
             }
@@ -98,7 +97,7 @@ public class Monde extends JPanel{
         vaisseau2TopRight = new ImageIcon(ImageIO.read(new File("vaisseau2topright.gif")));
         setPreferredSize(new Dimension(800,400));
         setBackground(Color.black);
-        
+        setLayout(null);
         
         initialiserVaisseau();
         
@@ -115,8 +114,7 @@ public class Monde extends JPanel{
     
     
     public void initialiserVaisseau(){
-       
-       joueur1.setBounds(100, 100, 100, 100);
+       joueur1.setBounds(100,100,100,100);
        joueur1.setIcon(vaisseau1Top);
        this.add(joueur1);
        
