@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -24,7 +25,7 @@ import tp2.modele.Modele;
  *
  * @author 1566086
  */
-public class GameWindow extends JFrame {
+public class GameWindow extends JFrame implements Observer{
 
     private Controleur controleur;
     private Modele modele;
@@ -48,12 +49,8 @@ public class GameWindow extends JFrame {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        mnFichier.add(mnItemNouvellePartie);
-        mnFichier.addSeparator();
-        mnFichier.add(mnItemQuitter);
-        menu.add(mnFichier);
-        menu.add(mnAide);
-        setJMenuBar(menu);
+       
+        menus();
         
         
         this.add(monde);
@@ -61,6 +58,22 @@ public class GameWindow extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
         
+    }
+    
+    public void menus(){
+         mnFichier.add(mnItemNouvellePartie);
+        mnFichier.addSeparator();
+        mnFichier.add(mnItemQuitter);
+        menu.add(mnFichier);
+        menu.add(mnAide);
+        setJMenuBar(menu);
+    }
+    
+    
+
+    @Override
+    public void update(Observable o, Object o1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

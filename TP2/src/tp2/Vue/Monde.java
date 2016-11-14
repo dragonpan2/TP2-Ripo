@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -41,6 +42,8 @@ public class Monde extends JPanel{
      private ImageIcon vaisseau2TopLeft;
      private ImageIcon vaisseau2TopRight;
      private NouveauThread thread=new NouveauThread();
+     
+     private JLabel joueur1=new JLabel();
     
      
     private static ArrayList<Character> touchesPesees = new ArrayList();
@@ -91,10 +94,19 @@ public class Monde extends JPanel{
         setBackground(Color.black);
         
         
+        initialiserVaisseau();
+        
         thread.start();
         
         
         
+    }
+    
+    public void initialiserVaisseau(){
+       joueur1.setIcon(vaisseau1Top);
+       this.add(joueur1);
+       
+       joueur1.setBounds(100, 100, 100, 100);
     }
 
     public static ArrayList<Character> getTouchesPesees() {

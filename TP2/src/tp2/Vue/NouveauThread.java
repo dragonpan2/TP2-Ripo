@@ -5,17 +5,23 @@
  */
 package tp2.Vue;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import tp2.modele.Modele;
+
 /**
  *
  * @author 1535905
  */
 class NouveauThread extends Thread{
-
-    public NouveauThread() {
+Modele modele;
+    public NouveauThread(Modele modele) {
+        this.modele=modele;
     }
     
     @Override
 public void run() {
+    while(true){
     if(Monde.getTouchesPesees().contains('w')){
         
     }
@@ -27,6 +33,13 @@ public void run() {
     }
     if(Monde.getTouchesPesees().contains('d')){
            
+    }
+        try {
+            Thread.sleep(1000);
+            Modele.maj();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(NouveauThread.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
 }
