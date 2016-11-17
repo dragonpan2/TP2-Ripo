@@ -104,7 +104,13 @@ public class GameWindow extends JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object o1) {
-    monde.modifierJoueur();
+        Modele modele = (Modele) o;
+        int nbVieP1 = modele.getJoueur1().getNbVies();
+        int nbVieP2 = modele.getJoueur2().getNbVies();
+        int pointP1 = modele.getJoueur1().getPointage();
+        int pointP2 = modele.getJoueur2().getPointage();
+        
+        monde.modifierJoueur();
     }
     
     

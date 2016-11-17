@@ -104,6 +104,10 @@ public class Modele extends Observable {
     public Joueur getJoueur1() {
         return joueur1;
     }
+
+    public Joueur getJoueur2() {
+        return joueur2;
+    }
     
     public void changeHealth(int numeroJoueur, int healthChange) {
         if (numeroJoueur == 1) {
@@ -112,7 +116,7 @@ public class Modele extends Observable {
         if (numeroJoueur == 2) {
             joueur2.setNbVies(joueur2.getNbVies()+healthChange);
         }
-        
+        maj();
     }
     
     public void changePointage(int numeroJoueur, int pointChange) {
@@ -122,6 +126,7 @@ public class Modele extends Observable {
         if (numeroJoueur == 2) {
             joueur2.setPointage(joueur2.getPointage()+pointChange);
         }
+        maj();
     }
     
     public void changeNbTir(int numeroJoueur, int tirChange) {
@@ -131,6 +136,7 @@ public class Modele extends Observable {
         if (numeroJoueur == 2) {
             joueur2.setNbTirs(joueur2.getNbTirs()+tirChange);
         }
+        maj();
     }
     
     public void changeNbTirTouch(int numeroJoueur, int tirTouchChange) {
@@ -140,6 +146,7 @@ public class Modele extends Observable {
         if (numeroJoueur == 2) {
             joueur2.setNbTirsTouche(joueur2.getNbTirsTouche()+tirTouchChange);
         }
+        maj();
     }
     
     
@@ -147,7 +154,7 @@ public class Modele extends Observable {
     public void maj(){
         setChanged();
         notifyObservers();
-    }
+    } //trigger le methode update dans vue //ce methode est appeler apres chaque fois qu'il y a un change dans modele
     
     
     
