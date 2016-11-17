@@ -5,10 +5,21 @@
  */
 package tp2.Controleur;
 
+import java.io.IOException;
+import tp2.Vue.GameWindow;
+import tp2.modele.Modele;
+
 /**
  *
  * @author 1535905
  */
 public class Controleur {
     
+    
+    private Modele modele = new Modele();
+    private GameWindow gameWindow;
+
+    public Controleur() throws IOException {
+        this.gameWindow = new GameWindow(this, modele);
+    }
 }

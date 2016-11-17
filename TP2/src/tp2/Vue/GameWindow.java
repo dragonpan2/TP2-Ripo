@@ -5,20 +5,75 @@
  */
 package tp2.Vue;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import tp2.Controleur.Controleur;
+import tp2.modele.Modele;
 
 /**
  *
  * @author 1566086
  */
-public class GameWindow extends JFrame {
+public class GameWindow extends JFrame implements Observer{
 
-    public GameWindow()  {
+    private Controleur controleur;
+    private Modele modele;
+    
+    Monde monde;
+    
+    private JMenuBar menu=new JMenuBar();
+    private JMenu mnFichier=new JMenu("Fichier");
+    private JMenu mnAide=new JMenu("Aide");
+    private JMenuItem mnItemNouvellePartie=new JMenuItem("NouvellePartie");
+    private JMenuItem mnItemQuitter=new JMenuItem("Quitter");
+    
+    public GameWindow(Controleur controleur, Observable observable) throws IOException  {
+        
+        this.modele = (Modele) observable;
+        modele.addObserver(this);
+        this.monde = new Monde(modele);
+        this.controleur = controleur;
+       
         
         
-        this.setSize(1600, 800);
+        
+        
+       
+        menus();
+        
+        
+        this.add(monde);
+        this.pack();
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
+        
+    }
+    
+    public void menus(){
+         mnFichier.add(mnItemNouvellePartie);
+        mnFichier.addSeparator();
+        mnFichier.add(mnItemQuitter);
+        menu.add(mnFichier);
+        menu.add(mnAide);
+        setJMenuBar(menu);
+    }
+    
+    
+
+    @Override
+    public void update(Observable o, Object o1) {
+    monde.modifierJoueur();
     }
     
     
