@@ -109,7 +109,8 @@ public class GameWindow extends JFrame implements Observer{
         int nbVieP2 = modele.getJoueur2().getNbVies();
         int pointP1 = modele.getJoueur1().getPointage();
         int pointP2 = modele.getJoueur2().getPointage();
-        
+        //set graphical change here
+        //
         monde.modifierJoueur();
     }
     
