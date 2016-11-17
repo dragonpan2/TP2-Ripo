@@ -27,7 +27,7 @@ import tp2.modele.Modele;
 
 public class Monde extends JPanel{
     private Modele modele;
-    
+    GameWindow gw;
      private ImageIcon vaisseau1Down;
      private ImageIcon vaisseau1DownLeft;
      private ImageIcon vaisseau1DownRight;
@@ -49,36 +49,43 @@ public class Monde extends JPanel{
      private JLabel joueur1=new JLabel();
     
      
-    private static ArrayList<Character> touchesPesees = new ArrayList();
+   
 
-    private static KeyListener kl = new KeyListener() {
-
-        @Override
-        public void keyTyped(KeyEvent e) {
+    
+    
+    Thread thread=new Thread(){
+            @Override
+public void run() {
+    while(true){
+    if(gw.getTouchesPesees().contains('w')){
+        modele.avancer();
+    }
+    if(gw.getTouchesPesees().contains('s')){
+        
+    }
+    if(gw.getTouchesPesees().contains('a')){
+        
+    }
+    if(gw.getTouchesPesees().contains('d')){
+           
+    }
+        try {
+            Thread.sleep(1000);
+            modele.maj();
+        } catch (InterruptedException ex) {
+         
         }
-
-        @Override
-        public void keyPressed(KeyEvent e) {  
-            if (!(touchesPesees.contains(e.getKeyChar()))) {
-                touchesPesees.add(e.getKeyChar());
-            }
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) { 
-            if (touchesPesees.contains(e.getKeyChar())) {
-                touchesPesees.remove((Character) e.getKeyChar());
-            }
-        }
-    };
-    
-    
+    }
+}
+       };
     
     
 
-    public Monde(Modele modele) throws IOException{
+    public Monde(Modele modele, GameWindow gw) throws IOException{
         this.modele=modele;
-        NouveauThread thread=new NouveauThread(modele,this);
+        this.gw=gw;
+        
+       
         vaisseau1Down = new ImageIcon(ImageIO.read(new File("vaisseau1down.gif")));
         vaisseau1DownLeft = new ImageIcon(ImageIO.read(new File("vaisseau1downleft.gif")));
         vaisseau1DownRight = new ImageIcon(ImageIO.read(new File("vaisseau1downright.gif")));
@@ -103,13 +110,11 @@ public class Monde extends JPanel{
         
         thread.start();
         
-        
+        setVisible(true);
         
     }
 
-    public static ArrayList<Character> getTouchesPesees() {
-        return touchesPesees;
-    }
+   
     
     
     
@@ -126,9 +131,10 @@ public class Monde extends JPanel{
     }
 
    
+}
     
     
     
     
         
-}
+
