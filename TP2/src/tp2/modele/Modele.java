@@ -41,12 +41,13 @@ public class Modele extends Observable {
     }
     
     public void avancer(){
-        acceleration--;
+        acceleration++;
         
     }
     
     public void reculer(){
-        acceleration++;
+        if(acceleration>0)
+        acceleration--;
         
     }
     
@@ -74,30 +75,57 @@ public class Modele extends Observable {
     
     public void tournerGauche(){
         switch(orientation){
-            case TOP:orientation=Orientation.TOPRIGHT;
+            case TOP:orientation=Orientation.TOPLEFT;
             break;
-            case TOPRIGHT:orientation=Orientation.RIGHT;
+            case TOPLEFT:orientation=Orientation.LEFT;
             break;
-            case RIGHT:orientation=Orientation.DOWNRIGHT;
+            case LEFT:orientation=Orientation.DOWNLEFT;
             break;
-            case DOWNRIGHT:orientation=Orientation.DOWN;
+            case DOWNLEFT:orientation=Orientation.DOWN;
             break;
-            case DOWN:orientation=Orientation.DOWNLEFT;
+            case DOWN:orientation=Orientation.DOWNRIGHT;
             break;
-            case DOWNLEFT:orientation=Orientation.LEFT;
+            case DOWNRIGHT:orientation=Orientation.RIGHT;
             break;
-            case LEFT:orientation=Orientation.TOPLEFT;
+            case RIGHT:orientation=Orientation.TOPRIGHT;
             break;
-            case TOPLEFT:orientation=Orientation.TOP;
+            case TOPRIGHT:orientation=Orientation.TOP;
             break;
         }
         
     }
     
     public void bouger(){
-        joueur1.setPositionY(joueur1.getPositionY()+acceleration);
+        System.out.println(orientation);
+        System.out.println(acceleration);
+        switch(orientation){
+            case TOP:
+                joueur1.setPositionY(joueur1.getPositionY()-acceleration);
+            break;
+            case TOPLEFT:joueur1.setPositionY(joueur1.getPositionY()-acceleration);
+            joueur1.setPositionX(joueur1.getPositionX()-acceleration);
+            break;
+            case LEFT:joueur1.setPositionX(joueur1.getPositionX()-acceleration);
+            break;
+            case DOWNLEFT:joueur1.setPositionY(joueur1.getPositionY()+acceleration);
+            joueur1.setPositionX(joueur1.getPositionX()-acceleration);
+            break;
+            case DOWN:joueur1.setPositionY(joueur1.getPositionY()+acceleration);
+            break;
+            case DOWNRIGHT:joueur1.setPositionY(joueur1.getPositionY()+acceleration);
+            joueur1.setPositionX(joueur1.getPositionX()+acceleration);
+            break;
+            case RIGHT:
+                joueur1.setPositionX(joueur1.getPositionX()+acceleration);
+            break;
+            case TOPRIGHT:joueur1.setPositionY(joueur1.getPositionY()-acceleration);
+            joueur1.setPositionX(joueur1.getPositionX()+acceleration);
+            break;
+        }
         if (joueur1.getPositionY()>400)joueur1.setPositionY(-50);
         if (joueur1.getPositionY()<-50)joueur1.setPositionY(400);
+        if (joueur1.getPositionX()>800)joueur1.setPositionX(-50);
+        if (joueur1.getPositionX()<-50)joueur1.setPositionX(800);
         maj();
     }
 
@@ -140,6 +168,10 @@ public class Modele extends Observable {
         if (numeroJoueur == 2) {
             joueur2.setNbTirsTouche(joueur2.getNbTirsTouche()+tirTouchChange);
         }
+    }
+
+    public Orientation getOrientation() {
+        return orientation;
     }
     
     
