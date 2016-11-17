@@ -61,7 +61,7 @@ public void run() {
         modele.avancer();
     }
     if(gw.getTouchesPesees().contains('s')){
-        
+        modele.reculer();
     }
     if(gw.getTouchesPesees().contains('a')){
         
@@ -69,8 +69,9 @@ public void run() {
     if(gw.getTouchesPesees().contains('d')){
            
     }
+    modele.bouger();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(25);
             modele.maj();
         } catch (InterruptedException ex) {
          

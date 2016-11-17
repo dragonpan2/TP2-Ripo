@@ -13,9 +13,9 @@ import java.util.Observable;
  */
 public class Modele extends Observable {
     
-    Joueur joueur1;
-    Joueur joueur2;
-    
+    private Joueur joueur1;
+    private Joueur joueur2;
+    private int acceleration=0;
     public Modele() {
         joueur1=new Joueur(3);
         joueur2=new Joueur(3);
@@ -29,7 +29,18 @@ public class Modele extends Observable {
     }
     
     public void avancer(){
-        joueur1.setPositionX(joueur1.getPositionX()+10);
+        acceleration--;
+        
+    }
+    
+    public void reculer(){
+        acceleration++;
+        
+    }
+    public void bouger(){
+        joueur1.setPositionY(joueur1.getPositionY()+acceleration);
+        if (joueur1.getPositionY()>400)joueur1.setPositionY(-50);
+        if (joueur1.getPositionY()<-50)joueur1.setPositionY(400);
         maj();
     }
 
