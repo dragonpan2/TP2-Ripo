@@ -17,6 +17,10 @@ public class Joueur {
         
         
     }
+    
+    public Joueur(int nbVies) {
+        this.setNbVies(nbVies);
+    }
 
     public void setPositionX(int positionX) {
         this.positionX = positionX;

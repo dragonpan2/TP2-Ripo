@@ -20,9 +20,6 @@ public class TP2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        // TODO code application logic here
-      //  GameWindow gw = new GameWindow();
-      
         Controleur controleur = new Controleur();
     }
     

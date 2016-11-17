@@ -17,8 +17,8 @@ public class Modele extends Observable {
     Joueur joueur2;
     
     public Modele() {
-        joueur1=new Joueur();
-        joueur2=new Joueur();
+        joueur1=new Joueur(3);
+        joueur2=new Joueur(3);
         
         
         
