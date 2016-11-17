@@ -22,4 +22,21 @@ public class Controleur {
     public Controleur() throws IOException {
         this.gameWindow = new GameWindow(this, modele);
     }
+    
+    public void changeHealth(int numeroJoueur, int healthChange) {
+        modele.changeHealth(numeroJoueur, healthChange);
+    }
+    
+    public void changePointage(int numeroJoueur, int pointChange) {
+        modele.changePointage(numeroJoueur, pointChange);
+    }
+    
+    public void changeNbTir(int numeroJoueur, int tirChange) {
+        modele.changeNbTir(numeroJoueur, tirChange);
+    }
+    
+    public void changeNbTirTouch(int numeroJoueur, int tirTouchChange) {
+        modele.changeNbTirTouch(numeroJoueur, tirTouchChange);
+    }
+    
 }
