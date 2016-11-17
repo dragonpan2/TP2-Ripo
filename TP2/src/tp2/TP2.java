@@ -7,8 +7,6 @@ package tp2;
 
 import java.io.IOException;
 import tp2.Controleur.Controleur;
-import tp2.Vue.GameWindow;
-import tp2.modele.Modele;
 
 /**
  *
