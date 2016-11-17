@@ -16,6 +16,18 @@ public class Modele extends Observable {
     private Joueur joueur1;
     private Joueur joueur2;
     private int acceleration=0;
+    
+    private enum Orientation{
+       TOP,
+       TOPRIGHT,
+       RIGHT,
+       DOWNRIGHT,
+       DOWN,
+       DOWNLEFT,
+       LEFT,
+       TOPLEFT,
+    }
+    Orientation orientation=Orientation.TOP;
     public Modele() {
         joueur1=new Joueur(3);
         joueur2=new Joueur(3);
@@ -37,6 +49,51 @@ public class Modele extends Observable {
         acceleration++;
         
     }
+    
+    public void tournerDroite(){
+        switch(orientation){
+            case TOP:orientation=Orientation.TOPRIGHT;
+            break;
+            case TOPRIGHT:orientation=Orientation.RIGHT;
+            break;
+            case RIGHT:orientation=Orientation.DOWNRIGHT;
+            break;
+            case DOWNRIGHT:orientation=Orientation.DOWN;
+            break;
+            case DOWN:orientation=Orientation.DOWNLEFT;
+            break;
+            case DOWNLEFT:orientation=Orientation.LEFT;
+            break;
+            case LEFT:orientation=Orientation.TOPLEFT;
+            break;
+            case TOPLEFT:orientation=Orientation.TOP;
+            break;
+        }
+        
+    }
+    
+    public void tournerGauche(){
+        switch(orientation){
+            case TOP:orientation=Orientation.TOPRIGHT;
+            break;
+            case TOPRIGHT:orientation=Orientation.RIGHT;
+            break;
+            case RIGHT:orientation=Orientation.DOWNRIGHT;
+            break;
+            case DOWNRIGHT:orientation=Orientation.DOWN;
+            break;
+            case DOWN:orientation=Orientation.DOWNLEFT;
+            break;
+            case DOWNLEFT:orientation=Orientation.LEFT;
+            break;
+            case LEFT:orientation=Orientation.TOPLEFT;
+            break;
+            case TOPLEFT:orientation=Orientation.TOP;
+            break;
+        }
+        
+    }
+    
     public void bouger(){
         joueur1.setPositionY(joueur1.getPositionY()+acceleration);
         if (joueur1.getPositionY()>400)joueur1.setPositionY(-50);
