@@ -33,6 +33,44 @@ public class Joueur {
     public int getPositionY() {
         return positionY;
     }
+
+    public void setNbVies(int nbVies) {
+        this.nbVies = nbVies;
+    }
+
+    public int getNbVies() {
+        return nbVies;
+    }
+
+    public int getNbTirs() {
+        return nbTirs;
+    }
+
+    public int getNbTirsTouche() {
+        return nbTirsTouche;
+    }
+
+    public int getPointage() {
+        return pointage;
+    }
+
+    public void setNbTirs(int nbTirs) {
+        this.nbTirs = nbTirs;
+    }
+
+    public void setNbTirsTouche(int nbTirsTouche) {
+        this.nbTirsTouche = nbTirsTouche;
+    }
+
+    public void setPointage(int pointage) {
+        this.pointage = pointage;
+    }
+    
+    
+    
+    
+    
+    
     
     
    
