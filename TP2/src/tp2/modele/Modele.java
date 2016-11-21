@@ -18,6 +18,7 @@ public class Modele extends Observable {
     private double accelerationx=0;
     private double accelerationy=0;
     private double angle=90;
+    private double power=0.2;
     
     public enum Orientation{
        TOP,
@@ -44,25 +45,25 @@ public class Modele extends Observable {
     
     public void avancer(){
         switch(orientation){
-            case TOP:accelerationy--;
+            case TOP:accelerationy=accelerationy-power;
             break;
-            case TOPRIGHT:accelerationy--;
-            accelerationx++;
+            case TOPRIGHT:accelerationy=accelerationy-power;
+            accelerationx=accelerationx+power;
             break;
-            case RIGHT:accelerationx++;
+            case RIGHT:accelerationx=accelerationx+power;
             break;
-            case DOWNRIGHT:accelerationy++;
-            accelerationx++;
+            case DOWNRIGHT:accelerationy=accelerationy+power;
+            accelerationx=accelerationx+power;
             break;
-            case DOWN:accelerationy++;
+            case DOWN:accelerationy=accelerationy+power;
             break;
-            case DOWNLEFT:accelerationy++;
-            accelerationx--;
+            case DOWNLEFT:accelerationy=accelerationy+power;
+            accelerationx=accelerationx-power;
             break;
-            case LEFT:accelerationx--;
+            case LEFT:accelerationx=accelerationx-power;
             break;
-            case TOPLEFT:accelerationx--;
-            accelerationy--;
+            case TOPLEFT:accelerationx=accelerationx-power;
+            accelerationy=accelerationy-power;
             break;
         }
         
@@ -70,25 +71,25 @@ public class Modele extends Observable {
     
     public void reculer(){
          switch(orientation){
-            case TOP:accelerationy++;
+            case TOP:accelerationy=accelerationy+power;
             break;
-            case TOPRIGHT:accelerationy++;
-            accelerationx--;
+            case TOPRIGHT:accelerationy=accelerationy+power;
+            accelerationx=accelerationx-power;
             break;
-            case RIGHT:accelerationx--;
+            case RIGHT:accelerationx=accelerationx-power;
             break;
-            case DOWNRIGHT:accelerationy--;
-            accelerationx--;
+            case DOWNRIGHT:accelerationy=accelerationy-power;
+            accelerationx=accelerationx-power;
             break;
-            case DOWN:accelerationy--;
+            case DOWN:accelerationy=accelerationy-power;
             break;
-            case DOWNLEFT:accelerationy--;
-            accelerationx++;
+            case DOWNLEFT:accelerationy=accelerationy-power;
+            accelerationx=accelerationx+power;
             break;
-            case LEFT:accelerationx++;
+            case LEFT:accelerationx=accelerationx+power;
             break;
-            case TOPLEFT:accelerationx++;
-            accelerationy++;
+            case TOPLEFT:accelerationx=accelerationx+power;
+            accelerationy=accelerationy+power;
             break;
         }
     }
