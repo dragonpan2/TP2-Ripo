@@ -64,10 +64,10 @@ public void run() {
         modele.reculer();
     }
     if(gw.getTouchesPesees().contains('a')){
-        
+        modele.tournerGauche();
     }
     if(gw.getTouchesPesees().contains('d')){
-           
+        modele.tournerDroite();
     }
     modele.bouger();
         try {
@@ -129,6 +129,28 @@ public void run() {
     
     public void modifierJoueur(){
         joueur1.setLocation(modele.getJoueur1().getPositionX(),modele.getJoueur1().getPositionY());
+        verifierOrientation();
+    }
+
+    private void verifierOrientation() {
+       switch(modele.getOrientation()){
+            case TOP:joueur1.setIcon(vaisseau1Top);
+            break;
+            case TOPRIGHT:joueur1.setIcon(vaisseau1TopRight);
+            break;
+            case RIGHT:joueur1.setIcon(vaisseau1Right);
+            break;
+            case DOWNRIGHT:joueur1.setIcon(vaisseau1DownRight);
+            break;
+            case DOWN:joueur1.setIcon(vaisseau1Down);
+            break;
+            case DOWNLEFT:joueur1.setIcon(vaisseau1DownLeft);
+            break;
+            case LEFT:joueur1.setIcon(vaisseau1Left);
+            break;
+            case TOPLEFT:joueur1.setIcon(vaisseau1TopLeft);
+            break;
+        }
     }
 
    

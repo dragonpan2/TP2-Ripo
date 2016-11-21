@@ -45,16 +45,18 @@ public class GameWindow extends JFrame implements Observer{
      private static ArrayList<Character> touchesPesees = new ArrayList();
     
     private static KeyListener kl = new KeyListener() {
-
         @Override
         public void keyTyped(KeyEvent e) {
+            
         }
 
         @Override
         public void keyPressed(KeyEvent e) {  
-            if (!(touchesPesees.contains(e.getKeyChar()))) {
+            
+            if (!(touchesPesees.contains(e.getKeyChar()))) {   
                 touchesPesees.add(e.getKeyChar());
             }
+            
         }
 
         @Override
@@ -62,6 +64,7 @@ public class GameWindow extends JFrame implements Observer{
             if (touchesPesees.contains(e.getKeyChar())) {
                 touchesPesees.remove((Character) e.getKeyChar());
             }
+            
         }
     };
     
@@ -110,7 +113,7 @@ public class GameWindow extends JFrame implements Observer{
         int pointP1 = modele.getJoueur1().getPointage();
         int pointP2 = modele.getJoueur2().getPointage();
         //set graphical change here
-        //
+        
         monde.modifierJoueur();
     }
     
