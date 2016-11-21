@@ -20,8 +20,18 @@ public class Projectile implements Bougeable{
     int tempsRestant=100;
     
     public Projectile(int vitesseX,int vitesseY,int positionX,int positionY) {
-        this.vitesseX=vitesseX;
-        this.vitesseY=vitesseY;
+        if(vitesseX<0){
+        this.vitesseX=vitesseX-3;  
+        }
+        else{
+        this.vitesseX=vitesseX+3;  
+        }
+        if (vitesseY<0){
+        this.vitesseY=vitesseY-3;
+        }
+        else{
+        this.vitesseY=vitesseY+3;
+        }
         this.positionX=positionX;
         this.positionY=positionY;
     }
