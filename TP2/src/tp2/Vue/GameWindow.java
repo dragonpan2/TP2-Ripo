@@ -32,7 +32,7 @@ import tp2.modele.Modele;
  */
 public class GameWindow extends JFrame implements Observer{
 
-    private Controleur controleur;
+    private static Controleur controleur;
     private static Modele modele;
     
     Monde monde;
