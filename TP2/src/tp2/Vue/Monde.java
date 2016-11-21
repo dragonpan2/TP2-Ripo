@@ -47,6 +47,7 @@ public class Monde extends JPanel{
      
      
      private JLabel joueur1=new JLabel();
+     private JLabel joueur2=new JLabel();
     
     static JLabel lblJ1 = new JLabel("--Joueur 1--");
     static JLabel lblJ2 = new JLabel("--Joueur 2--");
@@ -63,16 +64,28 @@ public class Monde extends JPanel{
 public void run() {
     while(true){
     if(gw.getTouchesPesees().contains('w')){
-        modele.avancer();
+        modele.avancer1();
     }
     if(gw.getTouchesPesees().contains('s')){
-        modele.reculer();
+        modele.reculer1();
     }
     if(gw.getTouchesPesees().contains('a')){
-        modele.tournerGauche();
+        modele.tournerGauche1();
     }
     if(gw.getTouchesPesees().contains('d')){
-        modele.tournerDroite();
+        modele.tournerDroite1();
+    }
+    if(gw.getTouchesPesees().contains('8')){
+        modele.avancer2();
+    }
+    if(gw.getTouchesPesees().contains('5')){
+        modele.reculer2();
+    }
+    if(gw.getTouchesPesees().contains('4')){
+        modele.tournerGauche2();
+    }
+    if(gw.getTouchesPesees().contains('6')){
+        modele.tournerDroite2();
     }
     modele.bouger();
         try {
@@ -155,11 +168,16 @@ public void run() {
        joueur1.setIcon(vaisseau1Top);
        this.add(joueur1);
        
+       joueur2.setBounds(100,100,100,100);
+       joueur2.setIcon(vaisseau2Top);
+       this.add(joueur2);
+       
        
     }
     
     public void modifierJoueur(){
         joueur1.setLocation(modele.getJoueur1().getPositionX(),modele.getJoueur1().getPositionY());
+        joueur2.setLocation(modele.getJoueur2().getPositionX(),modele.getJoueur2().getPositionY());
         verifierOrientation();
     }
     
@@ -173,7 +191,7 @@ public void run() {
     }
 
     private void verifierOrientation() {
-       switch(modele.getOrientation()){
+       switch(modele.getJoueur1().getOrientation()){
             case TOP:joueur1.setIcon(vaisseau1Top);
             break;
             case TOPRIGHT:joueur1.setIcon(vaisseau1TopRight);
@@ -189,6 +207,25 @@ public void run() {
             case LEFT:joueur1.setIcon(vaisseau1Left);
             break;
             case TOPLEFT:joueur1.setIcon(vaisseau1TopLeft);
+            break;
+        }
+       
+       switch(modele.getJoueur2().getOrientation()){
+            case TOP:joueur2.setIcon(vaisseau2Top);
+            break;
+            case TOPRIGHT:joueur2.setIcon(vaisseau2TopRight);
+            break;
+            case RIGHT:joueur2.setIcon(vaisseau2Right);
+            break;
+            case DOWNRIGHT:joueur2.setIcon(vaisseau2DownRight);
+            break;
+            case DOWN:joueur2.setIcon(vaisseau2Down);
+            break;
+            case DOWNLEFT:joueur2.setIcon(vaisseau2DownLeft);
+            break;
+            case LEFT:joueur2.setIcon(vaisseau2Left);
+            break;
+            case TOPLEFT:joueur2.setIcon(vaisseau2TopLeft);
             break;
         }
     }

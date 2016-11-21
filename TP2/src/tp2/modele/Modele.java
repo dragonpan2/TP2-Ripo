@@ -15,25 +15,12 @@ public class Modele extends Observable {
     
     private Joueur joueur1;
     private Joueur joueur2;
-    private double accelerationx=0;
-    private double accelerationy=0;
-    private double angle=90;
-    private double power=0.2;
     
-    public enum Orientation{
-       TOP,
-       TOPRIGHT,
-       RIGHT,
-       DOWNRIGHT,
-       DOWN,
-       DOWNLEFT,
-       LEFT,
-       TOPLEFT,
-    }
-    private Orientation orientation=Orientation.TOP;
+    
+    
     public Modele() {
-        joueur1=new Joueur(3);
-        joueur2=new Joueur(3);
+        joueur1=new Joueur(100,100,3);
+        joueur2=new Joueur(300,100,3);
         
         
         
@@ -43,83 +30,45 @@ public class Modele extends Observable {
         
     }
     
-    public void avancer(){
-        switch(orientation){
-            case TOP:accelerationy=accelerationy-power;
-            break;
-            case TOPRIGHT:accelerationy=accelerationy-power;
-            accelerationx=accelerationx+power;
-            break;
-            case RIGHT:accelerationx=accelerationx+power;
-            break;
-            case DOWNRIGHT:accelerationy=accelerationy+power;
-            accelerationx=accelerationx+power;
-            break;
-            case DOWN:accelerationy=accelerationy+power;
-            break;
-            case DOWNLEFT:accelerationy=accelerationy+power;
-            accelerationx=accelerationx-power;
-            break;
-            case LEFT:accelerationx=accelerationx-power;
-            break;
-            case TOPLEFT:accelerationx=accelerationx-power;
-            accelerationy=accelerationy-power;
-            break;
-        }
-        
+    public void avancer1(){
+        joueur1.avancer();
     }
     
-    public void reculer(){
-         switch(orientation){
-            case TOP:accelerationy=accelerationy+power;
-            break;
-            case TOPRIGHT:accelerationy=accelerationy+power;
-            accelerationx=accelerationx-power;
-            break;
-            case RIGHT:accelerationx=accelerationx-power;
-            break;
-            case DOWNRIGHT:accelerationy=accelerationy-power;
-            accelerationx=accelerationx-power;
-            break;
-            case DOWN:accelerationy=accelerationy-power;
-            break;
-            case DOWNLEFT:accelerationy=accelerationy-power;
-            accelerationx=accelerationx+power;
-            break;
-            case LEFT:accelerationx=accelerationx+power;
-            break;
-            case TOPLEFT:accelerationx=accelerationx+power;
-            accelerationy=accelerationy+power;
-            break;
-        }
+    public void reculer1(){
+        joueur1.reculer();
     }
     
-    public void tournerDroite(){
-        angle=angle-8;
-        if(angle<0)angle=360;
+    public void tournerDroite1(){
+        joueur1.tournerDroite();
     }
     
-    public void tournerGauche(){
-        angle=angle+8;
-        if(angle>360)angle=0;
+    public void tournerGauche1(){
+        joueur1.tournerGauche();
     }
+    
+    public void avancer2(){
+        joueur2.avancer();
+    }
+    
+    public void reculer2(){
+        joueur2.reculer();
+    }
+    
+    public void tournerDroite2(){
+        joueur2.tournerDroite();
+    }
+    
+    public void tournerGauche2(){
+        joueur2.tournerGauche();
+    }
+    
+   
+    
+    
     
     public void bouger(){
-        System.out.println(angle);
-        joueur1.setPositionY((int)(joueur1.getPositionY()+accelerationy));
-        joueur1.setPositionX((int)(joueur1.getPositionX()+accelerationx));
-        if (angle<=22.5||angle>=337.5)orientation=Orientation.RIGHT;        
-        if (angle<=67.5&&angle>=22.5)orientation=Orientation.TOPRIGHT;
-        if (angle<=112.5&&angle>=67.5)orientation=Orientation.TOP;
-        if (angle<=157.5&&angle>=112.5)orientation=Orientation.TOPLEFT;
-        if (angle<=202.5&&angle>=157.5)orientation=Orientation.LEFT;
-        if (angle<=247.5&&angle>=202.5)orientation=Orientation.DOWNLEFT;
-        if (angle<=292.5&&angle>=247.5)orientation=Orientation.DOWN;
-        if (angle<=337.5&&angle>=292.5)orientation=Orientation.DOWNRIGHT;
-        if (joueur1.getPositionY()>400)joueur1.setPositionY(-50);
-        if (joueur1.getPositionY()<-50)joueur1.setPositionY(400);
-        if (joueur1.getPositionX()>800)joueur1.setPositionX(-50);
-        if (joueur1.getPositionX()<-50)joueur1.setPositionX(800);
+        joueur1.bouger();
+        joueur2.bouger();
         maj();
     }
 
@@ -178,13 +127,7 @@ public class Modele extends Observable {
         notifyObservers();
     } //trigger le methode update dans vue //ce methode est appeler apres chaque fois qu'il y a un change dans modele
 
-    public Orientation getOrientation() {
-        return orientation;
-    }
-
-    public void setOrientation(Orientation orientation) {
-        this.orientation = orientation;
-    }
+    
     
     
     
