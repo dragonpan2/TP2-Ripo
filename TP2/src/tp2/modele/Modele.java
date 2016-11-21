@@ -23,11 +23,6 @@ public class Modele extends Observable {
         joueur2=new Joueur(300,100,3);
         
         
-        
-        
-        
-        
-        
     }
     
     public void avancer1(){
