@@ -5,6 +5,7 @@
  */
 package tp2.modele;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -16,7 +17,7 @@ public class Modele extends Observable {
     private Joueur joueur1;
     private Joueur joueur2;
     
-    
+    private ArrayList <Projectile> laser=new ArrayList();
     
     public Modele() {
         joueur1=new Joueur(100,100,3);
@@ -41,6 +42,10 @@ public class Modele extends Observable {
         joueur1.tournerGauche();
     }
     
+    public void tirer1(){
+        joueur1.tirer();
+    }
+    
     public void avancer2(){
         joueur2.avancer();
     }
@@ -57,7 +62,9 @@ public class Modele extends Observable {
         joueur2.tournerGauche();
     }
     
-   
+   public void tirer2(){
+        joueur2.tirer();
+    }
     
     
     
@@ -113,6 +120,10 @@ public class Modele extends Observable {
             joueur2.setNbTirsTouche(joueur2.getNbTirsTouche()+tirTouchChange);
         }
         maj();
+    }
+
+    public ArrayList<Projectile> getLaser() {
+        return laser;
     }
     
     

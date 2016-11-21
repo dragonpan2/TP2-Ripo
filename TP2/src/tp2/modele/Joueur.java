@@ -6,7 +6,7 @@
 package tp2.modele;
 
 
-public class Joueur {
+public class Joueur implements Bougeable{
    private int nbVies=3;
    private int pointage;
    private int nbTirs;
@@ -100,6 +100,10 @@ public class Joueur {
         if(angle>360)angle=0;
     }
     
+    public void tirer(){
+        
+    }
+    @Override
     public void bouger(){
         positionY=(int)(positionY+accelerationy);
         positionX=((int)(positionX+accelerationx));

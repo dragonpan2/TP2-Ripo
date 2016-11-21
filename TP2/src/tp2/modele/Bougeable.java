@@ -10,5 +10,5 @@ package tp2.modele;
  * @author 1535905
  */
 public interface Bougeable {
-    
+    public void bouger();
 }

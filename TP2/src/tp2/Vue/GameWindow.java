@@ -122,6 +122,7 @@ public class GameWindow extends JFrame implements Observer{
         Monde.lblPointJ2.setText("Pointage: "+Integer.toString(pointP2));
 
         monde.modifierJoueur();
+        monde.modifierLaser();
     }
     
     

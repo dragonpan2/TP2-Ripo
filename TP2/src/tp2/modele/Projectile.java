@@ -9,19 +9,38 @@ package tp2.modele;
  *
  * @author 1566086
  */
-public class Projectile {
+public class Projectile implements Bougeable{
 
     int joueur;
-    int vitessX; //
-    int vitessY; //
-    int dommage;
+    int vitesseX; 
+    int vitesseY; 
+    int dommage=1;
     int positionX;
     int positionY;
-    int tempsRestant;
+    int tempsRestant=100;
     
-    public Projectile() {
+    public Projectile(int vitesseX,int vitesseY,int positionX,int positionY) {
+        this.vitesseX=vitesseX;
+        this.vitesseY=vitesseY;
+        this.positionX=positionX;
+        this.positionY=positionY;
     }
+
+    public int getPositionX() {
+        return positionX;
+    }
+
+    public int getPositionY() {
+        return positionY;
+    }
+
     
+    @Override
+    public void bouger() {
+        positionX=positionX+vitesseX;
+        positionY=positionY+vitesseY;
+        tempsRestant--;
+    }
     
     
 }

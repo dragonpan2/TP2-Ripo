@@ -9,11 +9,16 @@ package tp2.modele;
  *
  * @author 1566086
  */
-public class Asteroid {
+public class Asteroid implements Bougeable{
 
     int pointVie;
     
     public Asteroid() {
+    }
+
+    @Override
+    public void bouger() {
+        
     }
     
     

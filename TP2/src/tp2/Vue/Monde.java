@@ -56,7 +56,7 @@ public class Monde extends JPanel{
     static JLabel lblPointJ1 = new JLabel("Pointage: 0");
     static JLabel lblPointJ2 = new JLabel("Pointage: 0");
    
-
+    private ArrayList<JLabel> laser=new ArrayList();
     
     
     Thread thread=new Thread(){
@@ -86,6 +86,12 @@ public void run() {
     }
     if(gw.getTouchesPesees().contains('6')){
         modele.tournerDroite2();
+    }
+    if(gw.getTouchesPesees().contains(' ')){
+        modele.tirer1();
+    }
+    if(gw.getTouchesPesees().contains('0')){
+        modele.tirer2();
     }
     modele.bouger();
         try {
@@ -179,6 +185,12 @@ public void run() {
         joueur1.setLocation(modele.getJoueur1().getPositionX(),modele.getJoueur1().getPositionY());
         joueur2.setLocation(modele.getJoueur2().getPositionX(),modele.getJoueur2().getPositionY());
         verifierOrientation();
+    }
+    
+    public void modifierLaser(){
+        for (int i = 0; i < laser.size(); i++) {
+            laser.get(i).setLocation(modele.getLaser().getPositionX(),modele.getLaser().getPositionY());
+        }
     }
     
     public void tirer(int joueur) {
