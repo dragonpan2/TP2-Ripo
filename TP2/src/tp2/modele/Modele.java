@@ -18,7 +18,7 @@ public class Modele extends Observable {
     private double accelerationx=0;
     private double accelerationy=0;
     private double angle=90;
-    private double power=3;
+    private double power=0.2;
     
     public enum Orientation{
        TOP,
