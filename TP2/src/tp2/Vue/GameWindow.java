@@ -9,12 +9,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -38,17 +42,40 @@ public class GameWindow extends JFrame implements Observer{
     private JMenuItem mnItemNouvellePartie=new JMenuItem("NouvellePartie");
     private JMenuItem mnItemQuitter=new JMenuItem("Quitter");
     
+     private static ArrayList<Character> touchesPesees = new ArrayList();
+    
+    private static KeyListener kl = new KeyListener() {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {  
+            if (!(touchesPesees.contains(e.getKeyChar()))) {
+                touchesPesees.add(e.getKeyChar());
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) { 
+            if (touchesPesees.contains(e.getKeyChar())) {
+                touchesPesees.remove((Character) e.getKeyChar());
+            }
+        }
+    };
+    
     public GameWindow(Controleur controleur, Observable observable) throws IOException  {
         
         this.modele = (Modele) observable;
         modele.addObserver(this);
-        this.monde = new Monde(modele);
+        this.monde = new Monde(modele,this);
         this.controleur = controleur;
        
         
         
         
-        
+        this.addKeyListener(kl);
        
         menus();
         
@@ -68,12 +95,23 @@ public class GameWindow extends JFrame implements Observer{
         menu.add(mnAide);
         setJMenuBar(menu);
     }
+
+    public static ArrayList<Character> getTouchesPesees() {
+        return touchesPesees;
+    }
     
     
 
     @Override
     public void update(Observable o, Object o1) {
-    monde.modifierJoueur();
+        Modele modele = (Modele) o;
+        int nbVieP1 = modele.getJoueur1().getNbVies();
+        int nbVieP2 = modele.getJoueur2().getNbVies();
+        int pointP1 = modele.getJoueur1().getPointage();
+        int pointP2 = modele.getJoueur2().getPointage();
+        //set graphical change here
+        //
+        monde.modifierJoueur();
     }
     
     
