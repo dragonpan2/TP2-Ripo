@@ -189,7 +189,7 @@ public void run() {
     
     public void modifierLaser(){
         for (int i = 0; i < laser.size(); i++) {
-            laser.get(i).setLocation(modele.getLaser().getPositionX(),modele.getLaser().getPositionY());
+            laser.get(i).setLocation(modele.getLaser().get(i).getPositionX(),modele.getLaser().get(i).getPositionY());
         }
     }
     
