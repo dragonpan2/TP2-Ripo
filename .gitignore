@@ -9,3 +9,5 @@ TP2/build.xml
 /TP2/build/
 /TP2/dist/
 TP2/nbproject/private/private.xml
+TP2/Thumbs.db
+*.properties
