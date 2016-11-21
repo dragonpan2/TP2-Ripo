@@ -43,7 +43,7 @@ public class Modele extends Observable {
     }
     
     public void tirer1(){
-        joueur1.tirer();
+        laser.add(joueur1.tirer());
     }
     
     public void avancer2(){
@@ -63,7 +63,7 @@ public class Modele extends Observable {
     }
     
    public void tirer2(){
-        joueur2.tirer();
+        laser.add(joueur2.tirer());
     }
     
     
@@ -71,6 +71,9 @@ public class Modele extends Observable {
     public void bouger(){
         joueur1.bouger();
         joueur2.bouger();
+        for (int i = 0; i < laser.size(); i++) {
+            laser.get(i).bouger();
+        }
         maj();
     }
 

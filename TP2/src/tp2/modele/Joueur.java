@@ -100,8 +100,10 @@ public class Joueur implements Bougeable{
         if(angle>360)angle=0;
     }
     
-    public void tirer(){
+    public Projectile tirer(){
+        Projectile laser=new Projectile((int)accelerationx, (int)accelerationy, positionX, positionY);
         
+        return laser;
     }
     @Override
     public void bouger(){
