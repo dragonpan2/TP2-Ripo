@@ -11,6 +11,14 @@ TP2/build.xml
 *.xml
 =======
 /TP2/dist/
+<<<<<<< HEAD
+TP2/nbproject/private/private.xml
+TP2/Thumbs.db
+*.properties
+=======
 >>>>>>> origin/master
 TP2/nbproject/private/private.xml
+TP2/Thumbs.db
+>>>>>>> origin/master
+*.mf
 TP2/Thumbs.db

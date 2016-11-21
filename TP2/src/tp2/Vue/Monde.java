@@ -48,7 +48,12 @@ public class Monde extends JPanel{
      
      private JLabel joueur1=new JLabel();
     
-     
+    static JLabel lblJ1 = new JLabel("--Joueur 1--");
+    static JLabel lblJ2 = new JLabel("--Joueur 2--");
+    static JLabel lblVieJ1 = new JLabel("Point de Vie: 0");
+    static JLabel lblVieJ2 = new JLabel("Point de Vie: 0");
+    static JLabel lblPointJ1 = new JLabel("Pointage: 0");
+    static JLabel lblPointJ2 = new JLabel("Pointage: 0");
    
 
     
@@ -106,6 +111,32 @@ public void run() {
         setPreferredSize(new Dimension(800,400));
         setBackground(Color.black);
         setLayout(null);
+        
+        this.add(lblJ1);
+        lblJ1.setLocation(0, 0);
+        lblJ1.setSize(100, 30);
+        lblJ1.setForeground(Color.white);
+        this.add(lblJ2);
+        lblJ2.setLocation(700, 0);
+        lblJ2.setSize(100, 30);
+        lblJ2.setForeground(Color.white);
+        this.add(lblVieJ1);
+        lblVieJ1.setLocation(0, 30);
+        lblVieJ1.setSize(100, 30);
+        lblVieJ1.setForeground(Color.white);
+        this.add(lblVieJ2);
+        lblVieJ2.setLocation(700, 30);
+        lblVieJ2.setSize(100, 30);
+        lblVieJ2.setForeground(Color.white);
+        this.add(lblPointJ1);
+        lblPointJ1.setLocation(0, 60);
+        lblPointJ1.setSize(100, 30);
+        lblPointJ1.setForeground(Color.white);
+        this.add(lblPointJ2);
+        lblPointJ2.setForeground(Color.white);
+        lblPointJ2.setSize(100, 30);
+        lblPointJ2.setLocation(700, 60);
+        
         
         initialiserVaisseau();
         
