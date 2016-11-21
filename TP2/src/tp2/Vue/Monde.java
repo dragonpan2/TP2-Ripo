@@ -162,6 +162,15 @@ public void run() {
         joueur1.setLocation(modele.getJoueur1().getPositionX(),modele.getJoueur1().getPositionY());
         verifierOrientation();
     }
+    
+    public void tirer(int joueur) {
+        if (joueur ==1) {
+            
+        }
+        if (joueur == 2) {
+            
+        }
+    }
 
     private void verifierOrientation() {
        switch(modele.getOrientation()){

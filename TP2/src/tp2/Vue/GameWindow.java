@@ -114,15 +114,13 @@ public class GameWindow extends JFrame implements Observer{
         int pointP1 = modele.getJoueur1().getPointage();
         int pointP2 = modele.getJoueur2().getPointage();
         //set graphical change here
-<<<<<<< HEAD
-        
-=======
+
         //
         Monde.lblVieJ1.setText("Point de Vie: "+Integer.toString(nbVieP1));
         Monde.lblVieJ2.setText("Point de Vie: "+Integer.toString(nbVieP2));
         Monde.lblPointJ1.setText("Pointage: "+Integer.toString(pointP1));
         Monde.lblPointJ2.setText("Pointage: "+Integer.toString(pointP2));
->>>>>>> origin/master
+
         monde.modifierJoueur();
     }
     
