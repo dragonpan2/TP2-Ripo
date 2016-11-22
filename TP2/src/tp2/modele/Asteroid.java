@@ -12,6 +12,8 @@ package tp2.modele;
 public class Asteroid implements Bougeable{
 
     int pointVie;
+    int positionX;
+    int positionY;
     
     public Asteroid() {
     }
@@ -19,6 +21,15 @@ public class Asteroid implements Bougeable{
     @Override
     public void bouger() {
         
+    }
+    
+    public void asteroidHit() {
+        
+        
+        if (pointVie < 1) {
+            //
+            
+        }
     }
     
     
