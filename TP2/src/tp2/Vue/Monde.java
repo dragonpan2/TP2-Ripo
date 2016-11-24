@@ -70,13 +70,6 @@ public void run() {
         modele.reculer1();
     }
     if(gw.getTouchesPesees().contains('a')){
-<<<<<<< HEAD
-        
-         modele.tournerGauche();
-    }
-    if(gw.getTouchesPesees().contains('d')){
-           modele.tournerDroite();
-=======
         modele.tournerGauche1();
     }
     if(gw.getTouchesPesees().contains('d')){
@@ -99,7 +92,6 @@ public void run() {
     }
     if(gw.getTouchesPesees().contains('0')){
         modele.tirer2();
->>>>>>> origin/master
     }
     modele.bouger();
         try {
@@ -191,9 +183,6 @@ public void run() {
     
     public void modifierJoueur(){
         joueur1.setLocation(modele.getJoueur1().getPositionX(),modele.getJoueur1().getPositionY());
-<<<<<<< HEAD
-        switch(modele.getOrientation()){
-=======
         joueur2.setLocation(modele.getJoueur2().getPositionX(),modele.getJoueur2().getPositionY());
         verifierOrientation();
     }
@@ -219,7 +208,6 @@ public void run() {
 
     private void verifierOrientation() {
        switch(modele.getJoueur1().getOrientation()){
->>>>>>> origin/master
             case TOP:joueur1.setIcon(vaisseau1Top);
             break;
             case TOPRIGHT:joueur1.setIcon(vaisseau1TopRight);
@@ -237,8 +225,6 @@ public void run() {
             case TOPLEFT:joueur1.setIcon(vaisseau1TopLeft);
             break;
         }
-<<<<<<< HEAD
-=======
        
        switch(modele.getJoueur2().getOrientation()){
             case TOP:joueur2.setIcon(vaisseau2Top);
@@ -258,7 +244,6 @@ public void run() {
             case TOPLEFT:joueur2.setIcon(vaisseau2TopLeft);
             break;
         }
->>>>>>> origin/master
     }
 
    
@@ -268,4 +253,5 @@ public void run() {
     
     
         
+
 

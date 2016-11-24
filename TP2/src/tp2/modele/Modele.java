@@ -26,52 +26,18 @@ public class Modele extends Observable {
         
     }
     
-<<<<<<< HEAD
-    public void avancer(){
-        acceleration++;
-        
-    }
-    
-    public void reculer(){
-        if(acceleration>0)
-        acceleration--;
-        
-=======
     public void avancer1(){
         joueur1.avancer();
     }
     
     public void reculer1(){
         joueur1.reculer();
->>>>>>> origin/master
     }
     
     public void tournerDroite1(){
         joueur1.tournerDroite();
     }
     
-<<<<<<< HEAD
-    public void tournerGauche(){
-        switch(orientation){
-            case TOP:orientation=Orientation.TOPLEFT;
-            break;
-            case TOPLEFT:orientation=Orientation.LEFT;
-            break;
-            case LEFT:orientation=Orientation.DOWNLEFT;
-            break;
-            case DOWNLEFT:orientation=Orientation.DOWN;
-            break;
-            case DOWN:orientation=Orientation.DOWNRIGHT;
-            break;
-            case DOWNRIGHT:orientation=Orientation.RIGHT;
-            break;
-            case RIGHT:orientation=Orientation.TOPRIGHT;
-            break;
-            case TOPRIGHT:orientation=Orientation.TOP;
-            break;
-        }
-        
-=======
     public void tournerGauche1(){
         joueur1.tournerGauche();
     }
@@ -90,7 +56,6 @@ public class Modele extends Observable {
     
     public void tournerDroite2(){
         joueur2.tournerDroite();
->>>>>>> origin/master
     }
     
     public void tournerGauche2(){
@@ -104,44 +69,11 @@ public class Modele extends Observable {
     
     
     public void bouger(){
-<<<<<<< HEAD
-        System.out.println(orientation);
-        System.out.println(acceleration);
-        switch(orientation){
-            case TOP:
-                joueur1.setPositionY(joueur1.getPositionY()-acceleration);
-            break;
-            case TOPLEFT:joueur1.setPositionY(joueur1.getPositionY()-acceleration);
-            joueur1.setPositionX(joueur1.getPositionX()-acceleration);
-            break;
-            case LEFT:joueur1.setPositionX(joueur1.getPositionX()-acceleration);
-            break;
-            case DOWNLEFT:joueur1.setPositionY(joueur1.getPositionY()+acceleration);
-            joueur1.setPositionX(joueur1.getPositionX()-acceleration);
-            break;
-            case DOWN:joueur1.setPositionY(joueur1.getPositionY()+acceleration);
-            break;
-            case DOWNRIGHT:joueur1.setPositionY(joueur1.getPositionY()+acceleration);
-            joueur1.setPositionX(joueur1.getPositionX()+acceleration);
-            break;
-            case RIGHT:
-                joueur1.setPositionX(joueur1.getPositionX()+acceleration);
-            break;
-            case TOPRIGHT:joueur1.setPositionY(joueur1.getPositionY()-acceleration);
-            joueur1.setPositionX(joueur1.getPositionX()+acceleration);
-            break;
-        }
-        if (joueur1.getPositionY()>400)joueur1.setPositionY(-50);
-        if (joueur1.getPositionY()<-50)joueur1.setPositionY(400);
-        if (joueur1.getPositionX()>800)joueur1.setPositionX(-50);
-        if (joueur1.getPositionX()<-50)joueur1.setPositionX(800);
-=======
         joueur1.bouger();
         joueur2.bouger();
         for (int i = 0; i < laser.size(); i++) {
             laser.get(i).bouger();
         }
->>>>>>> origin/master
         maj();
     }
 
@@ -196,10 +128,6 @@ public class Modele extends Observable {
     public ArrayList<Projectile> getLaser() {
         return laser;
     }
-
-    public Orientation getOrientation() {
-        return orientation;
-    }
     
     
 
@@ -214,3 +142,4 @@ public class Modele extends Observable {
     
     
 }
+
