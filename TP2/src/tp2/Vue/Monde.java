@@ -182,6 +182,21 @@ public void run() {
           g.fillRect(0, 0, 40, 40);
        }
    }
+   
+   public class DrawBg extends JComponent {
+
+        public DrawBg() {
+        }
+       
+       @Override
+       public void paintComponent(Graphics g) {
+           super.paintComponent(g);
+           g.setColor(Color.white);
+           g.fillOval(0, 0, 1, 1);
+       }
+   }
+   
+   
     
     
     
