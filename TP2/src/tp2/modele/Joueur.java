@@ -7,6 +7,7 @@ package tp2.modele;
 
 
 public class Joueur implements Bougeable{
+   private int numeroJoueur;
    private int nbVies=3;
    private int pointage;
    private int nbTirs;
@@ -30,10 +31,11 @@ public class Joueur implements Bougeable{
        TOPLEFT,
     }
     private Orientation orientation=Orientation.TOP;
-    public Joueur(int posx,int posy,int nbVies) {
+    public Joueur(int numeroJoueur,int posx,int posy,int nbVies) {
         this.positionX=posx;
         this.positionY=posy;
         this.nbVies=nbVies;
+        this.numeroJoueur=numeroJoueur;
     }
     
     
@@ -101,7 +103,8 @@ public class Joueur implements Bougeable{
     }
     
     public Projectile tirer(){
-        Projectile laser=new Projectile((int)accelerationx, (int)accelerationy, positionX, positionY);
+        System.out.println(accelerationx);
+        Projectile laser=new Projectile(numeroJoueur,(int)accelerationx, (int)accelerationy, positionX, positionY);
         
         return laser;
     }

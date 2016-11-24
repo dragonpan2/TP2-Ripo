@@ -19,21 +19,22 @@ public class Projectile implements Bougeable{
     int positionY;
     int tempsRestant=100;
     
-    public Projectile(int vitesseX,int vitesseY,int positionX,int positionY) {
+    public Projectile(int joueur,int vitesseX,int vitesseY,int positionX,int positionY) {
         if(vitesseX<0){
-        this.vitesseX=vitesseX-3;  
+        this.vitesseX=vitesseX-1;  
         }
         else{
-        this.vitesseX=vitesseX+3;  
+        this.vitesseX=vitesseX+1;  
         }
         if (vitesseY<0){
-        this.vitesseY=vitesseY-3;
+        this.vitesseY=vitesseY-1;
         }
         else{
-        this.vitesseY=vitesseY+3;
+        this.vitesseY=vitesseY+1;
         }
         this.positionX=positionX;
         this.positionY=positionY;
+        this.joueur=joueur;
     }
 
     public int getPositionX() {
@@ -44,9 +45,16 @@ public class Projectile implements Bougeable{
         return positionY;
     }
 
+    public int getJoueur() {
+        return joueur;
+    }
+    
+    
+
     
     @Override
     public void bouger() {
+        System.out.println(vitesseX);
         positionX=positionX+vitesseX;
         positionY=positionY+vitesseY;
         tempsRestant--;

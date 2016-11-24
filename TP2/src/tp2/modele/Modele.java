@@ -21,8 +21,8 @@ public class Modele extends Observable {
     private ArrayList <Asteroid>   listAsteroid = new ArrayList();
     
     public Modele() {
-        joueur1=new Joueur(100,100,3);
-        joueur2=new Joueur(300,100,3);
+        joueur1=new Joueur(1,100,100,3);
+        joueur2=new Joueur(2,300,100,3);
         
         
     }
@@ -75,7 +75,37 @@ public class Modele extends Observable {
         for (int i = 0; i < listLaser.size(); i++) {
             listLaser.get(i).bouger();
         }
+        verifierCollisions();
         maj();
+    }
+    
+    public void verifierCollisions(){
+        
+        
+        //verifier les lasers
+        for (int i = 0; i < laser.size(); i++) {
+            if ((joueur1.getPositionX()<=laser.get(i).getPositionX()+5
+                ||joueur1.getPositionX()>=laser.get(i).getPositionX()-5) 
+                &&(joueur1.getPositionX()<=laser.get(i).getPositionX()+5  
+                ||joueur1.getPositionX()>=laser.get(i).getPositionX()-5)
+                &&laser.get(i).getJoueur()!=1){
+                joueur1.setNbVies(joueur1.getNbVies()-1);
+                laser.remove(i);
+            }
+            
+            if ((joueur2.getPositionX()<=laser.get(i).getPositionX()+5
+                ||joueur2.getPositionX()>=laser.get(i).getPositionX()-5)
+                &&(joueur2.getPositionX()<=laser.get(i).getPositionX()+5  
+                ||joueur2.getPositionX()>=laser.get(i).getPositionX()-5) 
+                &&laser.get(i).getJoueur()!=2){
+                joueur2.setNbVies(joueur2.getNbVies()-1);
+                laser.remove(i);
+            }
+            
+            
+            
+            
+        }
     }
 
     public Joueur getJoueur1() {
@@ -126,9 +156,15 @@ public class Modele extends Observable {
         maj();
     }
 
+    
+    
+    
+    
+    
     public ArrayList<Projectile> getLaser() {
         return listLaser;
     }
+    
     
     
 

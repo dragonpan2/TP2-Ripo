@@ -104,11 +104,7 @@ public class GameWindow extends JFrame implements Observer{
         return touchesPesees;
     }
     
-    
-
-    @Override
-    public  void update(Observable o, Object o1) {
-        Modele modele = (Modele) o;
+    public void infos(){
         int nbVieP1 = modele.getJoueur1().getNbVies();
         int nbVieP2 = modele.getJoueur2().getNbVies();
         int pointP1 = modele.getJoueur1().getPointage();
@@ -120,6 +116,13 @@ public class GameWindow extends JFrame implements Observer{
         Monde.lblVieJ2.setText("Point de Vie: "+Integer.toString(nbVieP2));
         Monde.lblPointJ1.setText("Pointage: "+Integer.toString(pointP1));
         Monde.lblPointJ2.setText("Pointage: "+Integer.toString(pointP2));
+    }
+    
+
+    @Override
+    public  void update(Observable o, Object o1) {
+        Modele modele = (Modele) o;
+        infos();
 
         monde.modifierJoueur();
         monde.modifierLaser();
