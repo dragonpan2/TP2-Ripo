@@ -21,16 +21,16 @@ public class Projectile implements Bougeable{
     
     public Projectile(int joueur,int vitesseX,int vitesseY,int positionX,int positionY) {
         if(vitesseX<0){
-        this.vitesseX=vitesseX-1;  
+ 
         }
         else{
-        this.vitesseX=vitesseX+1;  
+ 
         }
         if (vitesseY<0){
-        this.vitesseY=vitesseY-1;
+
         }
         else{
-        this.vitesseY=vitesseY+1;
+
         }
         this.positionX=positionX;
         this.positionY=positionY;
@@ -54,7 +54,6 @@ public class Projectile implements Bougeable{
     
     @Override
     public void bouger() {
-        System.out.println(vitesseX);
         positionX=positionX+vitesseX;
         positionY=positionY+vitesseY;
         tempsRestant--;

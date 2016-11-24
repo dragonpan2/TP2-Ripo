@@ -84,8 +84,7 @@ public class Modele extends Observable {
         
         //verifier les lasers
         for (int i = 0; i < laser.size(); i++) {
-            System.out.println(laser.get(0).getPositionX());
-            System.out.println(joueur2.getPositionX());
+            
                         
             if ((joueur1.getPositionX()<=laser.get(i).getPositionX()+5
                 &&joueur1.getPositionX()>=laser.get(i).getPositionX()-5) 
