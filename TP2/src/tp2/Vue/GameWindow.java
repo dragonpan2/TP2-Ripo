@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -31,8 +32,8 @@ import tp2.modele.Modele;
  */
 public class GameWindow extends JFrame implements Observer{
 
-    private Controleur controleur;
-    private Modele modele;
+    private static Controleur controleur;
+    private static Modele modele;
     
     Monde monde;
     
@@ -41,20 +42,22 @@ public class GameWindow extends JFrame implements Observer{
     private JMenu mnAide=new JMenu("Aide");
     private JMenuItem mnItemNouvellePartie=new JMenuItem("NouvellePartie");
     private JMenuItem mnItemQuitter=new JMenuItem("Quitter");
-    
+      
      private static ArrayList<Character> touchesPesees = new ArrayList();
     
     private static KeyListener kl = new KeyListener() {
-
         @Override
         public void keyTyped(KeyEvent e) {
+            
         }
 
         @Override
         public void keyPressed(KeyEvent e) {  
-            if (!(touchesPesees.contains(e.getKeyChar()))) {
+            
+            if (!(touchesPesees.contains(e.getKeyChar()))) {   
                 touchesPesees.add(e.getKeyChar());
             }
+            
         }
 
         @Override
@@ -62,6 +65,7 @@ public class GameWindow extends JFrame implements Observer{
             if (touchesPesees.contains(e.getKeyChar())) {
                 touchesPesees.remove((Character) e.getKeyChar());
             }
+            
         }
     };
     
@@ -71,7 +75,7 @@ public class GameWindow extends JFrame implements Observer{
         modele.addObserver(this);
         this.monde = new Monde(modele,this);
         this.controleur = controleur;
-       
+        
         
         
         
@@ -103,8 +107,22 @@ public class GameWindow extends JFrame implements Observer{
     
 
     @Override
-    public void update(Observable o, Object o1) {
-    monde.modifierJoueur();
+    public  void update(Observable o, Object o1) {
+        Modele modele = (Modele) o;
+        int nbVieP1 = modele.getJoueur1().getNbVies();
+        int nbVieP2 = modele.getJoueur2().getNbVies();
+        int pointP1 = modele.getJoueur1().getPointage();
+        int pointP2 = modele.getJoueur2().getPointage();
+        //set graphical change here
+
+        //
+        Monde.lblVieJ1.setText("Point de Vie: "+Integer.toString(nbVieP1));
+        Monde.lblVieJ2.setText("Point de Vie: "+Integer.toString(nbVieP2));
+        Monde.lblPointJ1.setText("Pointage: "+Integer.toString(pointP1));
+        Monde.lblPointJ2.setText("Pointage: "+Integer.toString(pointP2));
+
+        monde.modifierJoueur();
+        monde.modifierLaser();
     }
     
     

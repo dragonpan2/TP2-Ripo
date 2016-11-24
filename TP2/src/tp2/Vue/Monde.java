@@ -47,10 +47,16 @@ public class Monde extends JPanel{
      
      
      private JLabel joueur1=new JLabel();
+     private JLabel joueur2=new JLabel();
     
-     
+    static JLabel lblJ1 = new JLabel("--Joueur 1--");
+    static JLabel lblJ2 = new JLabel("--Joueur 2--");
+    static JLabel lblVieJ1 = new JLabel("Point de Vie: 0");
+    static JLabel lblVieJ2 = new JLabel("Point de Vie: 0");
+    static JLabel lblPointJ1 = new JLabel("Pointage: 0");
+    static JLabel lblPointJ2 = new JLabel("Pointage: 0");
    
-
+    private ArrayList<JLabel> laser=new ArrayList();
     
     
     Thread thread=new Thread(){
@@ -58,17 +64,42 @@ public class Monde extends JPanel{
 public void run() {
     while(true){
     if(gw.getTouchesPesees().contains('w')){
-        modele.avancer();
+        modele.avancer1();
     }
     if(gw.getTouchesPesees().contains('s')){
-        modele.reculer();
+        modele.reculer1();
     }
     if(gw.getTouchesPesees().contains('a')){
+<<<<<<< HEAD
         
          modele.tournerGauche();
     }
     if(gw.getTouchesPesees().contains('d')){
            modele.tournerDroite();
+=======
+        modele.tournerGauche1();
+    }
+    if(gw.getTouchesPesees().contains('d')){
+        modele.tournerDroite1();
+    }
+    if(gw.getTouchesPesees().contains('8')){
+        modele.avancer2();
+    }
+    if(gw.getTouchesPesees().contains('5')){
+        modele.reculer2();
+    }
+    if(gw.getTouchesPesees().contains('4')){
+        modele.tournerGauche2();
+    }
+    if(gw.getTouchesPesees().contains('6')){
+        modele.tournerDroite2();
+    }
+    if(gw.getTouchesPesees().contains(' ')){
+        modele.tirer1();
+    }
+    if(gw.getTouchesPesees().contains('0')){
+        modele.tirer2();
+>>>>>>> origin/master
     }
     modele.bouger();
         try {
@@ -108,6 +139,32 @@ public void run() {
         setBackground(Color.black);
         setLayout(null);
         
+        this.add(lblJ1);
+        lblJ1.setLocation(0, 0);
+        lblJ1.setSize(100, 30);
+        lblJ1.setForeground(Color.white);
+        this.add(lblJ2);
+        lblJ2.setLocation(700, 0);
+        lblJ2.setSize(100, 30);
+        lblJ2.setForeground(Color.white);
+        this.add(lblVieJ1);
+        lblVieJ1.setLocation(0, 30);
+        lblVieJ1.setSize(100, 30);
+        lblVieJ1.setForeground(Color.white);
+        this.add(lblVieJ2);
+        lblVieJ2.setLocation(700, 30);
+        lblVieJ2.setSize(100, 30);
+        lblVieJ2.setForeground(Color.white);
+        this.add(lblPointJ1);
+        lblPointJ1.setLocation(0, 60);
+        lblPointJ1.setSize(100, 30);
+        lblPointJ1.setForeground(Color.white);
+        this.add(lblPointJ2);
+        lblPointJ2.setForeground(Color.white);
+        lblPointJ2.setSize(100, 30);
+        lblPointJ2.setLocation(700, 60);
+        
+        
         initialiserVaisseau();
         
         thread.start();
@@ -125,12 +182,44 @@ public void run() {
        joueur1.setIcon(vaisseau1Top);
        this.add(joueur1);
        
+       joueur2.setBounds(100,100,100,100);
+       joueur2.setIcon(vaisseau2Top);
+       this.add(joueur2);
+       
        
     }
     
     public void modifierJoueur(){
         joueur1.setLocation(modele.getJoueur1().getPositionX(),modele.getJoueur1().getPositionY());
+<<<<<<< HEAD
         switch(modele.getOrientation()){
+=======
+        joueur2.setLocation(modele.getJoueur2().getPositionX(),modele.getJoueur2().getPositionY());
+        verifierOrientation();
+    }
+    
+    public void modifierLaser(){
+        laser.clear();
+        for (int i = 0; i < modele.getLaser().size(); i++) {
+            
+        }
+        for (int i = 0; i < laser.size(); i++) {
+            laser.get(i).setLocation(modele.getLaser().get(i).getPositionX(),modele.getLaser().get(i).getPositionY());
+        }
+    }
+    
+    public void tirer(int joueur) {
+        if (joueur ==1) {
+            
+        }
+        if (joueur == 2) {
+            
+        }
+    }
+
+    private void verifierOrientation() {
+       switch(modele.getJoueur1().getOrientation()){
+>>>>>>> origin/master
             case TOP:joueur1.setIcon(vaisseau1Top);
             break;
             case TOPRIGHT:joueur1.setIcon(vaisseau1TopRight);
@@ -148,6 +237,28 @@ public void run() {
             case TOPLEFT:joueur1.setIcon(vaisseau1TopLeft);
             break;
         }
+<<<<<<< HEAD
+=======
+       
+       switch(modele.getJoueur2().getOrientation()){
+            case TOP:joueur2.setIcon(vaisseau2Top);
+            break;
+            case TOPRIGHT:joueur2.setIcon(vaisseau2TopRight);
+            break;
+            case RIGHT:joueur2.setIcon(vaisseau2Right);
+            break;
+            case DOWNRIGHT:joueur2.setIcon(vaisseau2DownRight);
+            break;
+            case DOWN:joueur2.setIcon(vaisseau2Down);
+            break;
+            case DOWNLEFT:joueur2.setIcon(vaisseau2DownLeft);
+            break;
+            case LEFT:joueur2.setIcon(vaisseau2Left);
+            break;
+            case TOPLEFT:joueur2.setIcon(vaisseau2TopLeft);
+            break;
+        }
+>>>>>>> origin/master
     }
 
    
