@@ -208,7 +208,6 @@ public void run() {
         for (int i = 0; i < modele.getLaser().size(); i++) {
             this.add(new DrawLaser());
             DrawLaser drawLaser = new DrawLaser(); //
-            drawLaser.setLocation(200, 200);       //
             
         }
         for (int i = 0; i < laser.size(); i++) {

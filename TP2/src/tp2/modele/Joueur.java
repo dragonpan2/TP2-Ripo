@@ -103,7 +103,6 @@ public class Joueur implements Bougeable{
     }
     
     public Projectile tirer(){
-        System.out.println(accelerationx);
         Projectile laser=new Projectile(numeroJoueur,(int)accelerationx, (int)accelerationy, positionX, positionY);
         
         return laser;
