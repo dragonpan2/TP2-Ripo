@@ -10,6 +10,7 @@ package tp2.Vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -165,7 +167,21 @@ public void run() {
         
     }
 
-   
+   public class DrawLaser extends JComponent {
+
+        public DrawLaser() {
+            this.setSize(40, 40);
+        }
+       
+       
+       
+       @Override
+       public void paintComponent(Graphics g) {
+          super.paintComponent(g);
+          g.setColor(Color.red);
+          g.fillRect(0, 0, 40, 40);
+       }
+   }
     
     
     
@@ -190,11 +206,16 @@ public void run() {
     public void modifierLaser(){
         laser.clear();
         for (int i = 0; i < modele.getLaser().size(); i++) {
+            this.add(new DrawLaser());
+            DrawLaser drawLaser = new DrawLaser(); //
+            drawLaser.setLocation(200, 200);       //
             
         }
         for (int i = 0; i < laser.size(); i++) {
             laser.get(i).setLocation(modele.getLaser().get(i).getPositionX(),modele.getLaser().get(i).getPositionY());
         }
+        invalidate();
+        repaint();
     }
     
     public void tirer(int joueur) {

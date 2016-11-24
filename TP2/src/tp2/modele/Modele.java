@@ -17,7 +17,8 @@ public class Modele extends Observable {
     private Joueur joueur1;
     private Joueur joueur2;
     
-    private ArrayList <Projectile> laser=new ArrayList();
+    private ArrayList <Projectile> listLaser=new ArrayList();
+    private ArrayList <Asteroid>   listAsteroid = new ArrayList();
     
     public Modele() {
         joueur1=new Joueur(100,100,3);
@@ -43,7 +44,7 @@ public class Modele extends Observable {
     }
     
     public void tirer1(){
-        laser.add(joueur1.tirer());
+        listLaser.add(joueur1.tirer());
     }
     
     public void avancer2(){
@@ -63,7 +64,7 @@ public class Modele extends Observable {
     }
     
    public void tirer2(){
-        laser.add(joueur2.tirer());
+        listLaser.add(joueur2.tirer());
     }
     
     
@@ -71,8 +72,8 @@ public class Modele extends Observable {
     public void bouger(){
         joueur1.bouger();
         joueur2.bouger();
-        for (int i = 0; i < laser.size(); i++) {
-            laser.get(i).bouger();
+        for (int i = 0; i < listLaser.size(); i++) {
+            listLaser.get(i).bouger();
         }
         maj();
     }
@@ -126,7 +127,7 @@ public class Modele extends Observable {
     }
 
     public ArrayList<Projectile> getLaser() {
-        return laser;
+        return listLaser;
     }
     
     

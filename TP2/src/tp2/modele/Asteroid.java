@@ -25,9 +25,12 @@ public class Asteroid implements Bougeable{
     
     public void asteroidHit() {
         
+        pointVie--;
         
         if (pointVie < 1) {
-            //
+            
+            
+            
             
         }
     }
