@@ -67,28 +67,57 @@ public class Joueur implements Bougeable{
     }
     
      public void reculer(){
+         System.out.println(accelerationx);
+         
          switch(orientation){
-            case TOP:accelerationy=accelerationy+power;
+            case TOP:if((accelerationy)<=0){
+                accelerationy=accelerationy+power;
+            }
             break;
-            case TOPRIGHT:accelerationy=accelerationy+power;
-            accelerationx=accelerationx-power;
+            case TOPRIGHT:if((accelerationy)<=0){
+                accelerationy=accelerationy+power;
+            }
+            if((int)(accelerationx)>=0){
+                accelerationx=accelerationx-power;
+            }
             break;
-            case RIGHT:accelerationx=accelerationx-power;
+            case RIGHT:if((accelerationx)>=0){
+                accelerationx=accelerationx-power;
+            }
             break;
-            case DOWNRIGHT:accelerationy=accelerationy-power;
-            accelerationx=accelerationx-power;
+            case DOWNRIGHT:if((accelerationy)>=0){
+                accelerationy=accelerationy-power;
+            }
+            if((int)(accelerationx)>=0){
+                accelerationx=accelerationx-power;
+            }
             break;
-            case DOWN:accelerationy=accelerationy-power;
+            case DOWN:if((accelerationy)>=0){
+                accelerationy=accelerationy-power;
+            }
             break;
-            case DOWNLEFT:accelerationy=accelerationy-power;
-            accelerationx=accelerationx+power;
+            case DOWNLEFT:if((accelerationy)>=0){
+                accelerationy=accelerationy-power;
+            }
+            if((accelerationx)<=0){
+                accelerationx=accelerationx+power;
+            }
             break;
-            case LEFT:accelerationx=accelerationx+power;
+            case LEFT:if((accelerationx)<=0){
+                accelerationx=accelerationx+power;
+            }
             break;
-            case TOPLEFT:accelerationx=accelerationx+power;
-            accelerationy=accelerationy+power;
+            case TOPLEFT:if((accelerationx)<=0){
+                accelerationx=accelerationx+power;
+            }
+            if((accelerationy)<=0){
+                accelerationy=accelerationy+power;
+            }
             break;
-        }
+        
+     }
+            
+         
          
     }
      
