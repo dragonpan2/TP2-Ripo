@@ -7,23 +7,17 @@ package tp2.Vue;
 
 
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import tp2.modele.Modele;
 
@@ -47,6 +41,10 @@ public class Monde extends JPanel{
      private ImageIcon vaisseau2TopLeft;
      private ImageIcon vaisseau2TopRight;
      
+     private ImageIcon planet1;
+     private ImageIcon planet2;
+     private ImageIcon planet3;
+     private ImageIcon planet4;
      
      private JLabel joueur1=new JLabel();
      private JLabel joueur2=new JLabel();
@@ -59,12 +57,22 @@ public class Monde extends JPanel{
     static JLabel lblPointJ2 = new JLabel("Pointage: 0");
    
     private ArrayList<DrawLaser> laser=new ArrayList();
-    
+    private ArrayList<DrawBg>  listEtoile = new ArrayList();
+    private ArrayList<DrawBg2>  listEtoile2 = new ArrayList();
     
     Thread thread=new Thread(){
             @Override
 public void run() {
     while(true){
+        
+        for (DrawBg elem:listEtoile) {
+            elem.moveStar();
+        }
+        for (DrawBg2 elem:listEtoile2) {
+            elem.moveStar();
+        }
+        
+        
     if(gw.getTouchesPesees().contains('w')){
         modele.avancer1();
     }
@@ -112,7 +120,13 @@ public void run() {
         this.modele=modele;
         this.gw=gw;
         
-       
+        
+        
+        planet1 = new ImageIcon(ImageIO.read(new File("planete1.gif")));
+        planet2 = new ImageIcon(ImageIO.read(new File("planete2.gif")));
+        planet3 = new ImageIcon(ImageIO.read(new File("planete3.gif")));
+        planet4 = new ImageIcon(ImageIO.read(new File("planete4.gif")));
+        
         vaisseau1Down = new ImageIcon(ImageIO.read(new File("vaisseau1down.gif")));
         vaisseau1DownLeft = new ImageIcon(ImageIO.read(new File("vaisseau1downleft.gif")));
         vaisseau1DownRight = new ImageIcon(ImageIO.read(new File("vaisseau1downright.gif")));
@@ -159,9 +173,49 @@ public void run() {
         lblPointJ2.setLocation(700, 60);
         
         
+        
+        
+        
         initialiserVaisseau();
         
+        
+        JLabel lblPlanet1 = new JLabel(planet1);
+        JLabel lblPlanet2 = new JLabel(planet2);
+        JLabel lblPlanet3 = new JLabel(planet3);
+        JLabel lblPlanet4 = new JLabel(planet4);
+        this.add(lblPlanet1);
+        this.add(lblPlanet2);
+        this.add(lblPlanet3);
+        this.add(lblPlanet4);
+        lblPlanet1.setBounds(0, 0, 180, 180);
+        lblPlanet2.setBounds(0,0,252, 254);
+        lblPlanet3.setBounds(0,0,248, 254);
+        lblPlanet4.setBounds(0,0,349, 226);
+        lblPlanet1.setLocation(310, 320);
+        lblPlanet2.setLocation(500, 440);
+        lblPlanet3.setLocation(340, 20);
+        lblPlanet4.setLocation(0, 220);
+        
+        
+        
+        Random random = new Random();
+        for (int i = 0; i < 100; i++) {
+        DrawBg drawBg = new DrawBg();
+        this.add(drawBg);
+        listEtoile.add(drawBg);
+        drawBg.setLocation(1*random.nextInt(800), 1*random.nextInt(500));
+        }
+        
+        for (int i = 0; i < 50; i++) {
+        DrawBg2 drawBg2 = new DrawBg2();
+        this.add(drawBg2);
+        listEtoile2.add(drawBg2);
+        drawBg2.setLocation(1*random.nextInt(800), 1*random.nextInt(500));
+        }
+        
+        
         thread.start();
+        
         
         setVisible(true);
         
@@ -186,13 +240,52 @@ public void run() {
    public class DrawBg extends JComponent {
 
         public DrawBg() {
+            this.setSize(9, 9);
         }
        
        @Override
        public void paintComponent(Graphics g) {
            super.paintComponent(g);
+           
            g.setColor(Color.white);
-           g.fillOval(0, 0, 1, 1);
+//           g.fillOval(3, 3, 5, 5);
+           g.fillOval(2, 2, 3, 3);
+           
+       }
+       
+       public void moveStar() {
+           if (this.getX() > 800) {
+               this.setLocation(0, this.getY());
+           }
+           else {
+               this.setLocation(this.getX()+3, this.getY());
+           }
+       }
+   }
+   
+   public class DrawBg2 extends JComponent {
+
+        public DrawBg2() {
+            this.setSize(14, 14);
+        }
+       
+       @Override
+       public void paintComponent(Graphics g) {
+           super.paintComponent(g);
+           
+           g.setColor(Color.white);
+           g.fillOval(5, 5, 5, 5);
+//           g.fillOval(2, 2, 3, 3);
+           
+       }
+       
+       public void moveStar() {
+           if (this.getX() > 800) {
+               this.setLocation(0, this.getY());
+           }
+           else {
+               this.setLocation(this.getX()+1, this.getY());
+           }
        }
    }
    
