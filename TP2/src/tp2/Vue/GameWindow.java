@@ -123,7 +123,6 @@ public class GameWindow extends JFrame implements Observer{
     public  void update(Observable o, Object o1) {
         Modele modele = (Modele) o;
         infos();
-
         monde.modifierJoueur();
         monde.modifierLaser();
     }

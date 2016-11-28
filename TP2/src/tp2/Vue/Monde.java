@@ -316,12 +316,11 @@ public void run() {
         for (int i = 0; i < modele.getLaser().size(); i++) {
             
             this.add(new DrawLaser());
-            DrawLaser drawLaser = new DrawLaser(); //
+            DrawLaser drawLaser = new DrawLaser(); 
             laser.add(drawLaser);
             this.add(drawLaser);
         }
         for (int i = 0; i < laser.size(); i++) {
-            System.out.println(modele.getLaser().get(i).getPositionX());
             laser.get(i).setLocation(modele.getLaser().get(i).getPositionX(),modele.getLaser().get(i).getPositionY());
         }
         revalidate();

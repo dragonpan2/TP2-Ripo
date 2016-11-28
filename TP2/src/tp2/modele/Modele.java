@@ -24,7 +24,6 @@ public class Modele extends Observable {
         joueur1=new Joueur(1,100,100,3);
         joueur2=new Joueur(2,300,100,3);
         
-        
     }
     
     public void avancer1(){
@@ -75,6 +74,7 @@ public class Modele extends Observable {
         for (int i = 0; i < laser.size(); i++) {
             laser.get(i).bouger();
         }
+        verifierLaserDisparu();
         verifierCollisions();
         maj();
     }
@@ -158,6 +158,13 @@ public class Modele extends Observable {
         maj();
     }
 
+    public void verifierLaserDisparu(){
+        for (int i = 0; i < laser.size(); i++) {
+            if(laser.get(i).getTempsRestant()==0){
+                laser.remove(i);
+            }
+        }
+    }
     
     
     

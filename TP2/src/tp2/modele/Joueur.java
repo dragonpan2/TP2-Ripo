@@ -67,7 +67,6 @@ public class Joueur implements Bougeable{
     }
     
      public void reculer(){
-         System.out.println(accelerationx);
          
          switch(orientation){
             case TOP:if((accelerationy)<=0){
@@ -132,8 +131,7 @@ public class Joueur implements Bougeable{
     }
     
     public Projectile tirer(){
-        Projectile laser=new Projectile(numeroJoueur,(int)accelerationx, (int)accelerationy, positionX, positionY);
-        
+        Projectile laser=new Projectile(numeroJoueur,orientation, positionX, positionY);
         return laser;
     }
     @Override
