@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import tp2.modele.Asteroid;
 import tp2.modele.Modele;
 
 public class Monde extends JPanel{
@@ -59,12 +60,17 @@ public class Monde extends JPanel{
     private ArrayList<Lasers> laser=new ArrayList();
     private ArrayList<DrawBg>  listEtoile = new ArrayList();
     private ArrayList<DrawBg2>  listEtoile2 = new ArrayList();
+    private ArrayList<Asteroid> listAsteroid = new ArrayList();
     
     Thread thread=new Thread(){
             @Override
 public void run() {
     while(true){
         
+        for (Asteroid elem:listAsteroid) {
+            elem.bouger();
+      //      elem.setLocation(elem.getX(), elem.getY()+2);
+        }
         for (DrawBg elem:listEtoile) {
             elem.moveStar();
         }
@@ -122,6 +128,15 @@ public void run() {
         this.gw=gw;
         
         
+        for (int i = 0; i < 10; i++) {
+            
+        
+        Asteroid ast = new Asteroid();
+        this.add(ast);
+        listAsteroid.add(ast);
+        ast.setLocation(300, 0);
+        ast.setLocation(ast.getPositionIniX(), ast.getPositionIniY());
+        }
         
         planet1 = new ImageIcon(ImageIO.read(new File("planete1.gif")));
         planet2 = new ImageIcon(ImageIO.read(new File("planete2.gif")));

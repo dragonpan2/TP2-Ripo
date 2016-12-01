@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
@@ -23,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import tp2.Controleur.Controleur;
 import tp2.modele.Modele;
 
@@ -30,81 +33,111 @@ import tp2.modele.Modele;
  *
  * @author 1566086
  */
-public class GameWindow extends JFrame implements Observer{
+public class GameWindow extends JFrame implements Observer {
 
     private static Controleur controleur;
     private static Modele modele;
-    
+
     Monde monde;
-    
-    private JMenuBar menu=new JMenuBar();
-    private JMenu mnFichier=new JMenu("Fichier");
-    private JMenu mnAide=new JMenu("Aide");
-    private JMenuItem mnItemNouvellePartie=new JMenuItem("NouvellePartie");
-    private JMenuItem mnItemQuitter=new JMenuItem("Quitter");
-      
-     private static ArrayList<Character> touchesPesees = new ArrayList();
-    
+
+    private JMenuBar menu = new JMenuBar();
+    private JMenu mnFichier = new JMenu("Fichier");
+    private JMenu mnAide = new JMenu("Aide");
+    private JMenuItem mnItemNouvellePartie = new JMenuItem("NouvellePartie");
+    private JMenuItem mnItemQuitter = new JMenuItem("Quitter");
+    private JMenuItem mnItemAide = new JMenuItem("Aide");
+
+    private static ArrayList<Character> touchesPesees = new ArrayList();
+
     private static KeyListener kl = new KeyListener() {
         @Override
         public void keyTyped(KeyEvent e) {
-            
+
         }
 
         @Override
-        public void keyPressed(KeyEvent e) {  
-            
-            if (!(touchesPesees.contains(e.getKeyChar()))) {   
+        public void keyPressed(KeyEvent e) {
+
+            if (!(touchesPesees.contains(e.getKeyChar()))) {
                 touchesPesees.add(e.getKeyChar());
             }
-            
+
         }
 
         @Override
-        public void keyReleased(KeyEvent e) { 
+        public void keyReleased(KeyEvent e) {
             if (touchesPesees.contains(e.getKeyChar())) {
                 touchesPesees.remove((Character) e.getKeyChar());
             }
-            
+
         }
     };
-    
-    public GameWindow(Controleur controleur, Observable observable) throws IOException  {
-        
+
+    public GameWindow(Controleur controleur, Observable observable) throws IOException {
+
         this.modele = (Modele) observable;
         modele.addObserver(this);
-        this.monde = new Monde(modele,this);
+        this.monde = new Monde(modele, this);
         this.controleur = controleur;
-        
-        
-        
-        
+
         this.addKeyListener(kl);
-       
         menus();
-        
-        
+
         this.add(monde);
         this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
-        
+
     }
-    
-    public void menus(){
-         mnFichier.add(mnItemNouvellePartie);
+
+    public void menus() {
+        mnFichier.add(mnItemNouvellePartie);
         mnFichier.addSeparator();
         mnFichier.add(mnItemQuitter);
         menu.add(mnFichier);
         menu.add(mnAide);
+        mnAide.add(mnItemAide);
+        eventQuitter();
+        eventAide();
+        eventNouvellePartie();
         setJMenuBar(menu);
+    }
+
+    public void eventQuitter() {
+        mnItemQuitter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+                
+            }
+
+        });
+    }
+    
+    public void eventAide() {
+        mnItemAide.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               //change
+               JOptionPane.showMessageDialog(null, "Emilan, Bei Ning, date final:", "Aide", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+    }
+    
+    public void eventNouvellePartie() {
+        mnItemNouvellePartie.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modele.resetPartie();
+            }
+        } );
     }
 
     public static ArrayList<Character> getTouchesPesees() {
         return touchesPesees;
     }
-    
-    public void infos(){
+
+    public void infos() {
         int nbVieP1 = modele.getJoueur1().getNbVies();
         int nbVieP2 = modele.getJoueur2().getNbVies();
         int pointP1 = modele.getJoueur1().getPointage();
@@ -112,21 +145,18 @@ public class GameWindow extends JFrame implements Observer{
         //set graphical change here
 
         //
-        Monde.lblVieJ1.setText("Point de Vie: "+Integer.toString(nbVieP1));
-        Monde.lblVieJ2.setText("Point de Vie: "+Integer.toString(nbVieP2));
-        Monde.lblPointJ1.setText("Pointage: "+Integer.toString(pointP1));
-        Monde.lblPointJ2.setText("Pointage: "+Integer.toString(pointP2));
+        Monde.lblVieJ1.setText("Point de Vie: " + Integer.toString(nbVieP1));
+        Monde.lblVieJ2.setText("Point de Vie: " + Integer.toString(nbVieP2));
+        Monde.lblPointJ1.setText("Pointage: " + Integer.toString(pointP1));
+        Monde.lblPointJ2.setText("Pointage: " + Integer.toString(pointP2));
     }
-    
 
     @Override
-    public  void update(Observable o, Object o1) {
+    public void update(Observable o, Object o1) {
         Modele modele = (Modele) o;
         infos();
         monde.modifierJoueur();
         monde.modifierLaser();
     }
-    
-    
-    
+
 }

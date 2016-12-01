@@ -26,6 +26,19 @@ public class Modele extends Observable {
         
     }
     
+    public void resetPartie() {
+        System.out.println("Resetting Round...");
+        joueur1.setNbVies(3);
+        joueur2.setNbVies(3);
+//        joueur1.setPointage(0);
+//        joueur2.setPointage(0);
+        joueur1.setPositionX(50);
+        joueur1.setPositionY(150);
+        joueur2.setPositionX(700);
+        joueur2.setPositionY(150);
+        
+    }
+    
     public void avancer1(){
         joueur1.avancer();
     }
