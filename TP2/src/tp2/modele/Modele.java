@@ -43,7 +43,9 @@ public class Modele extends Observable {
     }
     
     public void tirer1(){
+        if(joueur1.getTempsTir()<0){
         laser.add(joueur1.tirer());
+        }
     }
     
     public void avancer2(){
@@ -63,7 +65,9 @@ public class Modele extends Observable {
     }
     
    public void tirer2(){
+        if(joueur2.getTempsTir()<0){
         laser.add(joueur2.tirer());
+        }
     }
     
     

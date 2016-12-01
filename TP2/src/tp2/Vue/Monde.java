@@ -56,7 +56,7 @@ public class Monde extends JPanel{
     static JLabel lblPointJ1 = new JLabel("Pointage: 0");
     static JLabel lblPointJ2 = new JLabel("Pointage: 0");
    
-    private ArrayList<DrawLaser> laser=new ArrayList();
+    private ArrayList<Lasers> laser=new ArrayList();
     private ArrayList<DrawBg>  listEtoile = new ArrayList();
     private ArrayList<DrawBg2>  listEtoile2 = new ArrayList();
     
@@ -103,6 +103,7 @@ public void run() {
     if(gw.getTouchesPesees().contains('0')){
         modele.tirer2();
     }
+    
     modele.bouger();
         try {
             Thread.sleep(25);
@@ -221,21 +222,7 @@ public void run() {
         
     }
 
-   public class DrawLaser extends JComponent {
-
-        public DrawLaser() {
-            this.setSize(40, 40);
-        }
-       
-       
-       
-       @Override
-       public void paintComponent(Graphics g) {
-          super.paintComponent(g);
-          g.setColor(Color.red);
-          g.fillRect(0, 0, 40, 40);
-       }
-   }
+   
    
    public class DrawBg extends JComponent {
 
@@ -294,12 +281,14 @@ public void run() {
     
     
     public void initialiserVaisseau(){
-       joueur1.setBounds(100,100,100,100);
+       
        joueur1.setIcon(vaisseau1Top);
+       joueur1.setSize(modele.getJoueur1().getLargeur(),modele.getJoueur1().getLongueur());
        this.add(joueur1);
        
-       joueur2.setBounds(100,100,100,100);
+       
        joueur2.setIcon(vaisseau2Top);
+       joueur2.setSize(modele.getJoueur2().getLargeur(),modele.getJoueur2().getLongueur());
        this.add(joueur2);
        
        
@@ -312,11 +301,14 @@ public void run() {
     }
     
     public void modifierLaser(){
+        for (int i = 0; i < laser.size(); i++) {
+            this.remove(laser.get(i));
+        }
+        
         laser.clear();
         for (int i = 0; i < modele.getLaser().size(); i++) {
             
-            this.add(new DrawLaser());
-            DrawLaser drawLaser = new DrawLaser(); 
+            Lasers drawLaser = new Lasers(modele.getLaser().get(i).getOrientation()); 
             laser.add(drawLaser);
             this.add(drawLaser);
         }
@@ -327,14 +319,6 @@ public void run() {
         repaint();
     }
     
-    public void tirer(int joueur) {
-        if (joueur ==1) {
-            
-        }
-        if (joueur == 2) {
-            
-        }
-    }
 
     private void verifierOrientation() {
        switch(modele.getJoueur1().getOrientation()){
@@ -375,6 +359,10 @@ public void run() {
             break;
         }
     }
+
+    
+    
+    
 
    
 }

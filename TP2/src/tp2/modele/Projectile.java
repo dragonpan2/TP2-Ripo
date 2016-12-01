@@ -12,14 +12,14 @@ import tp2.modele.Joueur.Orientation;
  * @author 1566086
  */
 public class Projectile implements Bougeable{
-    Orientation orientation;
-    int joueur;
-    int vitesseX=5; 
-    int vitesseY=5; 
-    int dommage=1;
-    int positionX;
-    int positionY;
-    int tempsRestant=100;
+    private Orientation orientation;
+    private int joueur;
+    private int vitesseX=5; 
+    private int vitesseY=5; 
+    private int dommage=1;
+    private int positionX;
+    private int positionY;
+    private int tempsRestant=30;
     
     public Projectile(int joueur,Orientation orientation,int positionX,int positionY) {
         this.orientation=orientation;
@@ -46,6 +46,12 @@ public class Projectile implements Bougeable{
         return tempsRestant;
         
     }
+
+    public Orientation getOrientation() {
+        return orientation;
+    }
+    
+    
     
     public void vitesse(){
         switch(orientation){
@@ -66,7 +72,7 @@ public class Projectile implements Bougeable{
             vitesseY=0;
             break;
             case TOPLEFT:vitesseY=-vitesseY;
-            vitesseX=0;
+            vitesseX=-vitesseX;
             break;
         }
     }
@@ -77,6 +83,10 @@ public class Projectile implements Bougeable{
     public void bouger() {
         positionX=positionX+vitesseX;
         positionY=positionY+vitesseY;
+        if (positionY>400)positionY=-50;
+        if (positionY<-50)positionY=400;
+        if (positionX>800)positionX=-50;
+        if (positionX<-50)positionX=800;
         tempsRestant--;
     }
     

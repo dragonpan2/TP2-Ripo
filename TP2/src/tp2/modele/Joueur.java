@@ -14,11 +14,15 @@ public class Joueur implements Bougeable{
    private int nbTirsTouche;
    private int positionX=0;
    private int positionY=0;
+   private int largeur=100;
+   private int longueur=100;
    
    private double accelerationx=0;
     private double accelerationy=0;
     private double angle=90;
     private double power=0.2;
+    private int tempsTir=0;
+    private final int TEMPS_TIR=100;
     
     public enum Orientation{
        TOP,
@@ -131,7 +135,9 @@ public class Joueur implements Bougeable{
     }
     
     public Projectile tirer(){
-        Projectile laser=new Projectile(numeroJoueur,orientation, positionX, positionY);
+        tempsTir=TEMPS_TIR;
+        Projectile laser;
+        laser=new Projectile(numeroJoueur,orientation, positionX+32, positionY+32);
         return laser;
     }
     @Override
@@ -150,6 +156,7 @@ public class Joueur implements Bougeable{
         if (positionY<-50)positionY=400;
         if (positionX>800)positionX=-50;
         if (positionX<-50)positionX=800;
+        tempsTir--;
     }
     
     
@@ -213,6 +220,19 @@ public class Joueur implements Bougeable{
     public void setOrientation(Orientation orientation) {
         this.orientation = orientation;
     }
+
+    public double getTempsTir() {
+        return tempsTir;
+    }
+
+    public int getLargeur() {
+        return largeur;
+    }
+
+    public int getLongueur() {
+        return longueur;
+    }
+    
     
     
     
