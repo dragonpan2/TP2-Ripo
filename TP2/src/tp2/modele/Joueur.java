@@ -14,6 +14,7 @@ public class Joueur implements Bougeable{
    private int nbTirsTouche;
    private int positionX=0;
    private int positionY=0;
+   private int matchMagne = 0;
    
    private double accelerationx=0;
     private double accelerationy=0;
@@ -36,6 +37,7 @@ public class Joueur implements Bougeable{
         this.positionY=posy;
         this.nbVies=nbVies;
         this.numeroJoueur=numeroJoueur;
+        this.matchMagne = 0;
     }
     
     
