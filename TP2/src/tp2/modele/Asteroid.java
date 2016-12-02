@@ -66,6 +66,12 @@ public class Asteroid extends JComponent implements Bougeable {
     public int getPointVie() {
         return pointVie;
     }
+
+    public void setPointVie(int pointVie) {
+        this.pointVie = pointVie;
+    }
+    
+    
     
     
     

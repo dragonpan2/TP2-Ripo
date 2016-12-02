@@ -59,9 +59,11 @@ public class Monde extends JPanel{
     static JLabel lblPointJ2 = new JLabel("Pointage: 0");
    
     private ArrayList<Lasers> laser=new ArrayList();
+    private ArrayList<Lasers> listLaserMod=new ArrayList();
     private ArrayList<DrawBg>  listEtoile = new ArrayList();
     private ArrayList<DrawBg2>  listEtoile2 = new ArrayList();
     private ArrayList<Asteroid> listAsteroid = new ArrayList();
+    private ArrayList<Asteroid> listAsteroidMod = new ArrayList();
     private ArrayList<Boni> listBoni = new ArrayList();
     
     Thread thread=new Thread(){
@@ -69,13 +71,32 @@ public class Monde extends JPanel{
 public void run() {
     while(true){
         
+        listLaserMod.addAll(laser);
+        listAsteroidMod.addAll(listAsteroid);
+        
+        for (Lasers elemLaser:laser) {
+           // for (Asteroid elemAsteroid:listAsteroid) {
+            for (int i = 0; i < listAsteroid.size(); i++) {
+                
+            
+                if (elemLaser.getBounds().intersects(listAsteroid.get(i).getBounds())){
+                        listAsteroid.get(i).setPointVie(listAsteroid.get(i).getPointVie()-1);
+                        listLaserMod.remove(elemLaser);
+                    }
+
+            }
+        }
+        
+        laser.clear();
+        laser.addAll(listLaserMod);
+        
         for (Asteroid elem:listAsteroid) {
             elem.bouger();
             if (elem.getPointVie() <= 0) {
                 Boni boni = new Boni();
                 boni.setLocation(elem.getX(), elem.getY());
-                removeElem(elem);
-                listAsteroid.remove(elem);
+//                removeElem(elem);
+//                listAsteroid.remove(elem);
                 listBoni.add(boni);
                 
             }
