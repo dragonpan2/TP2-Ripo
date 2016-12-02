@@ -108,29 +108,29 @@ public class GameWindow extends JFrame implements Observer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
-                
+
             }
 
         });
     }
-    
+
     public void eventAide() {
         mnItemAide.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               //change
-               JOptionPane.showMessageDialog(null, "Emilan, Bei Ning, date final:", "Aide", JOptionPane.INFORMATION_MESSAGE);
+                //change
+                JOptionPane.showMessageDialog(null, "Emilan, Bei Ning, date final:", "Aide", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
-    
+
     public void eventNouvellePartie() {
         mnItemNouvellePartie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 modele.resetPartie();
             }
-        } );
+        });
     }
 
     public static ArrayList<Character> getTouchesPesees() {
