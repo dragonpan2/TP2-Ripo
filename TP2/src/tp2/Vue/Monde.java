@@ -20,6 +20,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import tp2.modele.Asteroid;
+import tp2.modele.Boni;
 import tp2.modele.Modele;
 
 public class Monde extends JPanel{
@@ -61,6 +62,7 @@ public class Monde extends JPanel{
     private ArrayList<DrawBg>  listEtoile = new ArrayList();
     private ArrayList<DrawBg2>  listEtoile2 = new ArrayList();
     private ArrayList<Asteroid> listAsteroid = new ArrayList();
+    private ArrayList<Boni> listBoni = new ArrayList();
     
     Thread thread=new Thread(){
             @Override
@@ -69,7 +71,14 @@ public void run() {
         
         for (Asteroid elem:listAsteroid) {
             elem.bouger();
-      //      elem.setLocation(elem.getX(), elem.getY()+2);
+            if (elem.getPointVie() <= 0) {
+                Boni boni = new Boni();
+                boni.setLocation(elem.getX(), elem.getY());
+                removeElem(elem);
+                listAsteroid.remove(elem);
+                listBoni.add(boni);
+                
+            }
         }
         for (DrawBg elem:listEtoile) {
             elem.moveStar();
@@ -293,7 +302,9 @@ public void run() {
    
    
     
-    
+    public void removeElem(Asteroid elem) {
+        this.remove(elem);
+    }
     
     public void initialiserVaisseau(){
        
