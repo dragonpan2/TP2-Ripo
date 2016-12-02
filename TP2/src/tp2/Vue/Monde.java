@@ -71,8 +71,6 @@ public class Monde extends JPanel{
 public void run() {
     while(true){
         
-        listLaserMod.addAll(laser);
-        listAsteroidMod.addAll(listAsteroid);
         
         for (Lasers elemLaser:laser) {
            // for (Asteroid elemAsteroid:listAsteroid) {
@@ -81,26 +79,41 @@ public void run() {
             
                 if (elemLaser.getBounds().intersects(listAsteroid.get(i).getBounds())){
                         listAsteroid.get(i).setPointVie(listAsteroid.get(i).getPointVie()-1);
-                        listLaserMod.remove(elemLaser);
+                        listLaserMod.add(elemLaser);
                     }
-
             }
         }
         
-        laser.clear();
-        laser.addAll(listLaserMod);
+        for (Lasers elemLaser:listLaserMod) {
+            removeLaserElem(elemLaser);
+        }
+        listLaserMod.clear();
+        
+        
+        
+        
         
         for (Asteroid elem:listAsteroid) {
             elem.bouger();
             if (elem.getPointVie() <= 0) {
                 Boni boni = new Boni();
                 boni.setLocation(elem.getX(), elem.getY());
-//                removeElem(elem);
-//                listAsteroid.remove(elem);
+                removeElem(elem);
+                listAsteroidMod.add(elem);
                 listBoni.add(boni);
+                addBoni(boni);
+                invalidate();
+                repaint();
                 
             }
         }
+        
+        listAsteroid.removeAll(listAsteroidMod);
+        listAsteroidMod.clear();
+       
+        
+        
+        
         for (DrawBg elem:listEtoile) {
             elem.moveStar();
         }
@@ -325,6 +338,14 @@ public void run() {
     
     public void removeElem(Asteroid elem) {
         this.remove(elem);
+    }
+    
+    public void removeLaserElem(Lasers elem) {
+        this.remove(elem);
+    }
+    
+    public void addBoni(Boni boni) {
+        this.add(boni);
     }
     
     public void initialiserVaisseau(){
