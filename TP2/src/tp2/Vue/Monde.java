@@ -64,14 +64,16 @@ public class Monde extends JPanel {
     private ArrayList<Asteroid> listAsteroid = new ArrayList();
     private ArrayList<Asteroid> listAsteroidMod = new ArrayList();
     private ArrayList<Boni> listBoni = new ArrayList();
+    private ArrayList<Boni> listBoniMod = new ArrayList();
+    private ArrayList<Vaisseau> listVaisseau = new ArrayList();
 
     Thread thread = new Thread() {
         @Override
         public void run() {
             while (true) {
 
+                //
                 for (Lasers elemLaser : laser) {
-                    // for (Asteroid elemAsteroid:listAsteroid) {
                     for (int i = 0; i < listAsteroid.size(); i++) {
 
                         if (elemLaser.getBounds().intersects(listAsteroid.get(i).getBounds())) {
@@ -85,6 +87,8 @@ public class Monde extends JPanel {
                     removeLaserElem(elemLaser);
                 }
                 listLaserMod.clear();
+                
+                //
 
                 for (Asteroid elem : listAsteroid) {
                     elem.bouger();
@@ -104,6 +108,23 @@ public class Monde extends JPanel {
                 listAsteroid.removeAll(listAsteroidMod);
                 listAsteroidMod.clear();
 
+                //
+                for (Vaisseau elemVaisseau: listVaisseau) {
+                    for (Boni elemBoni: listBoni) {
+                        if (elemVaisseau.getBounds().intersects(elemBoni.getBounds())) {
+                            listBoniMod.add(elemBoni);
+                            removeBoniElem(elemBoni);
+                        }
+                        
+                        
+                    }
+                }
+                //
+                listBoni.removeAll(listBoniMod);
+                listBoniMod.clear();
+                
+                //
+                
                 for (DrawBg elem : listEtoile) {
                     elem.moveStar();
                 }
@@ -312,6 +333,10 @@ public class Monde extends JPanel {
 
     public void removeLaserElem(Lasers elem) {
         this.remove(elem);
+    }
+    
+    public void removeBoniElem(Boni boni) {
+        this.remove(boni);
     }
 
     public void addBoni(Boni boni) {
