@@ -22,6 +22,7 @@ public class Boni extends JComponent {
 
     public Boni() {
         this.setSize(30, 27);
+        
         switch(random.nextInt(3)) {
             case 0:
                 boniType = "plusVie";

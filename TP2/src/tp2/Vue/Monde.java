@@ -76,8 +76,10 @@ public class Monde extends JPanel {
                 }
 
                 for (Lasers elemLaser : listLaserMod) {
+                    
                     removeLaserElem(elemLaser);
                 }
+                laser.removeAll(listLaserMod); //to verify
                 listLaserMod.clear();
                 
                 //
@@ -169,12 +171,15 @@ public class Monde extends JPanel {
     public Monde(Modele modele, GameWindow gw) throws IOException {
         this.modele = modele;
         this.gw = gw;
-
+        
+       
 
         spawnAsteroid();
 
         joueur1= new Vaisseau(modele,1);
         joueur2= new Vaisseau(modele,2);
+        listVaisseau.add(joueur1);
+        listVaisseau.add(joueur2);
         for (int i = 0; i < 10; i++) {
 
             Asteroid ast = new Asteroid();
