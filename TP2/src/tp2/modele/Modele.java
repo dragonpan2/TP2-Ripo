@@ -61,6 +61,15 @@ public class Modele extends Observable {
         }
     }
     
+    public void changerNbVictoire(int numeroJoueur, int vicChange) {
+        if (numeroJoueur == 1) {
+            joueur1.setNbVictoire(joueur1.getNbVictoire()+vicChange);
+        }
+        if (numeroJoueur == 2) {
+            joueur2.setNbVictoire(joueur2.getNbVictoire()+vicChange);
+        }
+    }
+    
     public void avancer2(){
         joueur2.avancer();
     }

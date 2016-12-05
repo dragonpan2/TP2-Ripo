@@ -56,6 +56,8 @@ public class Monde extends JPanel {
     static JLabel lblVieJ2 = new JLabel("Point de Vie: 0");
     static JLabel lblPointJ1 = new JLabel("Pointage: 0");
     static JLabel lblPointJ2 = new JLabel("Pointage: 0");
+    static JLabel lblnbVicJ1 = new JLabel("Nombre de Victoire: 0");
+    static JLabel lblnbVicJ2 = new JLabel("Nombre de Victoire: 0");
 
     private ArrayList<Lasers> laser = new ArrayList();
     private ArrayList<Lasers> listLaserMod = new ArrayList();
@@ -217,7 +219,7 @@ public class Monde extends JPanel {
         lblJ1.setSize(100, 30);
         lblJ1.setForeground(Color.white);
         this.add(lblJ2);
-        lblJ2.setLocation(700, 0);
+        lblJ2.setLocation(650, 0);
         lblJ2.setSize(100, 30);
         lblJ2.setForeground(Color.white);
         this.add(lblVieJ1);
@@ -225,7 +227,7 @@ public class Monde extends JPanel {
         lblVieJ1.setSize(100, 30);
         lblVieJ1.setForeground(Color.white);
         this.add(lblVieJ2);
-        lblVieJ2.setLocation(700, 30);
+        lblVieJ2.setLocation(650, 30);
         lblVieJ2.setSize(100, 30);
         lblVieJ2.setForeground(Color.white);
         this.add(lblPointJ1);
@@ -235,7 +237,15 @@ public class Monde extends JPanel {
         this.add(lblPointJ2);
         lblPointJ2.setForeground(Color.white);
         lblPointJ2.setSize(100, 30);
-        lblPointJ2.setLocation(700, 60);
+        lblPointJ2.setLocation(650, 60);
+        this.add(lblnbVicJ1);
+        lblnbVicJ1.setLocation(0, 90);
+        lblnbVicJ1.setSize(150, 30);
+        lblnbVicJ1.setForeground(Color.white);
+        this.add(lblnbVicJ2);
+        lblnbVicJ2.setLocation(650, 90);
+        lblnbVicJ2.setSize(150, 30);
+        lblnbVicJ2.setForeground(Color.white);
 
         initialiserVaisseau();
 

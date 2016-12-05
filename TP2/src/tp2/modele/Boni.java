@@ -27,6 +27,7 @@ public class Boni extends JComponent {
                 boniType = "plusVie";
                 break;
             case 1:
+                
                 break;
             case 2:
                 break;

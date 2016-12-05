@@ -142,6 +142,8 @@ public class GameWindow extends JFrame implements Observer {
         int nbVieP2 = modele.getJoueur2().getNbVies();
         int pointP1 = modele.getJoueur1().getPointage();
         int pointP2 = modele.getJoueur2().getPointage();
+        int nbVicP1 = modele.getJoueur1().getNbVictoire();
+        int nbVicP2 = modele.getJoueur2().getNbVictoire();
         //set graphical change here
 
         //
@@ -149,6 +151,8 @@ public class GameWindow extends JFrame implements Observer {
         Monde.lblVieJ2.setText("Point de Vie: " + Integer.toString(nbVieP2));
         Monde.lblPointJ1.setText("Pointage: " + Integer.toString(pointP1));
         Monde.lblPointJ2.setText("Pointage: " + Integer.toString(pointP2));
+        Monde.lblnbVicJ1.setText("Nombre de Victoire: "+Integer.toString(nbVicP1));
+        Monde.lblnbVicJ2.setText("Nombre de Victoire: "+Integer.toString(nbVicP2));
     }
 
     @Override

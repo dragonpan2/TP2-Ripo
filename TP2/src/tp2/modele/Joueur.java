@@ -16,6 +16,7 @@ public class Joueur implements Bougeable{
    private int positionY=0;
    private int largeur=100;
    private int longueur=100;
+   private int nbVictoire = 0;
    
    private double accelerationx=0;
     private double accelerationy=0;
@@ -40,6 +41,7 @@ public class Joueur implements Bougeable{
         this.positionY=posy;
         this.nbVies=nbVies;
         this.numeroJoueur=numeroJoueur;
+        this.nbVictoire = 0;
     }
     
     
@@ -157,6 +159,14 @@ public class Joueur implements Bougeable{
         if (positionX>800)positionX=-50;
         if (positionX<-50)positionX=800;
         tempsTir--;
+    }
+
+    public int getNbVictoire() {
+        return nbVictoire;
+    }
+
+    public void setNbVictoire(int nbVictoire) {
+        this.nbVictoire = nbVictoire;
     }
     
     

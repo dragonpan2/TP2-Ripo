@@ -39,4 +39,8 @@ public class Controleur {
         modele.changeNbTirTouch(numeroJoueur, tirTouchChange);
     }
     
+    public void changerNbVictoire(int numeroJoueur, int vicChange) {
+        modele.changerNbVictoire(numeroJoueur, vicChange);
+    }
+    
 }
