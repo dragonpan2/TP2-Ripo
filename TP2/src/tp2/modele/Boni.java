@@ -20,6 +20,9 @@ public class Boni extends JComponent {
     Random random = new Random();
     String boniType;
 
+    /**
+     *
+     */
     public Boni() {
         this.setSize(30, 27);
         
@@ -37,6 +40,10 @@ public class Boni extends JComponent {
         }
     }
     
+    /**
+     *
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g) {
         
@@ -44,6 +51,10 @@ public class Boni extends JComponent {
         g.drawImage(img, 0, 0, this);
     }
     
+    /**
+     *
+     * @param bufferedPlayer
+     */
     public void applyBoni(Joueur bufferedPlayer) {
         if ("plusVie".equals(this.boniType)) {
             bufferedPlayer.setNbVies(bufferedPlayer.getNbVies()+1);
