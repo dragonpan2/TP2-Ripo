@@ -14,30 +14,12 @@ import tp2.modele.Joueur.Orientation;
 
 public class Lasers extends JComponent {
 
-    private int orientation;
-    private boolean diagoDroite=false;
-    private boolean diagoGauche=false;
+    private Orientation orientation;
     
     
         public Lasers(Orientation orientation) {
-            switch (orientation){
-                case TOP:
-                case DOWN:this.setSize(5, 40);
-                break;
-                case LEFT:
-                case RIGHT:this.setSize(40, 5);
-                break;
-                case TOPLEFT:
-                case DOWNRIGHT:this.setSize(40,40);
-                diagoGauche=true;
-                break;
-                case TOPRIGHT:
-                case DOWNLEFT:this.setSize(40,40);
-                diagoDroite=true;
-                break; 
-               
-            }
-            
+            this.orientation=orientation;
+            this.setSize(64,64);
         }
        
        
@@ -46,19 +28,37 @@ public class Lasers extends JComponent {
        public void paintComponent(Graphics g) {
           super.paintComponent(g);
           g.setColor(Color.red);
-          if(diagoGauche){
-              int[]x1={0,4,this.getWidth(),this.getWidth()-4};
-              int[]y1={4,0,this.getHeight()-4,this.getHeight()};
-              g.fillPolygon(x1, y1, 4);
-          }
-          else if(diagoDroite){
-              int[]x1={0,4,this.getWidth(),this.getWidth()-4};
-              int[]y1={this.getHeight()-4,this.getHeight(),4,0};
-              g.fillPolygon(x1, y1, 4);
-          }
-          else{
-             g.fillRect(0, 0, this.getWidth(),this.getHeight()); 
-          }
+          int[]x1;
+          int[]y1;
+          switch (orientation){
+                case TOP:
+                case DOWN:
+                x1=new int[]{30,34,34,30};
+                y1=new int[]{0,0,this.getHeight(),this.getHeight()};
+                g.fillPolygon(x1, y1, 4);
+                break;
+                case LEFT:
+                case RIGHT:
+                x1=new int[]{0,this.getWidth(),this.getWidth(),0};
+                y1=new int[]{30,34,34,30};
+                g.fillPolygon(x1, y1, 4);
+                break;
+                case TOPLEFT:
+                case DOWNRIGHT:
+                x1=new int[]{0,4,this.getWidth(),this.getWidth()-4};
+                y1=new int[]{4,0,this.getHeight()-4,this.getHeight()};
+                g.fillPolygon(x1, y1, 4);
+                break;
+                case TOPRIGHT:
+                case DOWNLEFT:
+                x1=new int[]{0,4,this.getWidth(),this.getWidth()-4};
+                y1=new int[]{this.getHeight()-4,this.getHeight(),4,0};
+                g.fillPolygon(x1, y1, 4);
+                break; 
+               
+            }
+          
+             
           
        }
    }

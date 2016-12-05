@@ -23,7 +23,7 @@ public class Joueur implements Bougeable{
     private double angle=90;
     private double power=0.2;
     private int tempsTir=0;
-    private final int TEMPS_TIR=100;
+    private final int TEMPS_TIR=30;
     
     public enum Orientation{
        TOP,
@@ -35,13 +35,14 @@ public class Joueur implements Bougeable{
        LEFT,
        TOPLEFT,
     }
-    private Orientation orientation=Orientation.TOP;
+    private Orientation orientation;
     public Joueur(int numeroJoueur,int posx,int posy,int nbVies) {
         this.positionX=posx;
         this.positionY=posy;
         this.nbVies=nbVies;
         this.numeroJoueur=numeroJoueur;
         this.nbVictoire = 0;
+        orientation=Orientation.TOP;
     }
     
     
@@ -139,7 +140,7 @@ public class Joueur implements Bougeable{
     public Projectile tirer(){
         tempsTir=TEMPS_TIR;
         Projectile laser;
-        laser=new Projectile(numeroJoueur,orientation, positionX+32, positionY+32);
+        laser=new Projectile(numeroJoueur,orientation, positionX, positionY);
         return laser;
     }
     @Override

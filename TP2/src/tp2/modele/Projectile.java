@@ -19,7 +19,7 @@ public class Projectile implements Bougeable{
     private int dommage=1;
     private int positionX;
     private int positionY;
-    private int tempsRestant=30;
+    private int tempsRestant=60;
     
     public Projectile(int joueur,Orientation orientation,int positionX,int positionY) {
         this.orientation=orientation;

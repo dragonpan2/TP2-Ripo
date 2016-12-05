@@ -171,6 +171,8 @@ public class GameWindow extends JFrame implements Observer {
         infos();
         monde.modifierJoueur();
         monde.modifierLaser();
+        monde.revalidate();
+        monde.repaint();
     }
 
 }
