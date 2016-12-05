@@ -19,7 +19,7 @@ public class Lasers extends JComponent {
     
         public Lasers(Orientation orientation) {
             this.orientation=orientation;
-            this.setSize(64,64);
+            this.setSize(40,40);
         }
        
        
@@ -33,14 +33,14 @@ public class Lasers extends JComponent {
           switch (orientation){
                 case TOP:
                 case DOWN:
-                x1=new int[]{30,34,34,30};
+                x1=new int[]{this.getWidth()/2-2,this.getWidth()/2+2,this.getWidth()/2+2,this.getWidth()/2-2};
                 y1=new int[]{0,0,this.getHeight(),this.getHeight()};
                 g.fillPolygon(x1, y1, 4);
                 break;
                 case LEFT:
                 case RIGHT:
                 x1=new int[]{0,this.getWidth(),this.getWidth(),0};
-                y1=new int[]{30,34,34,30};
+                y1=new int[]{this.getHeight()/2-2,this.getHeight()/2-2,this.getHeight()/2+2,this.getHeight()/2+2};
                 g.fillPolygon(x1, y1, 4);
                 break;
                 case TOPLEFT:

@@ -119,7 +119,7 @@ public class GameWindow extends JFrame implements Observer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //change
-                JOptionPane.showMessageDialog(null, "Emilan, Bei Ning, date final:", "Aide", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Emilien, Bei Ning, date final:", "Aide", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }

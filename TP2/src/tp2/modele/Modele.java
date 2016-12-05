@@ -119,23 +119,6 @@ public class Modele extends Observable {
         for (int i = 0; i < laser.size(); i++) {
             
                         
-            if ((joueur1.getPositionX()<=laser.get(i).getPositionX()+5
-                &&joueur1.getPositionX()>=laser.get(i).getPositionX()-5) 
-                &&(joueur1.getPositionX()<=laser.get(i).getPositionX()+5  
-                &&joueur1.getPositionX()>=laser.get(i).getPositionX()-5)
-                &&laser.get(i).getJoueur()!=1){
-                joueur1.setNbVies(joueur1.getNbVies()-1);
-                laser.remove(i);
-            }
-            
-            if ((joueur2.getPositionX()<=laser.get(i).getPositionX()+5
-                &&joueur2.getPositionX()>=laser.get(i).getPositionX()-5)
-                &&(joueur2.getPositionX()<=laser.get(i).getPositionX()+5  
-                &&joueur2.getPositionX()>=laser.get(i).getPositionX()-5) 
-                &&laser.get(i).getJoueur()!=2){
-                joueur2.setNbVies(joueur2.getNbVies()-1);
-                laser.remove(i);
-            }
             
             
             
