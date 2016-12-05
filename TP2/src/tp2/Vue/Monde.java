@@ -58,6 +58,11 @@ public class Monde extends JPanel {
     static JLabel lblPointJ2 = new JLabel("Pointage: 0");
     static JLabel lblnbVicJ1 = new JLabel("Nombre de Victoire: 0");
     static JLabel lblnbVicJ2 = new JLabel("Nombre de Victoire: 0");
+    static JLabel lblnbTirJ1 = new JLabel("Nombre de laser tiré : 0");
+    static JLabel lblnbTirJ2 = new JLabel("Nombre de laser tiré : 0");
+    static JLabel lblnbTirTouchJ1 = new JLabel("Nombre de laser touché : 0");
+    static JLabel lblnbTirTouchJ2 = new JLabel("Nombre de laser touché : 0");
+    
 
     private ArrayList<Lasers> laser = new ArrayList();
     private ArrayList<Lasers> listLaserMod = new ArrayList();
@@ -246,6 +251,22 @@ public class Monde extends JPanel {
         lblnbVicJ2.setLocation(650, 90);
         lblnbVicJ2.setSize(150, 30);
         lblnbVicJ2.setForeground(Color.white);
+        this.add(lblnbTirJ1);
+        lblnbTirJ1.setLocation(0, 120);
+        lblnbTirJ1.setSize(150, 30);
+        lblnbTirJ1.setForeground(Color.white);
+        this.add(lblnbTirJ2);
+        lblnbTirJ2.setLocation(0, 150);
+        lblnbTirJ2.setSize(150, 30);
+        lblnbTirJ2.setForeground(Color.white);
+        this.add(lblnbTirTouchJ1);
+        lblnbTirTouchJ1.setLocation(650, 120);
+        lblnbTirTouchJ1.setSize(160, 30);
+        lblnbTirTouchJ1.setForeground(Color.white);
+        this.add(lblnbTirTouchJ2);
+        lblnbTirTouchJ2.setLocation(650, 150);
+        lblnbTirTouchJ2.setSize(160, 30);
+        lblnbTirTouchJ2.setForeground(Color.white);
 
         initialiserVaisseau();
 

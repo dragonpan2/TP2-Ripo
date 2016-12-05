@@ -144,6 +144,10 @@ public class GameWindow extends JFrame implements Observer {
         int pointP2 = modele.getJoueur2().getPointage();
         int nbVicP1 = modele.getJoueur1().getNbVictoire();
         int nbVicP2 = modele.getJoueur2().getNbVictoire();
+        int nbTirP1 = modele.getJoueur1().getNbTirs();
+        int nbTirP2 = modele.getJoueur2().getNbTirs();
+        int nbTirTouchP1 = modele.getJoueur1().getNbTirsTouche();
+        int nbTirTouchP2 = modele.getJoueur2().getNbTirsTouche();
         //set graphical change here
 
         //
@@ -153,6 +157,10 @@ public class GameWindow extends JFrame implements Observer {
         Monde.lblPointJ2.setText("Pointage: " + Integer.toString(pointP2));
         Monde.lblnbVicJ1.setText("Nombre de Victoire: "+Integer.toString(nbVicP1));
         Monde.lblnbVicJ2.setText("Nombre de Victoire: "+Integer.toString(nbVicP2));
+        Monde.lblnbTirJ1.setText("Nombre de laser tiré : "+Integer.toString(nbTirP1));
+        Monde.lblnbTirJ2.setText("Nombre de laser tiré : "+Integer.toString(nbTirP2));
+        Monde.lblnbTirTouchJ1.setText("Nombre de laser touché : "+Integer.toString(nbTirTouchP1));
+        Monde.lblnbTirTouchJ2.setText("Nombre de laser touché : "+Integer.toString(nbTirTouchP2));
     }
 
     @Override

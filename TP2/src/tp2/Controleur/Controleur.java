@@ -43,4 +43,12 @@ public class Controleur {
         modele.changerNbVictoire(numeroJoueur, vicChange);
     }
     
+    public void changeTir(int numeroJoueur, int tirChange) {
+        modele.changeNbTir(numeroJoueur, tirChange);
+    }
+    
+    public void changeTirTouch(int numeroJoueur, int tirToucheChange) {
+        modele.changeNbTirTouch(numeroJoueur, tirToucheChange);
+    }
+    
 }
