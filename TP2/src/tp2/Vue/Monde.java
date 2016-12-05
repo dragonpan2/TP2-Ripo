@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import tp2.modele.Asteroid;
 import tp2.modele.Boni;
 import tp2.modele.Modele;
@@ -339,20 +340,42 @@ public class Monde extends JPanel {
         }
     }
 
+    
+    
     public void removeElem(Asteroid elem) {
-        this.remove(elem);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+        
+        Monde.this.remove(elem);
+             }
+        });
     }
 
     public void removeLaserElem(Lasers elem) {
-        this.remove(elem);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+        
+        Monde.this.remove(elem);
+             }
+        });
     }
     
     public void removeBoniElem(Boni boni) {
-        this.remove(boni);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+        
+        Monde.this.remove(boni);
+             }
+        });
     }
 
     public void addBoni(Boni boni) {
-        this.add(boni);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+        
+        Monde.this.remove(boni);
+             }
+        });
     }
     
     public void resetField() {
