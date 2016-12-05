@@ -5,6 +5,7 @@
  */
 package tp2.modele;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -19,34 +20,37 @@ public class Boni extends JComponent {
     
     Random random = new Random();
     String boniType;
-
-    public Boni() {
+    Modele modele;
+    Image img = Toolkit.getDefaultToolkit().getImage("boni1.gif");
+    
+    public Boni(Modele modele) {
+        setBackground(Color.red);
         this.setSize(30, 27);
-        
-        switch(random.nextInt(3)) {
+        this.modele = modele;
+        switch(random.nextInt(1)) {
             case 0:
                 boniType = "plusVie";
                 break;
             case 1:
-                
+                boniType = "tirRapide";
                 break;
-            case 2:
-                break;
-            case 3:
-                break;
+            
         }
     }
     
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         
-        Image img = Toolkit.getDefaultToolkit().getImage("boni1.gif");
         g.drawImage(img, 0, 0, this);
     }
     
     public void applyBoni(Joueur bufferedPlayer) {
         if ("plusVie".equals(this.boniType)) {
             bufferedPlayer.setNbVies(bufferedPlayer.getNbVies()+1);
+        }
+        if ("tirRapide".equals(this.boniType)) {
+            modele.superVite(bufferedPlayer.getNumeroJoueur());
         }
     }
     

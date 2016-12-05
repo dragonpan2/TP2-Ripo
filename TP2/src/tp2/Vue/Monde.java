@@ -88,13 +88,13 @@ public class Monde extends JPanel {
                 for (Asteroid elem : listAsteroid) {
                     elem.bouger();
                     if (elem.getPointVie() <= 0) {
-                        Boni boni = new Boni();
+                        Boni boni = new Boni(modele);
                         boni.setLocation(elem.getX(), elem.getY());
                         removeElem(elem);
                         listAsteroidMod.add(elem);
                         listBoni.add(boni);
                         addBoni(boni);
-                        invalidate();
+                        revalidate();
                         repaint();
 
                     }
@@ -109,7 +109,12 @@ public class Monde extends JPanel {
                         if (elemVaisseau.getBounds().intersects(elemBoni.getBounds())) {
                             listBoniMod.add(elemBoni);
                             removeBoniElem(elemBoni);
-                            modele.superVite(elemVaisseau.getJoueur());
+                            if (elemVaisseau.getJoueur() == 1) {
+                            elemBoni.applyBoni(modele.getJoueur1());
+                            }
+                            if (elemVaisseau.getJoueur() == 2) {
+                                elemBoni.applyBoni(modele.getJoueur2());
+                            }
                         }
                         
                         
@@ -374,7 +379,7 @@ public class Monde extends JPanel {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
         
-        Monde.this.remove(boni);
+        Monde.this.add(boni);
              }
         });
     }
