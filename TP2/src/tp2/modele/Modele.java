@@ -7,6 +7,7 @@ package tp2.modele;
 
 import java.util.ArrayList;
 import java.util.Observable;
+import tp2.Vue.Monde;
 
 /**
  *
@@ -36,6 +37,11 @@ public class Modele extends Observable {
         joueur1.setPositionY(150);
         joueur2.setPositionX(700);
         joueur2.setPositionY(150);
+        joueur1.setAccelerationx(0);
+        joueur1.setAccelerationy(0);
+        joueur2.setAccelerationx(0);
+        joueur2.setAccelerationy(0);
+      //  Monde.resetField();
         
     }
     

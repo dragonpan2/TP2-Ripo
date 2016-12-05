@@ -64,15 +64,15 @@ public class Monde extends JPanel {
     static JLabel lblnbTirTouchJ2 = new JLabel("Nombre de laser touché : 0");
     
 
-    private ArrayList<Lasers> laser = new ArrayList();
-    private ArrayList<Lasers> listLaserMod = new ArrayList();
-    private ArrayList<DrawBg> listEtoile = new ArrayList();
-    private ArrayList<DrawBg2> listEtoile2 = new ArrayList();
-    private ArrayList<Asteroid> listAsteroid = new ArrayList();
-    private ArrayList<Asteroid> listAsteroidMod = new ArrayList();
-    private ArrayList<Boni> listBoni = new ArrayList();
-    private ArrayList<Boni> listBoniMod = new ArrayList();
-    private ArrayList<Vaisseau> listVaisseau = new ArrayList();
+    private static ArrayList<Lasers> laser = new ArrayList();
+    private static ArrayList<Lasers> listLaserMod = new ArrayList();
+    private static ArrayList<DrawBg> listEtoile = new ArrayList();
+    private static ArrayList<DrawBg2> listEtoile2 = new ArrayList();
+    private static ArrayList<Asteroid> listAsteroid = new ArrayList();
+    private static ArrayList<Asteroid> listAsteroidMod = new ArrayList();
+    private static ArrayList<Boni> listBoni = new ArrayList();
+    private static ArrayList<Boni> listBoniMod = new ArrayList();
+    private static ArrayList<Vaisseau> listVaisseau = new ArrayList();
 
     Thread thread = new Thread() {
         @Override
@@ -185,14 +185,7 @@ public class Monde extends JPanel {
         this.modele = modele;
         this.gw = gw;
 
-        for (int i = 0; i < 10; i++) {
-
-            Asteroid ast = new Asteroid();
-            this.add(ast);
-            listAsteroid.add(ast);
-            ast.setLocation(300, 0);
-            ast.setLocation(ast.getPositionIniX(), ast.getPositionIniY());
-        }
+        spawnAsteroid();
 
         planet1 = new ImageIcon(ImageIO.read(new File("planete1.gif")));
         planet2 = new ImageIcon(ImageIO.read(new File("planete2.gif")));
@@ -372,6 +365,28 @@ public class Monde extends JPanel {
 
     public void addBoni(Boni boni) {
         this.add(boni);
+    }
+    
+    public void resetField() {
+        for (Asteroid elemAsteroid: listAsteroid) {
+            this.remove(elemAsteroid);
+        }
+        listAsteroid.clear();
+        for (Boni elemBoni: listBoni) {
+            this.remove(elemBoni);
+        }
+        listAsteroid.clear();
+    }
+    
+    public void spawnAsteroid() {
+        for (int i = 0; i < 10; i++) {
+
+            Asteroid ast = new Asteroid();
+            this.add(ast);
+            listAsteroid.add(ast);
+            ast.setLocation(300, 0);
+            ast.setLocation(ast.getPositionIniX(), ast.getPositionIniY());
+        }
     }
 
     public void initialiserVaisseau() {

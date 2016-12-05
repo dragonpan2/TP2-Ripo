@@ -129,6 +129,8 @@ public class GameWindow extends JFrame implements Observer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 modele.resetPartie();
+                monde.resetField();
+                monde.spawnAsteroid();
             }
         });
     }

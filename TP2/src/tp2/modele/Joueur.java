@@ -168,6 +168,14 @@ public class Joueur implements Bougeable{
     public void setNbVictoire(int nbVictoire) {
         this.nbVictoire = nbVictoire;
     }
+
+    public void setAccelerationx(double accelerationx) {
+        this.accelerationx = accelerationx;
+    }
+
+    public void setAccelerationy(double accelerationy) {
+        this.accelerationy = accelerationy;
+    }
     
     
     
