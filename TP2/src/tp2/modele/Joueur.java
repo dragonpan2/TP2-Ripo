@@ -177,6 +177,10 @@ public class Joueur implements Bougeable{
     public void setAccelerationy(double accelerationy) {
         this.accelerationy = accelerationy;
     }
+
+    public int getNumeroJoueur() {
+        return numeroJoueur;
+    }
     
     
     
