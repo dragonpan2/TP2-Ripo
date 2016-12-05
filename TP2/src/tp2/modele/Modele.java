@@ -144,24 +144,6 @@ public class Modele extends Observable {
         maj();
     }
     
-//    public void changeTir(int numeroJoueur, int tirChange) {
-//        if (numeroJoueur == 1 ) {
-//            joueur1.setNbTirs(joueur1.getNbTirs()+tirChange);
-//        }
-//        if (numeroJoueur == 2) {
-//            joueur2.setNbTirs(joueur2.getNbTirs()+tirChange);
-//        }
-//    }
-//    
-//    public void changeTirTouche(int numeroJoueur, int tirToucheChange) {
-//        if (numeroJoueur == 1 ) {
-//            joueur1.setNbTirsTouche(joueur1.getNbTirsTouche()+tirToucheChange);
-//        }
-//        if (numeroJoueur == 2) {
-//            joueur2.setNbTirsTouche(joueur2.getNbTirsTouche()+tirToucheChange);
-//        }
-//    }
-    
     public void changePointage(int numeroJoueur, int pointChange) {
         if (numeroJoueur == 1) {
             joueur1.setPointage(joueur1.getPointage()+pointChange);
@@ -206,6 +188,15 @@ public class Modele extends Observable {
     
     public ArrayList<Projectile> getLaser() {
         return laser;
+    }
+    
+    public void superVite(int joueur){
+        if(joueur==1){
+            joueur1.setTEMPS_TIR(10);
+        }
+        if(joueur==2){
+            joueur2.setTEMPS_TIR(10);
+        }
     }
     
     

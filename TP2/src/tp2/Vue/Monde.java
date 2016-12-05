@@ -109,6 +109,7 @@ public class Monde extends JPanel {
                         if (elemVaisseau.getBounds().intersects(elemBoni.getBounds())) {
                             listBoniMod.add(elemBoni);
                             removeBoniElem(elemBoni);
+                            modele.superVite(elemVaisseau.getJoueur());
                         }
                         
                         

@@ -75,5 +75,11 @@ public class Vaisseau extends JComponent{
         }
         g.drawImage(img, 0, 0, this);
     }
+
+    public int getJoueur() {
+        return joueur;
+    }
+    
+    
     
 }

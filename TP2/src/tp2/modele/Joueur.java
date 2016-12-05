@@ -23,7 +23,7 @@ public class Joueur implements Bougeable{
     private double angle=90;
     private double power=0.2;
     private int tempsTir=0;
-    private final int TEMPS_TIR=30;
+    private int TEMPS_TIR=30;
     
     public enum Orientation{
        TOP,
@@ -250,6 +250,10 @@ public class Joueur implements Bougeable{
 
     public int getLongueur() {
         return longueur;
+    }
+
+    public void setTEMPS_TIR(int TEMPS_TIR) {
+        this.TEMPS_TIR = TEMPS_TIR;
     }
     
     
