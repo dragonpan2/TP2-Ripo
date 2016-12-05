@@ -170,9 +170,9 @@ public class Monde extends JPanel {
         this.modele = modele;
         this.gw = gw;
 
-<<<<<<< HEAD
+
         spawnAsteroid();
-=======
+
         joueur1= new Vaisseau(modele,1);
         joueur2= new Vaisseau(modele,2);
         for (int i = 0; i < 10; i++) {
@@ -183,7 +183,7 @@ public class Monde extends JPanel {
             ast.setLocation(300, 0);
             ast.setLocation(ast.getPositionIniX(), ast.getPositionIniY());
         }
->>>>>>> origin/master
+
 
         planet1 = new ImageIcon(ImageIO.read(new File("planete1.gif")));
         planet2 = new ImageIcon(ImageIO.read(new File("planete2.gif")));
