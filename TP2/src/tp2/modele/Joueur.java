@@ -140,7 +140,7 @@ public class Joueur implements Bougeable{
     public Projectile tirer(){
         tempsTir=TEMPS_TIR;
         Projectile laser;
-        laser=new Projectile(numeroJoueur,orientation, positionX, positionY);
+        laser=new Projectile(numeroJoueur,orientation, positionX+13, positionY+13);
         return laser;
     }
     @Override
