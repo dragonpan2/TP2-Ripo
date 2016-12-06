@@ -26,7 +26,6 @@ public class Monde extends JPanel {
 
     private Modele modele;
     GameWindow gw;
-    
 
     private ImageIcon planet1;
     private ImageIcon planet2;
@@ -48,7 +47,6 @@ public class Monde extends JPanel {
     static JLabel lblnbTirJ2 = new JLabel("Nombre de laser tiré : 0");
     static JLabel lblnbTirTouchJ1 = new JLabel("Nombre de laser touché : 0");
     static JLabel lblnbTirTouchJ2 = new JLabel("Nombre de laser touché : 0");
-    
 
     private static ArrayList<Lasers> laser = new ArrayList();
     private static ArrayList<Lasers> listLaserMod = new ArrayList();
@@ -77,14 +75,13 @@ public class Monde extends JPanel {
                 }
 
                 for (Lasers elemLaser : listLaserMod) {
-                    
+
                     removeLaserElem(elemLaser);
                 }
                 laser.removeAll(listLaserMod); //to verify
                 listLaserMod.clear();
-                
-                //
 
+                //
                 for (Asteroid elem : listAsteroid) {
                     elem.bouger();
                     if (elem.getPointVie() <= 0) {
@@ -104,28 +101,26 @@ public class Monde extends JPanel {
                 listAsteroidMod.clear();
 
                 //
-                for (Vaisseau elemVaisseau: listVaisseau) {
-                    for (Boni elemBoni: listBoni) {
+                for (Vaisseau elemVaisseau : listVaisseau) {
+                    for (Boni elemBoni : listBoni) {
                         if (elemVaisseau.getBounds().intersects(elemBoni.getBounds())) {
                             listBoniMod.add(elemBoni);
                             removeBoniElem(elemBoni);
                             if (elemVaisseau.getJoueur() == 1) {
-                            elemBoni.applyBoni(modele.getJoueur1());
+                                elemBoni.applyBoni(modele.getJoueur1());
                             }
                             if (elemVaisseau.getJoueur() == 2) {
                                 elemBoni.applyBoni(modele.getJoueur2());
                             }
                         }
-                        
-                        
+
                     }
                 }
                 //
                 listBoni.removeAll(listBoniMod);
                 listBoniMod.clear();
-                
+
                 //
-                
                 for (DrawBg elem : listEtoile) {
                     elem.moveStar();
                 }
@@ -178,13 +173,11 @@ public class Monde extends JPanel {
     public Monde(Modele modele, GameWindow gw) throws IOException {
         this.modele = modele;
         this.gw = gw;
-        
-       
 
         spawnAsteroid();
 
-        joueur1= new Vaisseau(modele,1);
-        joueur2= new Vaisseau(modele,2);
+        joueur1 = new Vaisseau(modele, 1);
+        joueur2 = new Vaisseau(modele, 2);
         listVaisseau.add(joueur1);
         listVaisseau.add(joueur2);
         for (int i = 0; i < 10; i++) {
@@ -196,13 +189,11 @@ public class Monde extends JPanel {
             ast.setLocation(ast.getPositionIniX(), ast.getPositionIniY());
         }
 
-
         planet1 = new ImageIcon(ImageIO.read(new File("planete1.gif")));
         planet2 = new ImageIcon(ImageIO.read(new File("planete2.gif")));
         planet3 = new ImageIcon(ImageIO.read(new File("planete3.gif")));
         planet4 = new ImageIcon(ImageIO.read(new File("planete4.gif")));
 
-        
         setPreferredSize(new Dimension(800, 400));
         setBackground(Color.black);
         setLayout(null);
@@ -346,55 +337,53 @@ public class Monde extends JPanel {
         }
     }
 
-    
-    
     public void removeElem(Asteroid elem) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-        
-        Monde.this.remove(elem);
-             }
+
+                Monde.this.remove(elem);
+            }
         });
     }
 
     public void removeLaserElem(Lasers elem) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-        
-        Monde.this.remove(elem);
-             }
+
+                Monde.this.remove(elem);
+            }
         });
     }
-    
+
     public void removeBoniElem(Boni boni) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-        
-        Monde.this.remove(boni);
-             }
+
+                Monde.this.remove(boni);
+            }
         });
     }
 
     public void addBoni(Boni boni) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-        
-        Monde.this.add(boni);
-             }
+
+                Monde.this.add(boni);
+            }
         });
     }
-    
+
     public void resetField() {
-        for (Asteroid elemAsteroid: listAsteroid) {
+        for (Asteroid elemAsteroid : listAsteroid) {
             this.remove(elemAsteroid);
         }
         listAsteroid.clear();
-        for (Boni elemBoni: listBoni) {
+        for (Boni elemBoni : listBoni) {
             this.remove(elemBoni);
         }
         listAsteroid.clear();
     }
-    
+
     public void spawnAsteroid() {
         for (int i = 0; i < 10; i++) {
 
@@ -407,7 +396,7 @@ public class Monde extends JPanel {
     }
 
     public void initialiserVaisseau() {
-        
+
         this.add(joueur1);
         joueur1.setLocation(modele.getJoueur1().getPositionX(), modele.getJoueur1().getPositionY());
         this.add(joueur2);
@@ -434,9 +423,7 @@ public class Monde extends JPanel {
         for (int i = 0; i < laser.size(); i++) {
             laser.get(i).setLocation(modele.getLaser().get(i).getPositionX(), modele.getLaser().get(i).getPositionY());
         }
-        
-    }
 
-   
+    }
 
 }
