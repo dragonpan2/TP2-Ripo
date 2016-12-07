@@ -128,9 +128,7 @@ public class GameWindow extends JFrame implements Observer {
         mnItemNouvellePartie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modele.resetPartie();
-                monde.resetField();
-                monde.spawnAsteroid(5);
+                nouvellePartie();
             }
         });
     }
@@ -169,10 +167,19 @@ public class GameWindow extends JFrame implements Observer {
     public void update(Observable o, Object o1) {
         Modele modele = (Modele) o;
         infos();
+        if (modele.getPartieFinie()){
+            nouvellePartie();
+            modele.setPartieFinie(false);
+        }
         monde.modifierJoueur();
         monde.modifierLaser();
         monde.revalidate();
         monde.repaint();
     }
 
+    public void nouvellePartie(){
+        modele.resetPartie();
+        monde.resetField();
+        monde.spawnAsteroid(5);
+    }
 }

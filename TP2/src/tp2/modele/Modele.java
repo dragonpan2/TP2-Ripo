@@ -7,6 +7,7 @@ package tp2.modele;
 
 import java.util.ArrayList;
 import java.util.Observable;
+import javax.swing.JOptionPane;
 import tp2.Vue.Monde;
 
 /**
@@ -14,7 +15,7 @@ import tp2.Vue.Monde;
  * @author 1535905
  */
 public class Modele extends Observable {
-    
+    private boolean partieFinie=false;
     private Joueur joueur1;
     private Joueur joueur2;
     
@@ -67,6 +68,7 @@ public class Modele extends Observable {
         if(joueur1.getTempsTir()<0){
         laser.add(joueur1.tirer());
         joueur1.setPointage(joueur1.getPointage()+1);
+        joueur1.setNbTirs(joueur1.getNbTirs()+1);
         }
     }
     
@@ -100,9 +102,42 @@ public class Modele extends Observable {
         if(joueur2.getTempsTir()<0){
         laser.add(joueur2.tirer());
         joueur2.setPointage(joueur2.getPointage()+1);
+        joueur2.setNbTirs(joueur2.getNbTirs()+1);
         }
+        
     }
     
+   public void perdreVie(int numJoueur){
+       if(numJoueur==1){
+           joueur1.setNbVies(joueur1.getNbVies()-1);
+           System.out.println("allo");
+           if (joueur1.getNbVies() == 0) {
+               JOptionPane.showMessageDialog(null,"le joueur 2 a gagné", "partie terminée", 0);
+               joueur2.setNbVictoire(joueur2.getNbVictoire()+1);
+               partieFinie=true;
+           }
+       }
+        if(numJoueur==2){
+           joueur2.setNbVies(joueur2.getNbVies()-1);
+            
+           if (joueur2.getNbVies() == 0) {
+               JOptionPane.showMessageDialog(null,"le joueur 1 a gagné", "partie terminée", 0);
+               joueur1.setNbVictoire(joueur1.getNbVictoire()+1);
+               partieFinie=true;
+           }
+       }
+   }
+
+    public boolean getPartieFinie(){
+        return partieFinie;
+    }
+
+    public void setPartieFinie(boolean partieFinie) {
+        this.partieFinie = partieFinie;
+    }
+    
+    
+   
     
     
     public void bouger(){
@@ -196,10 +231,10 @@ public class Modele extends Observable {
     
     public void superVite(int joueur){
         if(joueur==1){
-            joueur1.setTEMPS_TIR(10);
+            joueur1.setTEMPS_TIR(15);
         }
         if(joueur==2){
-            joueur2.setTEMPS_TIR(10);
+            joueur2.setTEMPS_TIR(15);
         }
     }
     

@@ -70,16 +70,52 @@ public class Monde extends JPanel {
                     spawnAsteroid(1);
                 }
                     
-                    
+                //
+                // put try catch here for outofbound exception
+                
+                for (int j=0;j<laser.size();j++) {
+                    for (Vaisseau elemVaisseau: listVaisseau) {
+                        
+                        if (laser.get(j).getBounds().intersects(elemVaisseau.getBounds())) {
+                            if(elemVaisseau.getJoueur()!=modele.getLaser().get(j).getJoueur()){
+                            listLaserMod.add(laser.get(j));
+                            removeLaserElem(laser.get(j));
+                           
+                           if ( modele.getLaser().get(j).getJoueur() == 1) {
+                               modele.getJoueur1().setPointage(modele.getJoueur1().getPointage()+50);
+                               modele.getJoueur1().setNbTirsTouche(modele.getJoueur1().getNbTirsTouche()+1);
+                           }
+                           if ( modele.getLaser().get(j).getJoueur() == 2) {
+                               modele.getJoueur2().setPointage(modele.getJoueur2().getPointage()+50);
+                               modele.getJoueur2().setNbTirsTouche(modele.getJoueur2().getNbTirsTouche()+1);
+                           }
+                           modele.getLaser().remove(j);
+                            modele.perdreVie(elemVaisseau.getJoueur());
+                        }
+                           
+                        }
+                    }
+                }
+                laser.removeAll(listLaserMod);
+                listLaserMod.clear();
 
                 //
-                for (Lasers elemLaser : laser) {
+                for (int j=0; j<laser.size();j++) {
                     for (int i = 0; i < listAsteroid.size(); i++) {
-
-                        if (elemLaser.getBounds().intersects(listAsteroid.get(i).getBounds())) {
-                            listAsteroid.get(i).setPointVie(listAsteroid.get(i).getPointVie() - 1);
-                            listLaserMod.add(elemLaser);
+                        if ((laser.get(j).getBounds()).intersects(listAsteroid.get(i).getBounds())) {
                             
+                            listAsteroid.get(i).setPointVie(listAsteroid.get(i).getPointVie() - 1);
+                            listLaserMod.add(laser.get(j));
+                           
+                           if ( modele.getLaser().get(j).getJoueur() == 1) {
+                               modele.getJoueur1().setPointage(modele.getJoueur1().getPointage()+50);
+                               modele.getJoueur1().setNbTirsTouche(modele.getJoueur1().getNbTirsTouche()+1);
+                           }
+                           if ( modele.getLaser().get(j).getJoueur() == 2) {
+                               modele.getJoueur2().setPointage(modele.getJoueur2().getPointage()+50);
+                               modele.getJoueur2().setNbTirsTouche(modele.getJoueur2().getNbTirsTouche()+1);
+                           }
+                             modele.getLaser().remove(j);
                         }
                     }
                 }
@@ -245,11 +281,11 @@ public class Monde extends JPanel {
         lblnbTirJ1.setSize(150, 30);
         lblnbTirJ1.setForeground(Color.white);
         this.add(lblnbTirJ2);
-        lblnbTirJ2.setLocation(0, 150);
+        lblnbTirJ2.setLocation(650, 120);
         lblnbTirJ2.setSize(150, 30);
         lblnbTirJ2.setForeground(Color.white);
         this.add(lblnbTirTouchJ1);
-        lblnbTirTouchJ1.setLocation(650, 120);
+        lblnbTirTouchJ1.setLocation(0, 150);
         lblnbTirTouchJ1.setSize(160, 30);
         lblnbTirTouchJ1.setForeground(Color.white);
         this.add(lblnbTirTouchJ2);
@@ -334,7 +370,6 @@ public class Monde extends JPanel {
 
             g.setColor(Color.white);
             g.fillOval(5, 5, 5, 5);
-//           g.fillOval(2, 2, 3, 3);
 
         }
 
@@ -357,6 +392,7 @@ public class Monde extends JPanel {
     }
 
     public void removeLaserElem(Lasers elem) {
+        System.out.println("bla");
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
