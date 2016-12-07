@@ -26,20 +26,26 @@ public class Asteroid extends JComponent implements Bougeable {
     int positionIniY;
     Random random = new Random();
     
+    /**
+     *
+     */
     public Asteroid() {
         
         this.setSize(38, 38);
-        this.pointVie = random.nextInt(1)+1;
-        this.vitesseX = random.nextInt(2);
-        this.vitesseY = random.nextInt(3)+1;
-        this.positionIniX = random.nextInt(700);
-        this.positionIniY = random.nextInt(400);
+        this.pointVie = random.nextInt(1)+1; // peut change la vie de asteroid, si on le desire
+        this.vitesseX = random.nextInt(2);     
+        this.vitesseY = random.nextInt(3)+1;   //vitesse aleatoire pour chacun des asteroid
+        this.positionIniX = random.nextInt(700);  
+        this.positionIniY = random.nextInt(400);   //position aleatoire 
         
         this.setVisible(true);
     }
 
+    /**
+     *
+     */
     @Override
-    public void bouger() {
+    public void bouger() {  
         this.setLocation(this.getX()+vitesseX, this.getY()+vitesseY);
         if (this.getY() > 405) {
             this.setLocation(this.getX(), -25);
@@ -47,7 +53,7 @@ public class Asteroid extends JComponent implements Bougeable {
         if (this.getX() > 805) {
             this.setLocation(-25,this.getY());
         }
-    }
+    } // responsable du mouvement des asteroid avec les vitese
     
     public void paintComponent(Graphics g) {
         
@@ -55,38 +61,40 @@ public class Asteroid extends JComponent implements Bougeable {
         g.drawImage(img, 0, 0, this);
     }
 
-    public int getPositionIniX() {
+    
+    //setter et getter
+
+    /**
+     *
+     * @return
+     */
+        public int getPositionIniX() {
         return positionIniX;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPositionIniY() {
         return positionIniY;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPointVie() {
         return pointVie;
     }
 
+    /**
+     *
+     * @param pointVie
+     */
     public void setPointVie(int pointVie) {
         this.pointVie = pointVie;
     }
-    
-    
-    
-    
-    
-    public void asteroidHit() {
-        
-        pointVie--;
-        
-        if (pointVie < 1) {
-            
-            
-            
-            
-        }
-    }
-    
     
     
 }

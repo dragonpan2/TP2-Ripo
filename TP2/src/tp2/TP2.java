@@ -18,6 +18,7 @@ public class TP2 {
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
+     * main et initialisation
      */
     public static void main(String[] args) throws IOException {
         Controleur controleur = new Controleur();

@@ -24,6 +24,10 @@ public class Boni extends JComponent {
     Image img = Toolkit.getDefaultToolkit().getImage("boni1.gif");
     Image img2 = Toolkit.getDefaultToolkit().getImage("boni2.gif");
     
+    /**
+     *
+     * @param modele
+     */
     public Boni(Modele modele) {
         setBackground(Color.red);        
         this.setSize(30, 27);
@@ -52,6 +56,10 @@ public class Boni extends JComponent {
         }
     }
     
+    /**
+     *
+     * @param bufferedPlayer
+     */
     public void applyBoni(Joueur bufferedPlayer) {
         bufferedPlayer.setPointage(bufferedPlayer.getPointage()+50);
         if ("plusVie".equals(this.boniType)) {
@@ -60,7 +68,7 @@ public class Boni extends JComponent {
         if ("tirRapide".equals(this.boniType)) {
             modele.superVite(bufferedPlayer.getNumeroJoueur());
         }
-    }
+    } // methode responsable d'appliquer le boni touche a un joueur
     
     
     
