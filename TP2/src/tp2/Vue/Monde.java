@@ -47,6 +47,8 @@ public class Monde extends JPanel {
     static JLabel lblnbTirJ2 = new JLabel("Nombre de laser tiré : 0");
     static JLabel lblnbTirTouchJ1 = new JLabel("Nombre de laser touché : 0");
     static JLabel lblnbTirTouchJ2 = new JLabel("Nombre de laser touché : 0");
+    
+    static int threadCounter = 0;
 
     private static ArrayList<Lasers> laser = new ArrayList();
     private static ArrayList<Lasers> listLaserMod = new ArrayList();
@@ -61,7 +63,14 @@ public class Monde extends JPanel {
     Thread thread = new Thread() {
         @Override
         public void run() {
-            while (true) {
+            while (true) { //start here 
+                
+                threadCounter++;
+                if (threadCounter % 500 == 1) {
+                    spawnAsteroid(1);
+                }
+                    
+                    
 
                 //
                 for (Lasers elemLaser : laser) {
@@ -70,6 +79,7 @@ public class Monde extends JPanel {
                         if (elemLaser.getBounds().intersects(listAsteroid.get(i).getBounds())) {
                             listAsteroid.get(i).setPointVie(listAsteroid.get(i).getPointVie() - 1);
                             listLaserMod.add(elemLaser);
+                            
                         }
                     }
                 }
@@ -174,7 +184,7 @@ public class Monde extends JPanel {
         this.modele = modele;
         this.gw = gw;
 
-        spawnAsteroid();
+        spawnAsteroid(5);
 
         joueur1 = new Vaisseau(modele, 1);
         joueur2 = new Vaisseau(modele, 2);
@@ -374,6 +384,7 @@ public class Monde extends JPanel {
     }
 
     public void resetField() {
+        threadCounter = 0;
         for (Asteroid elemAsteroid : listAsteroid) {
             this.remove(elemAsteroid);
         }
@@ -384,8 +395,8 @@ public class Monde extends JPanel {
         listAsteroid.clear();
     }
 
-    public void spawnAsteroid() {
-        for (int i = 0; i < 5; i++) {
+    public void spawnAsteroid(int nombre) {
+        for (int i = 0; i < nombre; i++) {
 
             Asteroid ast = new Asteroid();
             this.add(ast);

@@ -11,6 +11,10 @@ import tp2.Controleur.Controleur;
 /**
  *
  * @author 1566086
+ * to be done, finish all stat 
+ * repair damage
+ * laser ownership
+ * 
  */
 public class TP2 {
 

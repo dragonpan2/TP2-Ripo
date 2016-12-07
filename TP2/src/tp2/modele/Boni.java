@@ -53,6 +53,7 @@ public class Boni extends JComponent {
     }
     
     public void applyBoni(Joueur bufferedPlayer) {
+        bufferedPlayer.setPointage(bufferedPlayer.getPointage()+50);
         if ("plusVie".equals(this.boniType)) {
             bufferedPlayer.setNbVies(bufferedPlayer.getNbVies()+1);
         }

@@ -31,8 +31,6 @@ public class Modele extends Observable {
         System.out.println("Resetting Round...");
         joueur1.setNbVies(3);
         joueur2.setNbVies(3);
-//        joueur1.setPointage(0);
-//        joueur2.setPointage(0);
         joueur1.setPositionX(50);
         joueur1.setPositionY(150);
         joueur2.setPositionX(700);
@@ -43,7 +41,9 @@ public class Modele extends Observable {
         joueur2.setAccelerationy(0);
         joueur1.setTEMPS_TIR(25);
         joueur1.setTEMPS_TIR(25);
-      //  Monde.resetField();
+//        joueur1.setOrientation(Joueur.Orientation.TOP);
+//        joueur2.setOrientation(Joueur.Orientation.TOP);
+     
         
     }
     
@@ -66,6 +66,7 @@ public class Modele extends Observable {
     public void tirer1(){
         if(joueur1.getTempsTir()<0){
         laser.add(joueur1.tirer());
+        joueur1.setPointage(joueur1.getPointage()+1);
         }
     }
     
@@ -98,6 +99,7 @@ public class Modele extends Observable {
    public void tirer2(){
         if(joueur2.getTempsTir()<0){
         laser.add(joueur2.tirer());
+        joueur2.setPointage(joueur2.getPointage()+1);
         }
     }
     
