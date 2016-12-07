@@ -41,6 +41,8 @@ public class Modele extends Observable {
         joueur1.setAccelerationy(0);
         joueur2.setAccelerationx(0);
         joueur2.setAccelerationy(0);
+        joueur1.setTEMPS_TIR(25);
+        joueur1.setTEMPS_TIR(25);
       //  Monde.resetField();
         
     }
@@ -116,14 +118,14 @@ public class Modele extends Observable {
         
         
         //verifier les lasers
-        for (int i = 0; i < laser.size(); i++) {
-            
-                        
-            
-            
-            
-            
-        }
+//        for (int i = 0; i < laser.size(); i++) {
+//            
+//                        
+//            
+//            
+//            
+//            
+//        }
     }
 
     public Joueur getJoueur1() {

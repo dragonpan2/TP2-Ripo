@@ -22,17 +22,20 @@ public class Boni extends JComponent {
     String boniType;
     Modele modele;
     Image img = Toolkit.getDefaultToolkit().getImage("boni1.gif");
+    Image img2 = Toolkit.getDefaultToolkit().getImage("boni2.gif");
     
     public Boni(Modele modele) {
-        setBackground(Color.red);
+        setBackground(Color.red);        
         this.setSize(30, 27);
         this.modele = modele;
-        switch(random.nextInt(1)) {
+        switch(random.nextInt(2)) {
             case 0:
                 boniType = "plusVie";
                 break;
             case 1:
                 boniType = "tirRapide";
+                break;
+            case 2:
                 break;
             
         }
@@ -41,8 +44,12 @@ public class Boni extends JComponent {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
+        if (boniType.equals("plusVie")) {
         g.drawImage(img, 0, 0, this);
+        }
+        if (boniType.equals("tirRapide")) {
+            g.drawImage(img2, 0, 0, this);
+        }
     }
     
     public void applyBoni(Joueur bufferedPlayer) {

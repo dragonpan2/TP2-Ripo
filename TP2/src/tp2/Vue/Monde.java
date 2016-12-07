@@ -180,14 +180,14 @@ public class Monde extends JPanel {
         joueur2 = new Vaisseau(modele, 2);
         listVaisseau.add(joueur1);
         listVaisseau.add(joueur2);
-        for (int i = 0; i < 10; i++) {
-
-            Asteroid ast = new Asteroid();
-            this.add(ast);
-            listAsteroid.add(ast);
-            ast.setLocation(300, 0);
-            ast.setLocation(ast.getPositionIniX(), ast.getPositionIniY());
-        }
+//        for (int i = 0; i < 10; i++) {
+//
+//            Asteroid ast = new Asteroid();
+//            this.add(ast);
+//            listAsteroid.add(ast);
+//            ast.setLocation(300, 0);
+//            ast.setLocation(ast.getPositionIniX(), ast.getPositionIniY());
+//        }
 
         planet1 = new ImageIcon(ImageIO.read(new File("planete1.gif")));
         planet2 = new ImageIcon(ImageIO.read(new File("planete2.gif")));
@@ -249,22 +249,22 @@ public class Monde extends JPanel {
 
         initialiserVaisseau();
 
-        JLabel lblPlanet1 = new JLabel(planet1);
-        JLabel lblPlanet2 = new JLabel(planet2);
-        JLabel lblPlanet3 = new JLabel(planet3);
-        JLabel lblPlanet4 = new JLabel(planet4);
-        this.add(lblPlanet1);
-        this.add(lblPlanet2);
-        this.add(lblPlanet3);
-        this.add(lblPlanet4);
-        lblPlanet1.setBounds(0, 0, 180, 180);
-        lblPlanet2.setBounds(0, 0, 252, 254);
-        lblPlanet3.setBounds(0, 0, 248, 254);
-        lblPlanet4.setBounds(0, 0, 349, 226);
-        lblPlanet1.setLocation(310, 320);
-        lblPlanet2.setLocation(500, 440);
-        lblPlanet3.setLocation(340, 20);
-        lblPlanet4.setLocation(0, 220);
+//        JLabel lblPlanet1 = new JLabel(planet1);
+//        JLabel lblPlanet2 = new JLabel(planet2);
+//        JLabel lblPlanet3 = new JLabel(planet3);
+//        JLabel lblPlanet4 = new JLabel(planet4);
+//        this.add(lblPlanet1);
+//        this.add(lblPlanet2);
+//        this.add(lblPlanet3);
+//        this.add(lblPlanet4);
+//        lblPlanet1.setBounds(0, 0, 180, 180);
+//        lblPlanet2.setBounds(0, 0, 252, 254);
+//        lblPlanet3.setBounds(0, 0, 248, 254);
+//        lblPlanet4.setBounds(0, 0, 349, 226);
+//        lblPlanet1.setLocation(310, 320);
+//        lblPlanet2.setLocation(500, 440);
+//        lblPlanet3.setLocation(340, 20);
+//        lblPlanet4.setLocation(0, 220);
 
         Random random = new Random();
         for (int i = 0; i < 100; i++) {
@@ -298,7 +298,7 @@ public class Monde extends JPanel {
             super.paintComponent(g);
 
             g.setColor(Color.white);
-//           g.fillOval(3, 3, 5, 5);
+
             g.fillOval(2, 2, 3, 3);
 
         }
@@ -385,7 +385,7 @@ public class Monde extends JPanel {
     }
 
     public void spawnAsteroid() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
 
             Asteroid ast = new Asteroid();
             this.add(ast);
