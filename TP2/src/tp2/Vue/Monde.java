@@ -76,6 +76,8 @@ public class Monde extends JPanel {
                 for (int j=0;j<laser.size();j++) {
                     for (Vaisseau elemVaisseau: listVaisseau) {
                         
+                        try {
+                        
                         if (laser.get(j).getBounds().intersects(elemVaisseau.getBounds())) {
                             if(elemVaisseau.getJoueur()!=modele.getLaser().get(j).getJoueur()){
                             listLaserMod.add(laser.get(j));
@@ -94,6 +96,13 @@ public class Monde extends JPanel {
                         }
                            
                         }
+                        
+                        }
+                        catch(IndexOutOfBoundsException e) {
+                            System.out.println("Catch");
+                        }
+                        
+                        
                     }
                 }
                 laser.removeAll(listLaserMod);
@@ -392,7 +401,6 @@ public class Monde extends JPanel {
     }
 
     public void removeLaserElem(Lasers elem) {
-        System.out.println("bla");
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
