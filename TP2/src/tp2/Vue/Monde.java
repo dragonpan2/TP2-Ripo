@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2.Vue;
 
 import java.awt.Color;
@@ -22,6 +17,10 @@ import tp2.modele.Asteroid;
 import tp2.modele.Boni;
 import tp2.modele.Modele;
 
+/**
+ *
+ * @author Bei Ning Pan et Emilien Perron
+ */
 public class Monde extends JPanel {
 
     private Modele modele;
@@ -35,6 +34,7 @@ public class Monde extends JPanel {
     private Vaisseau joueur1;
     private Vaisseau joueur2;
 
+    //creation des lbl pour les statistique
     static JLabel lblJ1 = new JLabel("--Joueur 1--");
     static JLabel lblJ2 = new JLabel("--Joueur 2--");
     static JLabel lblVieJ1 = new JLabel("Point de Vie: 0");
@@ -50,6 +50,7 @@ public class Monde extends JPanel {
     
     static int threadCounter = 0;
 
+    //liste utiliser pour les detections de collision
     private static ArrayList<Lasers> laser = new ArrayList();
     private static ArrayList<Lasers> listLaserMod = new ArrayList();
     private static ArrayList<DrawBg> listEtoile = new ArrayList();
@@ -63,16 +64,15 @@ public class Monde extends JPanel {
     Thread thread = new Thread() {
         @Override
         public void run() {
-            while (true) { //start here 
+            while (true) { //Thread start here 
                 
                 threadCounter++;
                 if (threadCounter % 500 == 1) {
                     spawnAsteroid(1);
-                }
+                } // spawn un asteroid chaque un bout de temp
                     
-                //
-                // put try catch here for outofbound exception
-                
+
+                //verifier la collision entre les laser et les vaisseau
                 for (int j=0;j<laser.size();j++) {
                     for (Vaisseau elemVaisseau: listVaisseau) {
                         
@@ -100,15 +100,19 @@ public class Monde extends JPanel {
                         }
                         catch(IndexOutOfBoundsException e) {
                             System.out.println("Catch");
+                            //You gotta catch 'em all
                         }
                         
                         
                     }
                 }
+                
                 laser.removeAll(listLaserMod);
                 listLaserMod.clear();
-
-                //
+                    //
+                
+                
+                // Collision entre laser et asteroid
                 for (int j=0; j<laser.size();j++) {
                     for (int i = 0; i < listAsteroid.size(); i++) {
                         if ((laser.get(j).getBounds()).intersects(listAsteroid.get(i).getBounds())) {
@@ -136,7 +140,7 @@ public class Monde extends JPanel {
                 laser.removeAll(listLaserMod); //to verify
                 listLaserMod.clear();
 
-                //
+                // creation de boni quand un asteroid est detruit
                 for (Asteroid elem : listAsteroid) {
                     elem.bouger();
                     if (elem.getPointVie() <= 0) {
@@ -155,7 +159,7 @@ public class Monde extends JPanel {
                 listAsteroid.removeAll(listAsteroidMod);
                 listAsteroidMod.clear();
 
-                //
+                // Detection de collision entre vasseau et boni
                 for (Vaisseau elemVaisseau : listVaisseau) {
                     for (Boni elemBoni : listBoni) {
                         if (elemVaisseau.getBounds().intersects(elemBoni.getBounds())) {
@@ -175,13 +179,15 @@ public class Monde extends JPanel {
                 listBoni.removeAll(listBoniMod);
                 listBoniMod.clear();
 
-                //
+                // bouge les etoiles de fonds
                 for (DrawBg elem : listEtoile) {
                     elem.moveStar();
                 }
                 for (DrawBg2 elem : listEtoile2) {
                     elem.moveStar();
                 }
+                //
+                
 
                 if (gw.getTouchesPesees().contains('w')) {
                     modele.avancer1();
@@ -225,6 +231,12 @@ public class Monde extends JPanel {
         }
     };
 
+    /**
+     *
+     * @param modele
+     * @param gw
+     * @throws IOException
+     */
     public Monde(Modele modele, GameWindow gw) throws IOException {
         this.modele = modele;
         this.gw = gw;
@@ -235,14 +247,6 @@ public class Monde extends JPanel {
         joueur2 = new Vaisseau(modele, 2);
         listVaisseau.add(joueur1);
         listVaisseau.add(joueur2);
-//        for (int i = 0; i < 10; i++) {
-//
-//            Asteroid ast = new Asteroid();
-//            this.add(ast);
-//            listAsteroid.add(ast);
-//            ast.setLocation(300, 0);
-//            ast.setLocation(ast.getPositionIniX(), ast.getPositionIniY());
-//        }
 
         planet1 = new ImageIcon(ImageIO.read(new File("planete1.gif")));
         planet2 = new ImageIcon(ImageIO.read(new File("planete2.gif")));
@@ -253,6 +257,7 @@ public class Monde extends JPanel {
         setBackground(Color.black);
         setLayout(null);
 
+        //placement, couleur et taille des lbl
         this.add(lblJ1);
         lblJ1.setLocation(0, 0);
         lblJ1.setSize(100, 30);
@@ -301,9 +306,12 @@ public class Monde extends JPanel {
         lblnbTirTouchJ2.setLocation(650, 150);
         lblnbTirTouchJ2.setSize(160, 30);
         lblnbTirTouchJ2.setForeground(Color.white);
-
+        //
+        
         initialiserVaisseau();
 
+        //code pour afficher les planets en fond
+        
 //        JLabel lblPlanet1 = new JLabel(planet1);
 //        JLabel lblPlanet2 = new JLabel(planet2);
 //        JLabel lblPlanet3 = new JLabel(planet3);
@@ -320,7 +328,9 @@ public class Monde extends JPanel {
 //        lblPlanet2.setLocation(500, 440);
 //        lblPlanet3.setLocation(340, 20);
 //        lblPlanet4.setLocation(0, 220);
-
+        
+        
+        //placement des etoile de fond
         Random random = new Random();
         for (int i = 0; i < 100; i++) {
             DrawBg drawBg = new DrawBg();
@@ -335,6 +345,8 @@ public class Monde extends JPanel {
             listEtoile2.add(drawBg2);
             drawBg2.setLocation(1 * random.nextInt(800), 1 * random.nextInt(500));
         }
+        //
+        
 
         thread.start();
 
@@ -342,6 +354,9 @@ public class Monde extends JPanel {
 
     }
 
+    /**
+     * dessin des etoile en inner class
+     */
     public class DrawBg extends JComponent {
 
         public DrawBg() {
@@ -358,6 +373,9 @@ public class Monde extends JPanel {
 
         }
 
+        /**
+         * deplacement des etoile de fond
+         */
         public void moveStar() {
             if (this.getX() > 800) {
                 this.setLocation(0, this.getY());
@@ -367,6 +385,9 @@ public class Monde extends JPanel {
         }
     }
 
+    /**
+     * dessin des etoile de fond
+     */
     public class DrawBg2 extends JComponent {
 
         public DrawBg2() {
@@ -382,6 +403,9 @@ public class Monde extends JPanel {
 
         }
 
+        /**
+         * deplacement des etoile de fond
+         */
         public void moveStar() {
             if (this.getX() > 800) {
                 this.setLocation(0, this.getY());
@@ -391,6 +415,10 @@ public class Monde extends JPanel {
         }
     }
 
+    /**
+     * methode qui enleve un asteroid donne dans monde
+     * @param elem
+     */
     public void removeElem(Asteroid elem) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -400,6 +428,10 @@ public class Monde extends JPanel {
         });
     }
 
+    /**
+     * methode qui enleve un laser donne dans monde
+     * @param elem
+     */
     public void removeLaserElem(Lasers elem) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -409,6 +441,10 @@ public class Monde extends JPanel {
         });
     }
 
+    /**
+     * methode qui enleve un boni donne dans monde
+     * @param boni
+     */
     public void removeBoniElem(Boni boni) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -418,6 +454,10 @@ public class Monde extends JPanel {
         });
     }
 
+    /**
+     * methode qui ajoute un boni donne dans monde
+     * @param boni
+     */
     public void addBoni(Boni boni) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -427,8 +467,13 @@ public class Monde extends JPanel {
         });
     }
 
+    /**
+     * methode appeler lorsque on commence un nouveau partie
+     * enleve tous les asteroid et les boni du monde
+     */
     public void resetField() {
         threadCounter = 0;
+        
         for (Asteroid elemAsteroid : listAsteroid) {
             this.remove(elemAsteroid);
         }
@@ -439,6 +484,10 @@ public class Monde extends JPanel {
         listAsteroid.clear();
     }
 
+    /**
+     * spawn une nombre d'asteroid donne
+     * @param nombre
+     */
     public void spawnAsteroid(int nombre) {
         for (int i = 0; i < nombre; i++) {
 
@@ -450,6 +499,9 @@ public class Monde extends JPanel {
         }
     }
 
+    /**
+     *  creation des vaisseau
+     */
     public void initialiserVaisseau() {
 
         this.add(joueur1);
@@ -458,11 +510,17 @@ public class Monde extends JPanel {
         joueur2.setLocation(modele.getJoueur2().getPositionX(), modele.getJoueur2().getPositionY());
     }
 
+    /**
+     *   modifier les position des joueurs
+     */
     public void modifierJoueur() {
         joueur1.setLocation(modele.getJoueur1().getPositionX(), modele.getJoueur1().getPositionY());
         joueur2.setLocation(modele.getJoueur2().getPositionX(), modele.getJoueur2().getPositionY());
     }
 
+    /**
+     * methode pour creer et expirer les lasers
+     */
     public void modifierLaser() {
         for (int i = 0; i < laser.size(); i++) {
             this.remove(laser.get(i));

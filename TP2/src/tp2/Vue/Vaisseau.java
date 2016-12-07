@@ -1,33 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2.Vue;
 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.File;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
-import tp2.modele.Joueur.Orientation;
 import tp2.modele.Modele;
 
 /**
  *
- * @author 1535905
+ * @author Bei Ning Pan et Emilien Perron
  */
 public class Vaisseau extends JComponent{
     private Modele modele;
     private int joueur;
 
+    /**
+     *
+     * @param modele
+     * @param joueur a qui appartient le vaisseau
+     */
     public Vaisseau(Modele modele,int joueur) {
         this.modele=modele;
         setSize(64,64);
         this.joueur=joueur;
-        
+        //capable de savoir a qui appartient le vaisseau
     }
     
     @Override
@@ -35,6 +31,7 @@ public class Vaisseau extends JComponent{
         Image img=Toolkit.getDefaultToolkit().getImage("vaisseau1top.gif");
         if (joueur==1){
         switch(modele.getJoueur1().getOrientation()){
+            //image affiche selon la direction
             case TOP:img=Toolkit.getDefaultToolkit().getImage("vaisseau1top.gif");
             break;
             case TOPRIGHT:img=Toolkit.getDefaultToolkit().getImage("vaisseau1topright.gif");
@@ -76,6 +73,10 @@ public class Vaisseau extends JComponent{
         g.drawImage(img, 0, 0, this);
     }
 
+    /**
+     *
+     * @return joueur
+     */
     public int getJoueur() {
         return joueur;
     }

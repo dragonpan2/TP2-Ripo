@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2.modele;
 
 import java.awt.Color;
@@ -14,7 +9,7 @@ import javax.swing.JComponent;
 
 /**
  *
- * @author panbe
+ * @author Bei Ning Pan et Emilien Perron
  */
 public class Boni extends JComponent {
     
@@ -50,8 +45,10 @@ public class Boni extends JComponent {
         super.paintComponent(g);
         if (boniType.equals("plusVie")) {
         g.drawImage(img, 0, 0, this);
+        //si boni = plus de vie, coleur = blue
         }
         if (boniType.equals("tirRapide")) {
+            // si boni = tirRapide, couleur = rouge
             g.drawImage(img2, 0, 0, this);
         }
     }

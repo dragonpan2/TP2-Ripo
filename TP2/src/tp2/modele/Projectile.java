@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2.modele;
 
 import tp2.modele.Joueur.Orientation;
 
 /**
  *
- * @author 1566086
+ * @author Bei Ning Pan et Emilien Perron
  */
 public class Projectile implements Bougeable{
     private Orientation orientation;
@@ -21,6 +16,13 @@ public class Projectile implements Bougeable{
     private int positionY;
     private int tempsRestant=60;
     
+    /**
+     *
+     * @param joueur
+     * @param orientation
+     * @param positionX
+     * @param positionY
+     */
     public Projectile(int joueur,Orientation orientation,int positionX,int positionY) {
         this.orientation=orientation;
         vitesse();
@@ -30,29 +32,50 @@ public class Projectile implements Bougeable{
         this.joueur=joueur;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPositionX() {
         return positionX;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPositionY() {
         return positionY;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getJoueur() {
         return joueur;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTempsRestant() {
         return tempsRestant;
         
     }
 
+    /**
+     *
+     * @return
+     */
     public Orientation getOrientation() {
         return orientation;
     }
     
-    
-    
+    /**
+     *   responsable des vitess
+     */
     public void vitesse(){
         switch(orientation){
             case TOP:vitesseY=-vitesseY;
@@ -77,8 +100,9 @@ public class Projectile implements Bougeable{
         }
     }
     
-
-    
+    /**
+     *   Methode qui coordone les deplacement du projectile
+     */
     @Override
     public void bouger() {
         positionX=positionX+vitesseX;

@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2.Vue;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,11 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -40,13 +28,16 @@ public class GameWindow extends JFrame implements Observer {
 
     Monde monde;
 
+    //initialisation des objet du menu
     private JMenuBar menu = new JMenuBar();
     private JMenu mnFichier = new JMenu("Fichier");
     private JMenu mnAide = new JMenu("Aide");
     private JMenuItem mnItemNouvellePartie = new JMenuItem("NouvellePartie");
     private JMenuItem mnItemQuitter = new JMenuItem("Quitter");
     private JMenuItem mnItemAide = new JMenuItem("Aide");
+    //
 
+    //
     private static ArrayList<Character> touchesPesees = new ArrayList();
 
     private static KeyListener kl = new KeyListener() {
@@ -73,6 +64,14 @@ public class GameWindow extends JFrame implements Observer {
         }
     };
 
+    /**
+     *
+     * @param controleur
+     * @param observable
+     * @throws IOException
+     * constructeur du gameWindow
+     * inclu les code pour MVC et la taille du jeu
+     */
     public GameWindow(Controleur controleur, Observable observable) throws IOException {
 
         this.modele = (Modele) observable;
@@ -86,10 +85,14 @@ public class GameWindow extends JFrame implements Observer {
         this.add(monde);
         this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setResizable(false);
         this.setVisible(true);
 
     }
 
+    /**
+     *    methode responsable de lajoute des menus
+     */
     public void menus() {
         mnFichier.add(mnItemNouvellePartie);
         mnFichier.addSeparator();
@@ -103,6 +106,9 @@ public class GameWindow extends JFrame implements Observer {
         setJMenuBar(menu);
     }
 
+    /**
+     * code execute lors quon appuis sur le menu quitter
+     */
     public void eventQuitter() {
         mnItemQuitter.addActionListener(new ActionListener() {
             @Override
@@ -114,16 +120,21 @@ public class GameWindow extends JFrame implements Observer {
         });
     }
 
+    /**
+     * code execute lors quon appuis sur le menu aide
+     */
     public void eventAide() {
         mnItemAide.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //change
-                JOptionPane.showMessageDialog(null, "Emilien, Bei Ning, date final:", "Aide", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Emilien, Bei Ning, date final du Build: 2016-12-07", "Aide", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
 
+    /**
+     *     code execute lors quon apuis sur nouvelle partie
+     */
     public void eventNouvellePartie() {
         mnItemNouvellePartie.addActionListener(new ActionListener() {
             @Override
@@ -133,10 +144,17 @@ public class GameWindow extends JFrame implements Observer {
         });
     }
 
+    /**
+     *
+     * @return les touche pesees a execute
+     */
     public static ArrayList<Character> getTouchesPesees() {
         return touchesPesees;
     }
 
+    /**
+     * Mis a jour des statistique en temps reel
+     */
     public void infos() {
         int nbVieP1 = modele.getJoueur1().getNbVies();
         int nbVieP2 = modele.getJoueur2().getNbVies();
@@ -177,9 +195,12 @@ public class GameWindow extends JFrame implements Observer {
         monde.repaint();
     }
 
+    /**
+     *tous les methode necessaire a apelle pour un nouvelle partie fonctionel
+     */
     public void nouvellePartie(){
         modele.resetPartie();
         monde.resetField();
         monde.spawnAsteroid(5);
-    }
+    } 
 }

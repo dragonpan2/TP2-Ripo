@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2.modele;
 
 import java.awt.Graphics;
@@ -13,7 +8,7 @@ import javax.swing.JComponent;
 
 /**
  *
- * @author 1566086
+ * @author Bei Ning Pan et Emilien Perron
  */
 public class Asteroid extends JComponent implements Bougeable {
 
@@ -27,7 +22,7 @@ public class Asteroid extends JComponent implements Bougeable {
     Random random = new Random();
     
     /**
-     *
+     * Constructeur
      */
     public Asteroid() {
         
@@ -42,7 +37,7 @@ public class Asteroid extends JComponent implements Bougeable {
     }
 
     /**
-     *
+     *  responsable du mouvement des asteroid avec les vitese
      */
     @Override
     public void bouger() {  
@@ -53,7 +48,7 @@ public class Asteroid extends JComponent implements Bougeable {
         if (this.getX() > 805) {
             this.setLocation(-25,this.getY());
         }
-    } // responsable du mouvement des asteroid avec les vitese
+    } // 
     
     public void paintComponent(Graphics g) {
         
@@ -74,7 +69,7 @@ public class Asteroid extends JComponent implements Bougeable {
 
     /**
      *
-     * @return
+     * @return  
      */
     public int getPositionIniY() {
         return positionIniY;
@@ -82,7 +77,7 @@ public class Asteroid extends JComponent implements Bougeable {
 
     /**
      *
-     * @return
+     * @return pointvie du asteroid
      */
     public int getPointVie() {
         return pointVie;

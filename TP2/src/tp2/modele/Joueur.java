@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2.modele;
 
-
+/**
+ *
+ * @author Bei Ning Pan et Emilien Perron
+ */
 public class Joueur implements Bougeable{
    private int numeroJoueur;
    private int nbVies=3;
@@ -25,7 +23,12 @@ public class Joueur implements Bougeable{
     private int tempsTir=0;
     private int TEMPS_TIR=30;
     
+    /**
+     * enum d'orientation
+     */
     public enum Orientation{
+
+
        TOP,
        TOPRIGHT,
        RIGHT,
@@ -36,6 +39,14 @@ public class Joueur implements Bougeable{
        TOPLEFT,
     }
     private Orientation orientation;
+
+    /**
+     *
+     * @param numeroJoueur
+     * @param posx
+     * @param posy
+     * @param nbVies
+     */
     public Joueur(int numeroJoueur,int posx,int posy,int nbVies) {
         this.positionX=posx;
         this.positionY=posy;
@@ -46,7 +57,9 @@ public class Joueur implements Bougeable{
     }
     
     
-
+/**
+ * donne la nouvelle acceleration du vaisseau en fonction de son orientation
+ */
     public void avancer(){
         switch(orientation){
             case TOP:accelerationy=accelerationy-power;
@@ -72,7 +85,11 @@ public class Joueur implements Bougeable{
         }
         
     }
-    
+    /**
+ * donne la nouvelle acceleration du vaisseau en fonction de son orientation
+ * si lacceleration est dans le sens opposé de lorientation, lacceleration ne sera
+ * pas changé
+ */
      public void reculer(){
          
          switch(orientation){
@@ -126,24 +143,40 @@ public class Joueur implements Bougeable{
          
          
     }
-     
+     /**
+      * change langle pour pouvoir modifier lorientation apres
+      */
      public void tournerDroite(){
         angle=angle-8;
         if(angle<0)angle=360;
     }
     
+    /**
+     *
+     */
     public void tournerGauche(){
         angle=angle+8;
         if(angle>360)angle=0;
     }
     
+    /**
+     *
+     * @return
+     */
     public Projectile tirer(){
         tempsTir=TEMPS_TIR;
         Projectile laser;
         laser=new Projectile(numeroJoueur,orientation, positionX+13, positionY+13);
         return laser;
     }
+
+    /**
+     *
+     */
     @Override
+    /**
+     * donne lorientation en fonction de langle du vaisseau
+     */
     public void bouger(){
         positionY=(int)(positionY+accelerationy);
         positionX=((int)(positionX+accelerationx));
@@ -162,100 +195,186 @@ public class Joueur implements Bougeable{
         tempsTir--;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNbVictoire() {
         return nbVictoire;
     }
 
+    /**
+     *
+     * @param nbVictoire
+     */
     public void setNbVictoire(int nbVictoire) {
         this.nbVictoire = nbVictoire;
     }
 
+    /**
+     *
+     * @param accelerationx
+     */
     public void setAccelerationx(double accelerationx) {
         this.accelerationx = accelerationx;
     }
 
+    /**
+     *
+     * @param accelerationy
+     */
     public void setAccelerationy(double accelerationy) {
         this.accelerationy = accelerationy;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumeroJoueur() {
         return numeroJoueur;
     }
     
-    
-    
-    
-    
-    
-    
+    /**
+     *
+     * @param positionX
+     */
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
 
+    /**
+     *
+     * @param positionY
+     */
     public void setPositionY(int positionY) {
         this.positionY = positionY;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPositionX() {
         return positionX;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPositionY() {
         return positionY;
     }
 
+    /**
+     *
+     * @param nbVies
+     */
     public void setNbVies(int nbVies) {
         this.nbVies = nbVies;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNbVies() {
         return nbVies;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNbTirs() {
         return nbTirs;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNbTirsTouche() {
         return nbTirsTouche;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPointage() {
         return pointage;
     }
 
+    /**
+     *
+     * @param nbTirs
+     */
     public void setNbTirs(int nbTirs) {
         this.nbTirs = nbTirs;
     }
 
+    /**
+     *
+     * @param nbTirsTouche
+     */
     public void setNbTirsTouche(int nbTirsTouche) {
         this.nbTirsTouche = nbTirsTouche;
     }
 
+    /**
+     *
+     * @param pointage
+     */
     public void setPointage(int pointage) {
         this.pointage = pointage;
     }
     
+    /**
+     *
+     * @return
+     */
     public Orientation getOrientation() {
         return orientation;
     }
 
+    /**
+     *
+     * @param orientation
+     */
     public void setOrientation(Orientation orientation) {
         this.orientation = orientation;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getTempsTir() {
         return tempsTir;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLargeur() {
         return largeur;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLongueur() {
         return longueur;
     }
 
+    /**
+     *
+     * @param TEMPS_TIR
+     */
     public void setTEMPS_TIR(int TEMPS_TIR) {
         this.TEMPS_TIR = TEMPS_TIR;
     }

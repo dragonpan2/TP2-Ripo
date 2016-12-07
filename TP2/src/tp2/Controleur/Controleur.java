@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp2.Controleur;
 
 import java.io.IOException;
@@ -11,7 +6,7 @@ import tp2.modele.Modele;
 
 /**
  *
- * @author 1535905
+ * @author Bei Ning Pan et Emilien Perron
  */
 public class Controleur {
     
@@ -29,7 +24,7 @@ public class Controleur {
     }
     
     //methode responsable de modifier les données vers modele
-
+    //
     /**
      *
      * @param numeroJoueur numero du joueur a changer soit un ou deux
@@ -78,7 +73,7 @@ public class Controleur {
     /**
      *
      * @param numeroJoueur numero du joueur a changer soit un ou deux
-     * @param tirChange 
+     * @param tirChange  quantité de nombre de tir a change
      */
     public void changeTir(int numeroJoueur, int tirChange) {
         modele.changeNbTir(numeroJoueur, tirChange);
@@ -87,7 +82,7 @@ public class Controleur {
     /**
      *
      * @param numeroJoueur numero du joueur a changer soit un ou deux
-     * @param tirToucheChange
+     * @param tirToucheChange quantité de nombre de tir touche a change
      */
     public void changeTirTouch(int numeroJoueur, int tirToucheChange) {
         modele.changeNbTirTouch(numeroJoueur, tirToucheChange);
